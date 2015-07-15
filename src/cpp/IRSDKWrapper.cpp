@@ -20,56 +20,63 @@ bool IRSDKWrapper::startup()
   else {
     return true;
   }
-	if (!hMemMapFile)
-	{
-		hMemMapFile = OpenFileMapping(FILE_MAP_READ, FALSE, IRSDK_MEMMAPFILENAME);
-		lastTickCount = INT_MIN;
-	}
-	if (!pSharedMem)
-	{
-		pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
-		pHeader = (irsdk_header *)pSharedMem;
+
+  if (!hMemMapFile)
+  {
+    hMemMapFile = OpenFileMapping(FILE_MAP_READ, FALSE, IRSDK_MEMMAPFILENAME);
     lastTickCount = INT_MIN;
-	}
+  }
+
+  if (!pSharedMem)
+  {
+    pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
+    pHeader = (irsdk_header *)pSharedMem;
+    lastTickCount = INT_MIN;
+  }
+
   data = new char[pHeader->bufLen];
-	return true;
+  return true;
 }
 
-bool IRSDKWrapper::isInitialized() const {
-	if (!hMemMapFile) return false;
-	if (!pSharedMem) return false;
-	return true;
+bool IRSDKWrapper::isInitialized() const 
+{
+  if (!hMemMapFile) return false;
+  if (!pSharedMem) return false;
+  return true;
 }
 
-bool IRSDKWrapper::isConnected() const {
+bool IRSDKWrapper::isConnected() const 
+{
   return pHeader->status == irsdk_stConnected;
 }
 
-void IRSDKWrapper::shutdown() {
-  std::cout << "IRSDKWarpper shutting down.." << std::endl;
-	if (pSharedMem)
-		UnmapViewOfFile(pSharedMem);
+void IRSDKWrapper::shutdown() 
+{
+  if (pSharedMem)
+    UnmapViewOfFile(pSharedMem);
 
-	if (hMemMapFile)
-		CloseHandle(hMemMapFile);
+  if (hMemMapFile)
+    CloseHandle(hMemMapFile);
 
   hMemMapFile = NULL;
-	pSharedMem = NULL;
-	pHeader = NULL;
-	
+  pSharedMem = NULL;
+  pHeader = NULL;
+  
   lastTickCount = INT_MIN;
   lastSessionInfoUpdate = INT_MIN;
   delete data;
-	data = NULL;
+  data = NULL;
   lastValidTime = time(NULL);
   varHeadersMap.clear();
   varHeadersArr.clear();
   sessionInfoStr = "";
 }
 
-bool IRSDKWrapper::updateSessionInfo() {
+bool IRSDKWrapper::updateSessionInfo() 
+{
   if (startup()) {
     int counter = pHeader->sessionInfoUpdate;
+
     if (counter > lastSessionInfoUpdate) {
       sessionInfoStr = getSessionInfoStr();
       lastSessionInfoUpdate = counter;
@@ -80,78 +87,83 @@ bool IRSDKWrapper::updateSessionInfo() {
   return false;
 }
 
-const std::string IRSDKWrapper::getSessionInfo() const {
+const std::string IRSDKWrapper::getSessionInfo() const 
+{
   return sessionInfoStr;
 }
 
-bool IRSDKWrapper::updateTelemetry() {
-	if ( startup() )
-	{
+bool IRSDKWrapper::updateTelemetry() 
+{
+  if ( startup() )
+  {
     if (varHeadersMap.empty()) {
       updateVarHeaders();
     }
-		// if sim is not active, then no new data
-		if (!pHeader->status)
-		{
-			lastTickCount = INT_MIN;
-			return false;
-		}
-
-		int latest = 0;
-		for (int i = 1; i<pHeader->numBuf; i++)
-			if (pHeader->varBuf[latest].tickCount < pHeader->varBuf[i].tickCount)
-				latest = i;
-
-		// if newer than last recieved, than report new data
-		if (lastTickCount < pHeader->varBuf[latest].tickCount)
-		{
-			// if asked to retrieve the data
-			if (data)
-			{
-				// try twice to get the data out
-				for (int count = 0; count < 2; count++)
-				{
-					int curTickCount = pHeader->varBuf[latest].tickCount;
-					memcpy(data, pSharedMem + pHeader->varBuf[latest].bufOffset, pHeader->bufLen);
-					if (curTickCount == pHeader->varBuf[latest].tickCount)
-					{
-						lastTickCount = curTickCount;
-						lastValidTime = time(NULL);
-						return true;
-					}
-				}
-				// if here, the data changed out from under us.
-				return false;
-			}
-			else
-			{
-				lastTickCount = pHeader->varBuf[latest].tickCount;
-				lastValidTime = time(NULL);
-				return true;
-			}
-		}
-		// if older than last recieved, than reset, we probably disconnected
-		else if (lastTickCount >  pHeader->varBuf[latest].tickCount)
-		{
+    // if sim is not active, then no new data
+    if (!pHeader->status)
+    {
       lastTickCount = INT_MIN;
-			return false;
-		}
-		// else the same, and nothing changed this tick
-	}
-	return false;
+      return false;
+    }
+
+    int latest = 0;
+    for (int i = 1; i<pHeader->numBuf; i++)
+      if (pHeader->varBuf[latest].tickCount < pHeader->varBuf[i].tickCount)
+        latest = i;
+
+    // if newer than last recieved, than report new data
+    if (lastTickCount < pHeader->varBuf[latest].tickCount)
+    {
+      // if asked to retrieve the data
+      if (data)
+      {
+        // try twice to get the data out
+        for (int count = 0; count < 2; count++)
+        {
+          int curTickCount = pHeader->varBuf[latest].tickCount;
+          memcpy(data, pSharedMem + pHeader->varBuf[latest].bufOffset, pHeader->bufLen);
+          if (curTickCount == pHeader->varBuf[latest].tickCount)
+          {
+            lastTickCount = curTickCount;
+            lastValidTime = time(NULL);
+            return true;
+          }
+        }
+        // if here, the data changed out from under us.
+        return false;
+      }
+      else
+      {
+        lastTickCount = pHeader->varBuf[latest].tickCount;
+        lastValidTime = time(NULL);
+        return true;
+      }
+    }
+    // if older than last recieved, than reset, we probably disconnected
+    else if (lastTickCount >  pHeader->varBuf[latest].tickCount)
+    {
+      lastTickCount = INT_MIN;
+      return false;
+    }
+    // else the same, and nothing changed this tick
+  }
+  return false;
 }
 
 const char* IRSDKWrapper::getSessionInfoStr() const
 {
-	if (isInitialized()) {
-		return pSharedMem + pHeader->sessionInfoOffset;
-	}
-	return NULL;
+  if (isInitialized()) {
+    return pSharedMem + pHeader->sessionInfoOffset;
+  }
+
+  return NULL;
 }
 
-void IRSDKWrapper::updateVarHeaders() {
+void IRSDKWrapper::updateVarHeaders() 
+{
   varHeadersMap.clear();
   varHeadersArr.clear();
+
   for (int index = 0; index < pHeader->numVars; ++index)
   {
     irsdk_varHeader* pVarHeader = &((irsdk_varHeader*)(pSharedMem + pHeader->varHeaderOffset))[index];
@@ -167,29 +179,36 @@ header(varHeader)
   type = (irsdk_VarType)varHeader->type;
 }
 
-IRSDKWrapper::TelemetryVar::~TelemetryVar() {
+IRSDKWrapper::TelemetryVar::~TelemetryVar() 
+{
   delete value;
 }
 
-const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const {
+const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const 
+{
   return varHeadersArr;
 }
 
-irsdk_varHeader* IRSDKWrapper::getVarHeader(std::string& const name) const {
+irsdk_varHeader* IRSDKWrapper::getVarHeader(std::string& const name) const 
+{
   std::map<std::string, irsdk_varHeader*>::const_iterator it = varHeadersMap.find(name);
+
   if (it != varHeadersMap.end()) {
     std::cout << "varHeader found.." << std::endl;
     return it->second;
   }
+
   std::cout << "varHeader not found.." << std::endl;
   return NULL;
 }
 
-bool IRSDKWrapper::getVar(TelemetryVar& var) const {
+bool IRSDKWrapper::getVar(TelemetryVar& var) const 
+{
   if (data == NULL) {
     std::cout << "no data available.." << std::endl;
     return false;
   }
+
   int valueBytes = irsdk_VarTypeBytes[var.header->type] * var.header->count;
   memcpy(var.value, data + var.header->offset, valueBytes);
   return true;

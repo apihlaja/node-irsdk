@@ -11,11 +11,22 @@
 class IRSDKWrapper
 {
 public:
-	IRSDKWrapper();
-	~IRSDKWrapper();
+  IRSDKWrapper();
+  ~IRSDKWrapper();
 
-  struct TelemetryVar {
+  bool startup();
+  void shutdown();
 
+  bool isInitialized() const;
+  bool isConnected() const;
+
+  bool updateTelemetry(); // returns true if telemetry update available
+  bool updateSessionInfo(); // returns true if session info update available
+  
+  const std::string getSessionInfo() const; // returns yaml string
+
+  struct TelemetryVar
+  {
     irsdk_varHeader* header;
     irsdk_VarType type;
 
@@ -31,31 +42,18 @@ public:
     ~TelemetryVar();
   };
 
-	bool startup();
-	void shutdown();
-
-  bool updateTelemetry(); // returns true if telemetry update available
-  bool updateSessionInfo(); // returns true if session info update available
-  
-  const std::string getSessionInfo() const; // returns yaml string
-
-	bool isInitialized() const;
-	bool isConnected() const;
-
   const std::vector<irsdk_varHeader*> getVarHeaders() const;
-
   irsdk_varHeader* getVarHeader(std::string& const name) const;
-  
   bool getVar(TelemetryVar& var) const;
 
 private:
-	HANDLE hMemMapFile;
-	const char *pSharedMem;
-	const irsdk_header *pHeader;
-	int lastTickCount;
+  HANDLE hMemMapFile;
+  const char *pSharedMem;
+  const irsdk_header *pHeader;
+  int lastTickCount;
   int lastSessionInfoUpdate;
-	time_t lastValidTime;
-	char* data;
+  time_t lastValidTime;
+  char* data;
   std::string sessionInfoStr;
 
   std::vector<irsdk_varHeader*> varHeadersArr;
