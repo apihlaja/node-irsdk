@@ -14,34 +14,22 @@ IRSDKWrapper::~IRSDKWrapper()
 
 bool IRSDKWrapper::startup()
 {
-  if (!isInitialized()) {
-    std::cout << "IRSDKWarpper starting up.." << std::endl;
-  }
-  else {
-    return true;
-  }
 
   if (!hMemMapFile)
   {
     hMemMapFile = OpenFileMapping(FILE_MAP_READ, FALSE, IRSDK_MEMMAPFILENAME);
-    lastTickCount = INT_MIN;
-  }
-
-  if (!pSharedMem)
-  {
     pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
     pHeader = (irsdk_header *)pSharedMem;
     lastTickCount = INT_MIN;
+    data = new char[pHeader->bufLen];
   }
 
-  data = new char[pHeader->bufLen];
   return true;
 }
 
 bool IRSDKWrapper::isInitialized() const 
 {
   if (!hMemMapFile) return false;
-  if (!pSharedMem) return false;
   return true;
 }
 
