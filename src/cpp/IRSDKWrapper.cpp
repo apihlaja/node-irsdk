@@ -189,7 +189,7 @@ const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const
   return varHeadersArr;
 }
 
-irsdk_varHeader* IRSDKWrapper::getVarHeader(std::string& const name) const 
+irsdk_varHeader* IRSDKWrapper::getVarHeader(const std::string& name) const
 {
   std::map<std::string, irsdk_varHeader*>::const_iterator it = varHeadersMap.find(name);
 

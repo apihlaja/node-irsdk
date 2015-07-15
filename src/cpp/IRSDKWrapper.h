@@ -43,7 +43,7 @@ public:
   };
 
   const std::vector<irsdk_varHeader*> getVarHeaders() const;
-  irsdk_varHeader* getVarHeader(std::string& const name) const;
+  irsdk_varHeader* getVarHeader(const std::string&  name) const;
   bool getVar(TelemetryVar& var) const;
 
 private:
