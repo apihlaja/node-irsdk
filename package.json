@@ -1,0 +1,17 @@
+{
+  "name": "node-irsdk",
+  "version": "0.1.0",
+  "description": "Node.js implementation of iRacing SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iracing"
+  ],
+  "author": "Antti Pihlaja",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^3.3.1"
+  }
+}

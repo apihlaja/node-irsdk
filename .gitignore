@@ -1,0 +1,7 @@
+node_modules/
+
+# VS is used just for editing so these are unnecessary in repo
+*.njsproj
+*.vcxproj.filters
+*.sln
+*.vcxproj
