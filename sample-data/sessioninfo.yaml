@@ -14,14 +14,14 @@ WeekendInfo:
  TrackNumTurns: 12
  TrackPitSpeedLimit: 60.00 kph
  TrackType: road course
- TrackWeatherType: Constant
- TrackSkies: Partly Cloudy
- TrackSurfaceTemp: 39.81 C
- TrackAirTemp: 25.56 C
+ TrackWeatherType: Realistic
+ TrackSkies: Overcast
+ TrackSurfaceTemp: 3.00 C
+ TrackAirTemp: 0.00 C
  TrackAirPressure: 29.59 Hg
- TrackWindVel: 0.89 m/s
- TrackWindDir: 0.00 rad
- TrackRelativeHumidity: 55 %
+ TrackWindVel: 0.00 m/s
+ TrackWindDir: 4.80 rad
+ TrackRelativeHumidity: 58 %
  TrackFogLevel: 0 %
  SeriesID: 0
  SeasonID: 0
@@ -47,7 +47,7 @@ WeekendInfo:
   CourseCautions: off
   StandingStart: 0
   Restarts: single file
-  WeatherType: Constant
+  WeatherType: Realistic
   Skies: Partly Cloudy
   WindDirection: N
   WindSpeed: 3.22 km/h
@@ -394,7 +394,7 @@ DriverInfo:
    CarClassShortName: 
    CarClassRelSpeed: 0
    CarClassLicenseLevel: 0
-   CarClassMaxFuel: 1.000 %
+   CarClassMaxFuel: 0.460 %
    CarClassWeightPenalty: 0.000 kg
    CarClassColor: 0xffffff
    IRating: 1

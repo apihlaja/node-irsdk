@@ -1,5 +1,6 @@
 ﻿#include <node.h>
 #include "IRSDKWrapper.h"
+#include "irbitfield_helpers.h"
 #include <stdint.h>
 
 using namespace v8;
@@ -70,9 +71,15 @@ Handle<Value> convertTelemetryValueToObject(Isolate* isolate, IRSDKWrapper::Tele
   case irsdk_bool:
     return Boolean::New(isolate, var.boolValue[index]);
   case irsdk_int:
+    if (strcmp(var.header->unit, "irsdk_SessionState") == 0) {
+      return iRBitFieldHelpers::getSessionStateValue(isolate, var.intValue[index]);
+    }
+    if (strcmp(var.header->unit, "irsdk_TrkLoc") == 0) {
+      return iRBitFieldHelpers::getTrackLoc(isolate, var.intValue[index]);
+    }
     return Integer::New(isolate, static_cast<int32_t>(var.intValue[index]));
   case irsdk_bitField:
-    return Integer::New(isolate, static_cast<int32_t>(var.intValue[index]));
+    return iRBitFieldHelpers::getMaskedValues(isolate, var.intValue[index], var.header->unit);
   case irsdk_float:
     return Number::New(isolate, static_cast<double>(var.floatValue[index]));
   case irsdk_double:
