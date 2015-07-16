@@ -8,14 +8,24 @@ var sessionInfoStr;
 var sessionInfoObj;
 
 console.log('waiting for iRacing...');
+var dateStr;
 
 irsdk.on('Connected', function () { 
   console.log('connected to iRacing..');
-})
+  dateStr = new Date().toISOString().split(".")[0].replace(/:/g,'')+'Z';
+});
+
+irsdk.on('Disconnected', function () { 
+  // this is here just for documentation because
+  // the script doesnt wait for Disconnected-event.
+  console.log('iRacing shut down.');
+});
 
 irsdk.once('TelemetryDescription', function (data) {
   console.log('got TelemetryDescription');
-  fs.writeFile('./sample-data/telemetry-desc.json', JSON.stringify(data, null, 2), function (err) {
+  var fileName = './sample-data/'+dateStr+'-telemetry-desc.json';
+  
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
     telemetryDescription = data;
   });
@@ -23,7 +33,9 @@ irsdk.once('TelemetryDescription', function (data) {
 
 irsdk.once('Telemetry', function (data) {
   console.log('got Telemetry');
-  fs.writeFile('./sample-data/telemetry.json', JSON.stringify(data, null, 2), function (err) {
+  var fileName = './sample-data/'+dateStr+'-telemetry.json';
+  
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
     telemetry = data;
   });
@@ -31,11 +43,15 @@ irsdk.once('Telemetry', function (data) {
 
 irsdk.once('SessionInfo', function (data) {
   console.log('got SessionInfo');
-  fs.writeFile('./sample-data/sessioninfo.yaml', data.raw, function (err) {
+  var yamlFileName = './sample-data/'+dateStr+'-sessioninfo.yaml';
+  var jsonFileName = './sample-data/'+dateStr+'-sessioninfo.json';
+  
+  fs.writeFile(yamlFileName, data.raw, function (err) {
     if (err) throw err;
     sessionInfoStr = data;
   });
-  fs.writeFile('./sample-data/sessioninfo.json', JSON.stringify(data.doc, null, 2), function (err) {
+  
+  fs.writeFile(jsonFileName, JSON.stringify(data.doc, null, 2), function (err) {
     if (err) throw err;
     sessionInfoObj = data;
   });
@@ -46,4 +62,4 @@ var exitIntervalId = setInterval(function () {
     console.log('got everything, exiting..');
     process.exit();
   }
-});
+},400);
