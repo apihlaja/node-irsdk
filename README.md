@@ -1,11 +1,20 @@
 ﻿# Node.js iRacing SDK
 
-The first version will support session data and live telemetry only.
+The first, experimental, version will support session data and live telemetry only.
 
-## Requirements
+## Requirements and Install
 
-[node-gyp](https://github.com/TooTallNate/node-gyp/) is used to compile C++ module 
-so check you have its dependencies (Python 2.7 and Visual Studio).
+You need Windows version of [Node.js](https://nodejs.org/download/). And because 
+node-gyp is used to compile C++ module, you have to 
+install its dependencies. Having Python 2.7 in PATH and some version of Visual Studio 
+should be enough but check 
+[installation instructions of node-gyp](https://github.com/TooTallNate/node-gyp) 
+if node-gyp fails.
+
+node-irsdk can be installed from GitHub using command:
+
+`npm install --save apihlaja/node-irsdk`
+
 
 ## API
 
@@ -26,7 +35,7 @@ The `'Connected'` event is emitted again if sim is restarted.
 * `function (data) { }`
 
 Emitted when first telemetry sample is received after connecting. 
-See example of `data` object in [telemetry-desc.json](sample-data/telemetry-desc.json).
+See example of `data` object here: [telemetry-desc.json](sample-data/telemetry-desc.json).
 
 
 ### Event: 'Telemetry'
@@ -34,7 +43,7 @@ See example of `data` object in [telemetry-desc.json](sample-data/telemetry-desc
 * `function (data) { }`
 
 Emitted always when new telemetry sample is received. 
-See example of `data` object in [telemetry.json](sample-data/telemetry.json).
+See example of `data` object here: [telemetry.json](sample-data/telemetry.json).
 
 
 ### Event: 'SessionInfo'
@@ -42,7 +51,7 @@ See example of `data` object in [telemetry.json](sample-data/telemetry.json).
 * `function (data) { }`
 
 Emitted always when new SessionInfo is changed. `data` has two properties: raw and doc.
-`raw` is orginal yaml string from iRacing, see example in [sessioninfo.yaml](sample-data/sessioninfo.yaml).
-`doc` is Object with same data, see example in [sessioninfo.json](sample-data/sessioninfo.json).
+`raw` is orginal yaml string from iRacing, see example here: [sessioninfo.yaml](sample-data/sessioninfo.yaml).
+`doc` is Object with same data, see example here: [sessioninfo.json](sample-data/sessioninfo.json).
 
 
