@@ -138,6 +138,11 @@ bool IRSDKWrapper::updateTelemetry()
   return false;
 }
 
+const double IRSDKWrapper::getLastTelemetryUpdateTS() const
+{
+  return 1000.0f * lastValidTime;
+}
+
 const char* IRSDKWrapper::getSessionInfoStr() const
 {
   if (isInitialized()) {

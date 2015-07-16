@@ -110,16 +110,21 @@ void getTelemetry(const FunctionCallbackInfo<Value>& args)
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
 
-  Local<Object> obj = Object::New(isolate);
+  Local<Object> rootObj = Object::New(isolate);
+  Local<Object> valuesObj = Object::New(isolate);
+  rootObj->Set(String::NewFromUtf8(isolate, "timestamp"), Date::New(isolate, irsdk.getLastTelemetryUpdateTS()));
+  
   std::vector<irsdk_varHeader*> headers = irsdk.getVarHeaders();
+  
   for (int i = 0; i < headers.size(); ++i) 
   {
     IRSDKWrapper::TelemetryVar var(headers.at(i));
     irsdk.getVar(var);
     Handle<Value> varValue = convertTelemetryVarToObject(isolate, var);
-    obj->Set(String::NewFromUtf8(isolate, var.header->name), varValue);
+    valuesObj->Set(String::NewFromUtf8(isolate, var.header->name), varValue);
   }
-  args.GetReturnValue().Set(obj);
+  rootObj->Set(String::NewFromUtf8(isolate, "values"), valuesObj);
+  args.GetReturnValue().Set(rootObj);
 }
 
 void convertVarHeaderToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj)

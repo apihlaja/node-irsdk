@@ -8,10 +8,14 @@ yaml = require('js-yaml');
 function JsIrSdk() 
 {
   events.EventEmitter.call(this);
-  var self = this;
+  const self = this;
   
-  var connected = false;
-  var initialized = IrSdkNodeWrapper.start();
+  const CONNECTION_CHECK_INTERVAL = 2; // ms
+  const TELEMETRY_UPDATE_CHECK_INTERVAL = 5; // ms
+  const SESSIONINFO_UPDATE_CHECK_INTERVAL = 400; // ms
+  
+  var connected = false; // if irsdk is available
+  var initialized = IrSdkNodeWrapper.start(); // if wrapper is started
   
   var telemetryDescription;
   
@@ -30,13 +34,15 @@ function JsIrSdk()
         initialized = false;
         telemetryDescription = null;
         
-        // restart after 10s
-        setTimeout(function () { 
+        // restarts after 10s
+        // so if iRacing is started again,
+        // new Connected event is emitted
+        setTimeout(function () {
           initialized = IrSdkNodeWrapper.start();
         }, 10000);
       }
     }
-  }, 10);
+  }, CONNECTION_CHECK_INTERVAL);
 
   var telemetryIntervalId = setInterval(function () {
     if (connected && IrSdkNodeWrapper.updateTelemetry()) {
@@ -45,9 +51,9 @@ function JsIrSdk()
         telemetryDescription = IrSdkNodeWrapper.getTelemetryDescription();
         self.emit('TelemetryDescription', telemetryDescription);
       }
-      self.emit('Telemetry', telemetry);
+      self.emit('Telemetry', telemetry); 
     }
-  }, 4);
+  }, TELEMETRY_UPDATE_CHECK_INTERVAL);
 
   var sessionInfoIntervalId = setInterval(function () {
     if (connected && IrSdkNodeWrapper.updateSessionInfo()) {
@@ -56,11 +62,11 @@ function JsIrSdk()
       try {
          doc = yaml.safeLoad(sessionInfo);
       } catch (ex) {
-        console.error('js-irsdk: yaml error: ' + ex);
+        console.error('js-irsdk: yaml error: \n' + ex);
       }
       self.emit('SessionInfo', { raw: sessionInfo, doc: doc });
     }
-  }, 500);
+  }, SESSIONINFO_UPDATE_CHECK_INTERVAL);
 
 }
 

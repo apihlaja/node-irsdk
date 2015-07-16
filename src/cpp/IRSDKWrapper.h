@@ -46,6 +46,8 @@ public:
   irsdk_varHeader* getVarHeader(const std::string&  name) const;
   bool getVar(TelemetryVar& var) const;
 
+  const double getLastTelemetryUpdateTS() const; // returns JS compatible TS
+
 private:
   HANDLE hMemMapFile;
   const char *pSharedMem;
@@ -61,5 +63,6 @@ private:
 
   void updateVarHeaders(); // updates map and vector
   const char* getSessionInfoStr() const;
+
 };
 
