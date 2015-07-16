@@ -1,6 +1,7 @@
 ﻿
 var irsdk = require('./');
 var fs = require('fs');
+var moment = require('moment');
 
 var telemetryDescription;
 var telemetry;
@@ -10,9 +11,10 @@ var sessionInfoObj;
 console.log('waiting for iRacing...');
 var dateStr;
 
-irsdk.on('Connected', function () { 
+irsdk.on('Connected', function () {
   console.log('connected to iRacing..');
-  dateStr = new Date().toISOString().split(".")[0].replace(/:/g,'')+'Z';
+  // date prefix for sample files
+  dateStr = moment().format().replace(/:/g, '');
 });
 
 irsdk.on('Disconnected', function () { 

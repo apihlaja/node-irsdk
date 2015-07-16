@@ -12,6 +12,7 @@
   "author": "Antti Pihlaja",
   "license": "MIT",
   "dependencies": {
-    "js-yaml": "^3.3.1"
+    "js-yaml": "^3.3.1",
+    "moment": "^2.10.3"
   }
 }
