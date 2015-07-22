@@ -9,9 +9,14 @@ function JsIrSdk(IrSdkWrapper, opts)
   var self = this;
   var opts = opts || {};
   
-  var TELEMETRY_UPDATE_INTERVAL = opts.telemetryUpdateInterval || 5; // ms
-  var CONNECTION_INTERVAL = TELEMETRY_UPDATE_INTERVAL / 3; // ms
-  var SESSIONINFO_UPDATE_INTERVAL = opts.sessionInfoUpdateInterval || 400; // ms
+  if ( opts.telemetryUpdateInterval === undefined ) {
+    opts.telemetryUpdateInterval = 5;
+  }
+  if ( opts.sessionInfoUpdateInterval === undefined ) {
+    opts.sessionInfoUpdateInterval = 1000;
+  }
+  
+  var CONNECTION_INTERVAL = opts.telemetryUpdateInterval / 3; // ms
   
   var connected = false; // if irsdk is available
   var initialized = IrSdkWrapper.start(); // if wrapper is started
@@ -52,7 +57,7 @@ function JsIrSdk(IrSdkWrapper, opts)
       }
       self.emit('Telemetry', telemetry); 
     }
-  }, TELEMETRY_UPDATE_INTERVAL);
+  }, opts.telemetryUpdateInterval);
 
   var sessionInfoIntervalId = setInterval(function () {
     if (connected && IrSdkWrapper.updateSessionInfo()) {
@@ -65,7 +70,7 @@ function JsIrSdk(IrSdkWrapper, opts)
       }
       self.emit('SessionInfo', { raw: sessionInfo, doc: doc });
     }
-  }, SESSIONINFO_UPDATE_INTERVAL);
+  }, opts.sessionInfoUpdateInterval);
   
   /**
     * makes instance garbage, useless:
