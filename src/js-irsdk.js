@@ -1,26 +1,25 @@
-﻿var IrSdkNodeWrapper = require('../build/Release/irsdknodewrapper');
-
-var util = require("util");
+﻿var util = require("util");
 var events = require("events");
 
 yaml = require('js-yaml');
 
-function JsIrSdk() 
+function JsIrSdk(IrSdkWrapper, opts) 
 {
   events.EventEmitter.call(this);
-  const self = this;
+  var self = this;
+  var opts = opts || {};
   
-  const CONNECTION_CHECK_INTERVAL = 2; // ms
-  const TELEMETRY_UPDATE_CHECK_INTERVAL = 5; // ms
-  const SESSIONINFO_UPDATE_CHECK_INTERVAL = 400; // ms
+  var TELEMETRY_UPDATE_INTERVAL = opts.telemetryUpdateInterval || 5; // ms
+  var CONNECTION_INTERVAL = TELEMETRY_UPDATE_INTERVAL / 3; // ms
+  var SESSIONINFO_UPDATE_INTERVAL = opts.sessionInfoUpdateInterval || 400; // ms
   
   var connected = false; // if irsdk is available
-  var initialized = IrSdkNodeWrapper.start(); // if wrapper is started
+  var initialized = IrSdkWrapper.start(); // if wrapper is started
   
   var telemetryDescription;
   
   var connectedIntervalId = setInterval(function () {
-    if (initialized && IrSdkNodeWrapper.isConnected()) {
+    if (initialized && IrSdkWrapper.isConnected()) {
       if (!connected) {
         connected = true;
         self.emit('Connected');
@@ -30,7 +29,7 @@ function JsIrSdk()
         connected = false;
         self.emit('Disconnected');
 
-        IrSdkNodeWrapper.shutdown();
+        IrSdkWrapper.shutdown();
         initialized = false;
         telemetryDescription = null;
         
@@ -38,26 +37,26 @@ function JsIrSdk()
         // so if iRacing is started again,
         // new Connected event is emitted
         setTimeout(function () {
-          initialized = IrSdkNodeWrapper.start();
+          initialized = IrSdkWrapper.start();
         }, 10000);
       }
     }
-  }, CONNECTION_CHECK_INTERVAL);
+  }, CONNECTION_INTERVAL);
 
   var telemetryIntervalId = setInterval(function () {
-    if (connected && IrSdkNodeWrapper.updateTelemetry()) {
-      var telemetry = IrSdkNodeWrapper.getTelemetry();
+    if (connected && IrSdkWrapper.updateTelemetry()) {
+      var telemetry = IrSdkWrapper.getTelemetry();
       if (!telemetryDescription) {
-        telemetryDescription = IrSdkNodeWrapper.getTelemetryDescription();
+        telemetryDescription = IrSdkWrapper.getTelemetryDescription();
         self.emit('TelemetryDescription', telemetryDescription);
       }
       self.emit('Telemetry', telemetry); 
     }
-  }, TELEMETRY_UPDATE_CHECK_INTERVAL);
+  }, TELEMETRY_UPDATE_INTERVAL);
 
   var sessionInfoIntervalId = setInterval(function () {
-    if (connected && IrSdkNodeWrapper.updateSessionInfo()) {
-      var sessionInfo = IrSdkNodeWrapper.getSessionInfo();
+    if (connected && IrSdkWrapper.updateSessionInfo()) {
+      var sessionInfo = IrSdkWrapper.getSessionInfo();
       var doc
       try {
          doc = yaml.safeLoad(sessionInfo);
@@ -66,10 +65,10 @@ function JsIrSdk()
       }
       self.emit('SessionInfo', { raw: sessionInfo, doc: doc });
     }
-  }, SESSIONINFO_UPDATE_CHECK_INTERVAL);
+  }, SESSIONINFO_UPDATE_INTERVAL);
 
 }
 
 util.inherits(JsIrSdk, events.EventEmitter);
 
-module.exports = new JsIrSdk();
+module.exports = JsIrSdk;
