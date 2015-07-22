@@ -18,19 +18,35 @@ node-irsdk can be installed from GitHub using command:
 
 ## API
 
+### #init([options])
 
-### Event: 'Connected'
+Can be called once to set up wrapper options. All options are optional:
+
+* telemetryUpdateInterval: milliseconds between update checks (default 5)
+* sessionInfoUpdateInterval: milliseconds between update checks (default 400)
+
+### #getInstance()
+
+Returns IrSdkJsWrapper instance. Calls `init` if its not called already.
+
+
+### IrSdkJsWrapper
+
+IrSdkJsWrapper inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
+and exposes SDK and sim state using events.
+
+#### Event: 'Connected'
 
 Emitted when iRacing SDK is available.
 
 
-### Event: 'Disconnected'
+#### Event: 'Disconnected'
 
 Emitted when iRacing SDK access is lost ie. when sim is shut down. 
 The `'Connected'` event is emitted again if sim is restarted.
 
 
-### Event: 'TelemetryDescription'
+#### Event: 'TelemetryDescription'
 
 * `function (data) { }`
 
@@ -38,7 +54,7 @@ Emitted when first telemetry sample is received after connecting.
 See example of `data` object here: [telemetry-desc.json](sample-data/telemetry-desc.json).
 
 
-### Event: 'Telemetry'
+#### Event: 'Telemetry'
 
 * `function (data) { }`
 
@@ -46,7 +62,7 @@ Emitted always when new telemetry sample is received.
 See example of `data` object here: [telemetry.json](sample-data/telemetry.json).
 
 
-### Event: 'SessionInfo'
+#### Event: 'SessionInfo'
 
 * `function (data) { }`
 
