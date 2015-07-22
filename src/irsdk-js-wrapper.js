@@ -66,7 +66,17 @@ function JsIrSdk(IrSdkWrapper, opts)
       self.emit('SessionInfo', { raw: sessionInfo, doc: doc });
     }
   }, SESSIONINFO_UPDATE_INTERVAL);
-
+  
+  /**
+    * makes instance garbage, useless:
+    * any events arent emited after this call.
+    */
+  this.stop = function () {
+    clearInterval(connectedIntervalId);
+    clearInterval(telemetryIntervalId);
+    clearInterval(sessionInfoIntervalId);
+    IrSdkWrapper.shutdown();
+  };
 }
 
 util.inherits(JsIrSdk, events.EventEmitter);
