@@ -1,4 +1,5 @@
 node_modules/
+build/
 
 # VS is used just for editing so these are unnecessary in repo
 *.njsproj
