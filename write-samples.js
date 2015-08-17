@@ -8,23 +8,29 @@ var telemetry;
 var sessionInfoStr;
 var sessionInfoObj;
 
-console.log('waiting for iRacing...');
-var dateStr;
-
-irsdk.on('Connected', function () {
-  console.log('connected to iRacing..');
-  // date prefix for sample files
-  dateStr = moment().format().replace(/:/g, '');
+irsdk.init({
+  telemetryUpdateInterval: 5000,
+  sessionInfoUpdateInterval: 5000
 });
 
-irsdk.on('Disconnected', function () { 
+var iracing = irsdk.getInstance();
+
+console.log('waiting for iRacing...');
+var dateStr = moment().format().replace(/:/g, '');
+
+iracing.on('Connected', function () {
+  console.log('connected to iRacing..');
+});
+
+iracing.on('Disconnected', function () { 
   // this is here just for documentation because
   // the script doesnt wait for Disconnected-event.
   console.log('iRacing shut down.');
 });
 
-irsdk.once('TelemetryDescription', function (data) {
+iracing.once('TelemetryDescription', function (data) {
   console.log('got TelemetryDescription');
+  var dateStr = moment().format().replace(/:/g, '');
   var fileName = './sample-data/'+dateStr+'-telemetry-desc.json';
   
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
@@ -33,8 +39,9 @@ irsdk.once('TelemetryDescription', function (data) {
   });
 });
 
-irsdk.once('Telemetry', function (data) {
+iracing.on('Telemetry', function (data) {
   console.log('got Telemetry');
+  var dateStr = moment().format().replace(/:/g, '');
   var fileName = './sample-data/'+dateStr+'-telemetry.json';
   
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
@@ -43,8 +50,9 @@ irsdk.once('Telemetry', function (data) {
   });
 });
 
-irsdk.once('SessionInfo', function (data) {
+iracing.on('SessionInfo', function (data) {
   console.log('got SessionInfo');
+  var dateStr = moment().format().replace(/:/g, '');
   var yamlFileName = './sample-data/'+dateStr+'-sessioninfo.yaml';
   var jsonFileName = './sample-data/'+dateStr+'-sessioninfo.json';
   
@@ -53,15 +61,10 @@ irsdk.once('SessionInfo', function (data) {
     sessionInfoStr = data;
   });
   
-  fs.writeFile(jsonFileName, JSON.stringify(data.doc, null, 2), function (err) {
+  fs.writeFile(jsonFileName, JSON.stringify({timestamp: data.timestamp, data: data.doc}, null, 2), function (err) {
     if (err) throw err;
     sessionInfoObj = data;
   });
 });
 
-var exitIntervalId = setInterval(function () {
-  if (telemetryDescription && telemetry && sessionInfoStr && sessionInfoObj) {
-    console.log('got everything, exiting..');
-    process.exit();
-  }
-},400);
+
