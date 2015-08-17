@@ -66,7 +66,7 @@ See example of `data` object here: [telemetry.json](sample-data/telemetry.json).
 
 * `function (data) { }`
 
-Emitted always when new SessionInfo is changed. `data` has two properties: raw and doc.
+Emitted always when new SessionInfo is changed. `data` has three properties: timestamp, raw and doc.
 `raw` is orginal yaml string from iRacing, see example here: [sessioninfo.yaml](sample-data/sessioninfo.yaml).
 `doc` is Object with same data, see example here: [sessioninfo.json](sample-data/sessioninfo.json).
 

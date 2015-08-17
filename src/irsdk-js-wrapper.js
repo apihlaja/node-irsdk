@@ -61,14 +61,15 @@ function JsIrSdk(IrSdkWrapper, opts)
 
   var sessionInfoIntervalId = setInterval(function () {
     if (connected && IrSdkWrapper.updateSessionInfo()) {
+      var now = new Date();
       var sessionInfo = IrSdkWrapper.getSessionInfo();
-      var doc
+      var doc;
       try {
          doc = yaml.safeLoad(sessionInfo);
       } catch (ex) {
         console.error('js-irsdk: yaml error: \n' + ex);
       }
-      self.emit('SessionInfo', { raw: sessionInfo, doc: doc });
+      self.emit('SessionInfo', { timestamp: now, raw: sessionInfo, doc: doc });
     }
   }, opts.sessionInfoUpdateInterval);
   
