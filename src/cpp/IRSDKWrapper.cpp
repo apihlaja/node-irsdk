@@ -102,30 +102,21 @@ bool IRSDKWrapper::updateTelemetry()
     // if newer than last recieved, than report new data
     if (lastTickCount < pHeader->varBuf[latest].tickCount)
     {
-      // if asked to retrieve the data
-      if (data)
+      // try to get data
+      // try twice to get the data out
+      for (int count = 0; count < 2; count++)
       {
-        // try twice to get the data out
-        for (int count = 0; count < 2; count++)
+        int curTickCount = pHeader->varBuf[latest].tickCount;
+        memcpy(data, pSharedMem + pHeader->varBuf[latest].bufOffset, pHeader->bufLen);
+        if (curTickCount == pHeader->varBuf[latest].tickCount)
         {
-          int curTickCount = pHeader->varBuf[latest].tickCount;
-          memcpy(data, pSharedMem + pHeader->varBuf[latest].bufOffset, pHeader->bufLen);
-          if (curTickCount == pHeader->varBuf[latest].tickCount)
-          {
-            lastTickCount = curTickCount;
-            lastValidTime = time(NULL);
-            return true;
-          }
+          lastTickCount = curTickCount;
+          lastValidTime = time(NULL);
+          return true;
         }
-        // if here, the data changed out from under us.
-        return false;
       }
-      else
-      {
-        lastTickCount = pHeader->varBuf[latest].tickCount;
-        lastValidTime = time(NULL);
-        return true;
-      }
+      // if here, the data changed out from under us.
+      return false;
     }
     // if older than last recieved, than reset, we probably disconnected
     else if (lastTickCount >  pHeader->varBuf[latest].tickCount)
