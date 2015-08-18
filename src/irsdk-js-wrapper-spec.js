@@ -1,23 +1,28 @@
-﻿var JsIrSdk = require('./irsdk-js-wrapper');
+var JsIrSdk = require('./irsdk-js-wrapper');
 var IrSdkWrapper = require('./irsdk-node-wrapper-mock');
 
 describe('irsdk-js-wrapper', function () {
+  
   beforeEach(function () {
     this.clock = sinon.useFakeTimers();
   });
+  
   afterEach(function () {
     this.clock.restore();
   });
+  
+  var irsdk;
+  
   it('emits "Connected" when iRacing available', function () {
     var opts = {
       telemetryUpdateInterval: 1,
       sessionInfoUpdateInterval: 20000
     };
     var mock = Object.create(IrSdkWrapper);
-    var start = sinon.stub(mock,"start");
+    var start = sinon.stub(mock,'start');
     start.returns(true);
     irsdk = new JsIrSdk(mock, opts);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(false);
     var spy = sinon.spy();
     irsdk.on('Connected', spy);
@@ -36,7 +41,7 @@ describe('irsdk-js-wrapper', function () {
     };
     var mock = Object.create(IrSdkWrapper);
     irsdk = new JsIrSdk(mock, opts);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(true);
     var spy = sinon.spy();
     irsdk.on('Disconnected', spy);
@@ -53,9 +58,9 @@ describe('irsdk-js-wrapper', function () {
       sessionInfoUpdateInterval: 20000
     };
     var mock = Object.create(IrSdkWrapper);
-    var start = sinon.stub(mock,"start");
+    var start = sinon.stub(mock,'start');
     start.returns(true);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(true);
     irsdk = new JsIrSdk(mock, opts);
     start.should.have.been.calledOnce;
@@ -76,12 +81,12 @@ describe('irsdk-js-wrapper', function () {
       sessionInfoUpdateInterval: 20000
     };
     var mock = Object.create(IrSdkWrapper);
-    var updateTelemetry = sinon.stub(mock,"updateTelemetry");
+    var updateTelemetry = sinon.stub(mock,'updateTelemetry');
     updateTelemetry.returns(true);
-    var getTelemetryDescription = sinon.stub(mock,"getTelemetryDescription");
-    var desc = [{"RPM": 'engine revs per minute'}];
+    var getTelemetryDescription = sinon.stub(mock,'getTelemetryDescription');
+    var desc = [{'RPM': 'engine revs per minute'}];
     getTelemetryDescription.returns(desc);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(true);
     irsdk = new JsIrSdk(mock, opts);
     var spy = sinon.spy();
@@ -99,12 +104,12 @@ describe('irsdk-js-wrapper', function () {
       sessionInfoUpdateInterval: 20000
     };
     var mock = Object.create(IrSdkWrapper);
-    var updateTelemetry = sinon.stub(mock,"updateTelemetry");
+    var updateTelemetry = sinon.stub(mock,'updateTelemetry');
     updateTelemetry.returns(true);
-    var getTelemetry = sinon.stub(mock,"getTelemetry");
-    var data = [{"RPM": 1100}];
+    var getTelemetry = sinon.stub(mock,'getTelemetry');
+    var data = [{'RPM': 1100}];
     getTelemetry.returns(data);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(true);
     irsdk = new JsIrSdk(mock, opts);
     var spy = sinon.spy();
@@ -126,12 +131,12 @@ describe('irsdk-js-wrapper', function () {
       sessionInfoUpdateInterval: 10
     };
     var mock = Object.create(IrSdkWrapper);
-    var updateSessionInfo = sinon.stub(mock,"updateSessionInfo");
+    var updateSessionInfo = sinon.stub(mock,'updateSessionInfo');
     updateSessionInfo.returns(true);
-    var getSessionInfo = sinon.stub(mock,"getSessionInfo");
-    var data = {"type": "race"};
+    var getSessionInfo = sinon.stub(mock,'getSessionInfo');
+    var data = {'type': 'race'};
     getSessionInfo.returns(data);
-    var isConnected = sinon.stub(mock,"isConnected");
+    var isConnected = sinon.stub(mock,'isConnected');
     isConnected.returns(true);
     irsdk = new JsIrSdk(mock, opts);
     var spy = sinon.spy();

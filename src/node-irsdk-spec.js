@@ -1,4 +1,3 @@
-
 var sandboxed = require('sandboxed-module');
 
 describe('node-irsdk', function () {
@@ -27,7 +26,6 @@ describe('node-irsdk', function () {
     it('gives IrSdkJsWrapper singleton', function () {
       var jsWrapperMock = function () {return ++jsWrapperMock.instanceCount; };
       var nodeWrapperMock = {};
-      var opts = {};
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
           './irsdk-node-wrapper': nodeWrapperMock,
@@ -39,4 +37,4 @@ describe('node-irsdk', function () {
       instance1.should.equal(instance2);
     });
   });
-})
+});

@@ -1,13 +1,13 @@
-﻿var util = require("util");
-var events = require("events");
+var util = require('util');
+var events = require('events');
 
-yaml = require('js-yaml');
+var yaml = require('js-yaml');
 
 function JsIrSdk(IrSdkWrapper, opts) 
 {
   events.EventEmitter.call(this);
   var self = this;
-  var opts = opts || {};
+  opts = opts || {};
   
   if ( opts.telemetryUpdateInterval === undefined ) {
     opts.telemetryUpdateInterval = 5;
@@ -71,7 +71,7 @@ function JsIrSdk(IrSdkWrapper, opts)
       var doc;
       setImmediate(function () {
         try {
-           doc = yaml.safeLoad(sessionInfo);
+          doc = yaml.safeLoad(sessionInfo);
         } catch (ex) {
           console.error('js-irsdk: yaml error: \n' + ex);
         }

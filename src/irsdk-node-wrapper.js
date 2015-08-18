@@ -6,5 +6,5 @@ try {
     start: function () {return false;},
     isConnected: function () {return false;},
     isInitialized: function () {return false;}
-  }
+  };
 }
