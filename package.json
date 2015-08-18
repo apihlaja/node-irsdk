@@ -4,7 +4,7 @@
   "description": "Node.js implementation of iRacing SDK",
   "main": "index.js",
   "scripts": {
-    "install": "node install.js",
+    "postinstall": "node install.js",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
     "lint": "eslint src"
