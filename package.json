@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "install": "node install.js",
-    "test": "mocha src/**/*-spec.js",
+    "test": "npm run lint && npm run mocha",
+    "mocha": "mocha src/**/*-spec.js",
     "lint": "eslint src"
   },
   "keywords": [
@@ -34,7 +35,6 @@
     "sinon-chai": "^2.8.0"
   },
   "pre-commit": [
-    "lint",
     "test"
   ]
 }
