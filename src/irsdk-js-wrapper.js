@@ -51,11 +51,13 @@ function JsIrSdk(IrSdkWrapper, opts)
   var telemetryIntervalId = setInterval(function () {
     if (connected && IrSdkWrapper.updateTelemetry()) {
       var telemetry = IrSdkWrapper.getTelemetry();
-      if (!telemetryDescription) {
-        telemetryDescription = IrSdkWrapper.getTelemetryDescription();
-        self.emit('TelemetryDescription', telemetryDescription);
-      }
-      self.emit('Telemetry', telemetry); 
+      setImmediate(function () {
+        if (!telemetryDescription) {
+          telemetryDescription = IrSdkWrapper.getTelemetryDescription();
+          self.emit('TelemetryDescription', telemetryDescription);
+        }
+        self.emit('Telemetry', telemetry); 
+      });
     }
   }, opts.telemetryUpdateInterval);
 
@@ -64,12 +66,14 @@ function JsIrSdk(IrSdkWrapper, opts)
       var now = new Date();
       var sessionInfo = IrSdkWrapper.getSessionInfo();
       var doc;
-      try {
-         doc = yaml.safeLoad(sessionInfo);
-      } catch (ex) {
-        console.error('js-irsdk: yaml error: \n' + ex);
-      }
-      self.emit('SessionInfo', { timestamp: now, raw: sessionInfo, doc: doc });
+      setImmediate(function () {
+        try {
+           doc = yaml.safeLoad(sessionInfo);
+        } catch (ex) {
+          console.error('js-irsdk: yaml error: \n' + ex);
+        }
+        self.emit('SessionInfo', { timestamp: now, raw: sessionInfo, doc: doc });
+      });
     }
   }, opts.sessionInfoUpdateInterval);
   
