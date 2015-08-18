@@ -10,6 +10,6 @@ mock.getSessionInfo = function() {};
   
 mock.updateTelemetry = function() {return false;};
 mock.getTelemetryDescription = function() {return {'telemetry': 'is telemetry'}; };
-mock.getTelemetry = function() {};
+mock.getTelemetry = function() { return {}};
 
 module.exports = mock;

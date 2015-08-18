@@ -50,7 +50,10 @@ function JsIrSdk(IrSdkWrapper, opts)
 
   var telemetryIntervalId = setInterval(function () {
     if (connected && IrSdkWrapper.updateTelemetry()) {
+      var now = new Date(); // date gives ms accuracy
       var telemetry = IrSdkWrapper.getTelemetry();
+      // replace ctime timestamp 
+      telemetry.timestamp = now; 
       setImmediate(function () {
         if (!telemetryDescription) {
           telemetryDescription = IrSdkWrapper.getTelemetryDescription();
