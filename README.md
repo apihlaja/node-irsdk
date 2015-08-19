@@ -48,18 +48,18 @@ The `'Connected'` event is emitted again if sim is restarted.
 
 #### Event: 'TelemetryDescription'
 
-* `function (data) { }`
+* `function (desc) { }`
 
 Emitted when first telemetry sample is received after connecting. 
-See example of `data` object here: [telemetry-desc.json](sample-data/telemetry-desc.json).
+See example of `desc` object here: [telemetry-desc.json](sample-data/telemetry-desc.json).
 
 
 #### Event: 'Telemetry'
 
-* `function (data) { }`
+* `function (telemetry) { }`
 
 Emitted always when new telemetry sample is received. 
-See example of `data` object here: [telemetry.json](sample-data/telemetry.json).
+See example of `telemetry` object here: [telemetry.json](sample-data/telemetry.json).
 
 
 #### Event: 'SessionInfo'
