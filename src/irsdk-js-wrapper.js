@@ -73,9 +73,12 @@ function JsIrSdk(IrSdkWrapper, opts)
         try {
           doc = yaml.safeLoad(sessionInfo);
         } catch (ex) {
+          // TODO: log faulty yaml
           console.error('js-irsdk: yaml error: \n' + ex);
         }
-        self.emit('SessionInfo', { timestamp: now, raw: sessionInfo, doc: doc });
+        if ( doc ) {
+          self.emit('SessionInfo', { timestamp: now, data: doc });
+        }
       });
     }
   }, opts.sessionInfoUpdateInterval);
