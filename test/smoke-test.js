@@ -1,12 +1,9 @@
-﻿
-var irsdk = require('../');
-var fs = require('fs');
-var moment = require('moment');
+﻿// manual integration test to check that
+// anything doesnt explode
 
-var telemetryDescription;
-var telemetry;
-var sessionInfoStr;
-var sessionInfoObj;
+var expect = require("chai").expect;
+
+var irsdk = require('../');
 
 irsdk.init({
   telemetryUpdateInterval: 1000,
@@ -17,39 +14,30 @@ var iracing = irsdk.getInstance();
 
 console.log('waiting for iRacing...');
 
-var calls = 0;
+// should print got telemetry, desc & session info once each time
+// you launch iRacing
 
-iracing.once('Connected', function () {
+iracing.on('Connected', function () {
   console.log('connected to iRacing..');
-  calls++;
+  
+  iracing.once('Disconnected', function () { 
+    console.log('iRacing shut down.');
+  });
+  iracing.once('TelemetryDescription', function (data) {
+    console.log('got TelemetryDescription');
+    expect(data).to.exist.and.to.be.an('object');
+  });
+  iracing.once('Telemetry', function (data) {
+    console.log('got Telemetry');
+    expect(data).to.exist.and.to.be.an('object');
+    expect(data).to.have.property('timestamp').that.is.a('date');
+    expect(data).to.have.property('values').that.is.an('object');
+  });
+  iracing.once('SessionInfo', function (data) {
+    console.log('got SessionInfo');
+    expect(data).to.exist.and.to.be.an('object');
+    expect(data).to.have.property('timestamp').that.is.a('date');
+    expect(data).to.have.property('data').that.is.an('object');
+  });
 });
 
-iracing.on('Disconnected', function () { 
-  // this is here just for documentation because
-  // the script doesnt wait for Disconnected-event.
-  console.log('iRacing shut down.');
-});
-
-iracing.once('TelemetryDescription', function (data) {
-  console.log('got TelemetryDescription');
-  calls++;
-});
-
-iracing.once('Telemetry', function (data) {
-  console.log('got Telemetry');
-  calls++;
-});
-
-iracing.on('SessionInfo', function (data) {
-  console.log('got SessionInfo');
-  calls++;
-});
-
-setInterval(function () {
-  if ( calls >= 4 ) {
-    console.log('got all, looks ok');
-    process.exit();
-  } else {
-    console.log('waiting for events...');
-  }
-}, 2000);
