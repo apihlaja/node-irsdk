@@ -66,7 +66,7 @@ See example of `telemetry` object here: [telemetry.json](sample-data/telemetry.j
 
 * `function (sessionInfo) { }`
 
-Emitted always when new SessionInfo is changed. `sessionInfo` has two properties: timestamp and data.
-See example of `data` object here: [sessioninfo.json](sample-data/sessioninfo.json).
+Emitted always when new SessionInfo is changed.
+See example of `sessionInfo` object here: [sessioninfo.json](sample-data/sessioninfo.json).
 
 
