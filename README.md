@@ -23,17 +23,17 @@ node-irsdk can be installed from GitHub using command:
 Can be called once to set up wrapper options. All options are optional:
 
 * telemetryUpdateInterval: milliseconds between update checks (default 5)
-* sessionInfoUpdateInterval: milliseconds between update checks (default 400)
+* sessionInfoUpdateInterval: milliseconds between update checks (default 1000)
 
 ### #getInstance()
 
-Returns IrSdkJsWrapper instance. Calls `init` if its not called already.
+Returns JsIrSdk instance. Calls `init` if its not called already.
 
 
-### IrSdkJsWrapper
+### JsIrSdk
 
-IrSdkJsWrapper inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
-and exposes SDK and sim state using events.
+JsIrSdk inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
+and exposes data from SDK using events.
 
 #### Event: 'Connected'
 
@@ -68,5 +68,4 @@ See example of `telemetry` object here: [telemetry.json](sample-data/telemetry.j
 
 Emitted always when new SessionInfo is changed.
 See example of `sessionInfo` object here: [sessioninfo.json](sample-data/sessioninfo.json).
-
 

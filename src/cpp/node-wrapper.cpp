@@ -202,4 +202,4 @@ void init(Handle<Object> exports)
 }
 
 
-NODE_MODULE(irsdknodewrapper, init)
+NODE_MODULE(IrsdkNodeWrapper, init)

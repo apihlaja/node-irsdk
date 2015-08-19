@@ -6,30 +6,30 @@ describe('node-irsdk', function () {
   
   
   describe('#init', function () {
-    it('instantiates JsIrSdkWrapper once', function () {
-      var jsWrapperSpy = sinon.spy();
+    it('instantiates JsIrSdk once', function () {
+      var jsIrSdkSpy = sinon.spy();
       var nodeWrapperMock = {};
       var opts = {};
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
           '../build/Release/IrsdkNodeWrapper': nodeWrapperMock,
-          './irsdk-js-wrapper': jsWrapperSpy
+          './JsIrSdk': jsIrSdkSpy
         }
       });
       nodeIrSdk.init(opts);
       nodeIrSdk.init(opts);
-      jsWrapperSpy.should.have.been.calledWith(nodeWrapperMock, opts);
-      jsWrapperSpy.should.have.been.calledOnce;
+      jsIrSdkSpy.should.have.been.calledWith(nodeWrapperMock, opts);
+      jsIrSdkSpy.should.have.been.calledOnce;
     });
   });
   describe('#getInstance', function () {
-    it('gives IrSdkJsWrapper singleton', function () {
+    it('gives JsIrSdk singleton', function () {
       var jsWrapperMock = function () {return ++jsWrapperMock.instanceCount; };
       var nodeWrapperMock = {};
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
           '../build/Release/IrsdkNodeWrapper': nodeWrapperMock,
-          './irsdk-js-wrapper': jsWrapperMock
+          './JsIrSdk': jsWrapperMock
         }
       });
       var instance1 = nodeIrSdk.getInstance();

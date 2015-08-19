@@ -1,5 +1,5 @@
 var IrSdkNodeWrapper = require('../build/Release/IrsdkNodeWrapper');
-var IrSdkJsWrapper = require('./irsdk-js-wrapper');
+var JsIrSdk = require('./JsIrSdk');
 
 var instance;
 
@@ -7,7 +7,7 @@ module.exports = {};
 
 var init = module.exports.init = function (opts) {
   if (!instance) {
-    instance = new IrSdkJsWrapper(IrSdkNodeWrapper, opts);
+    instance = new JsIrSdk(IrSdkNodeWrapper, opts);
   }
 };
 
