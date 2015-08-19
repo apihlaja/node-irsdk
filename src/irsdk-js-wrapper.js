@@ -16,14 +16,12 @@ function JsIrSdk(IrSdkWrapper, opts)
     opts.sessionInfoUpdateInterval = 1000;
   }
   
-  var CONNECTION_INTERVAL = opts.telemetryUpdateInterval / 3; // ms
-  
   var connected = false; // if irsdk is available
   var initialized = IrSdkWrapper.start(); // if wrapper is started
   
   var telemetryDescription;
   
-  var connectedIntervalId = setInterval(function () {
+  var checkConnection = function () {
     if (initialized && IrSdkWrapper.isConnected()) {
       if (!connected) {
         connected = true;
@@ -46,9 +44,10 @@ function JsIrSdk(IrSdkWrapper, opts)
         }, 10000);
       }
     }
-  }, CONNECTION_INTERVAL);
+  };
 
   var telemetryIntervalId = setInterval(function () {
+    checkConnection();
     if (connected && IrSdkWrapper.updateTelemetry()) {
       var now = new Date(); // date gives ms accuracy
       var telemetry = IrSdkWrapper.getTelemetry();
@@ -65,6 +64,7 @@ function JsIrSdk(IrSdkWrapper, opts)
   }, opts.telemetryUpdateInterval);
 
   var sessionInfoIntervalId = setInterval(function () {
+    checkConnection();
     if (connected && IrSdkWrapper.updateSessionInfo()) {
       var now = new Date();
       var sessionInfo = IrSdkWrapper.getSessionInfo();
@@ -88,7 +88,6 @@ function JsIrSdk(IrSdkWrapper, opts)
     * any events arent emited after this call.
     */
   this.stop = function () {
-    clearInterval(connectedIntervalId);
     clearInterval(telemetryIntervalId);
     clearInterval(sessionInfoIntervalId);
     IrSdkWrapper.shutdown();
