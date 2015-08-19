@@ -1,7 +1,7 @@
 var JsIrSdk = require('./irsdk-js-wrapper');
 var IrSdkWrapper = require('./irsdk-node-wrapper-mock');
 
-describe('irsdk-js-wrapper', function () {
+describe('IrSdkJsWrapper', function () {
   
   beforeEach(function () {
     this.clock = sinon.useFakeTimers();
