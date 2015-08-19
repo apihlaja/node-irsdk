@@ -1,4 +1,4 @@
-var IrSdkNodeWrapper = require('./irsdk-node-wrapper');
+var IrSdkNodeWrapper = require('../build/Release/IrsdkNodeWrapper');
 var IrSdkJsWrapper = require('./irsdk-js-wrapper');
 
 var instance;

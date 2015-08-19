@@ -12,7 +12,7 @@ describe('node-irsdk', function () {
       var opts = {};
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
-          './irsdk-node-wrapper': nodeWrapperMock,
+          '../build/Release/IrsdkNodeWrapper': nodeWrapperMock,
           './irsdk-js-wrapper': jsWrapperSpy
         }
       });
@@ -28,7 +28,7 @@ describe('node-irsdk', function () {
       var nodeWrapperMock = {};
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
-          './irsdk-node-wrapper': nodeWrapperMock,
+          '../build/Release/IrsdkNodeWrapper': nodeWrapperMock,
           './irsdk-js-wrapper': jsWrapperMock
         }
       });

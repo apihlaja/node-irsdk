@@ -1,5 +1,5 @@
 var JsIrSdk = require('./irsdk-js-wrapper');
-var IrSdkWrapper = require('./irsdk-node-wrapper-mock');
+var IrSdkWrapper = require('./IrsdkNodeWrapper-mock');
 
 describe('IrSdkJsWrapper', function () {
   

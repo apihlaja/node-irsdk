@@ -1,7 +1,7 @@
 ﻿{
   "targets": [
     {
-      "target_name": "irsdknodewrapper",
+      "target_name": "IrsdkNodeWrapper",
       "cflags": [ "-Wall", "-std=c++11" ],
       "sources": [ "src/cpp/node-wrapper.cpp", "src/cpp/IRSDKWrapper.cpp", "src/cpp/irbitfield_helpers.cpp" ],
       "default_configuration": "Release",
