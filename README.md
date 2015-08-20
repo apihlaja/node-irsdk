@@ -1,8 +1,13 @@
 ﻿# Node.js iRacing SDK
 
-The first, experimental, version will support session data and live telemetry only.
+iRacing SDK implementation for Node.js. It provides access to
 
-## Requirements and Install
+* session info
+* live telemetry
+
+You can find simple usage examples from [utils](utils/) directory.
+
+# Requirements and Install
 
 You need Windows version of [Node.js](https://nodejs.org/download/). And because 
 node-gyp is used to compile C++ module, you have to 
@@ -16,7 +21,9 @@ node-irsdk can be installed from GitHub using command:
 `npm install --save apihlaja/node-irsdk`
 
 
-## API
+# API
+
+## node-irsdk
 
 ### #init([options])
 
@@ -30,7 +37,7 @@ Can be called once to set up wrapper options. All options are optional:
 Returns JsIrSdk instance. Calls `init` if its not called already.
 
 
-### JsIrSdk
+## JsIrSdk
 
 JsIrSdk inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
 and exposes data from SDK using events.
