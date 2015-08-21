@@ -1,4 +1,4 @@
-﻿# Node.js iRacing SDK
+﻿# node-irsdk
 
 iRacing SDK implementation for Node.js. It provides access to
 
@@ -13,12 +13,11 @@ You need Windows version of [Node.js](https://nodejs.org/download/). And because
 node-gyp is used to compile C++ module, you have to 
 install its dependencies. Having Python 2.7 in PATH and some version of Visual Studio 
 should be enough but check 
-[installation instructions of node-gyp](https://github.com/TooTallNate/node-gyp) 
-if node-gyp fails.
+[installation instructions of node-gyp](https://github.com/TooTallNate/node-gyp).
 
-node-irsdk can be installed from GitHub using command:
+When prerequirements are fulfilled, you can install it:
 
-`npm install --save apihlaja/node-irsdk`
+`npm install --save node-irsdk`
 
 
 # API
