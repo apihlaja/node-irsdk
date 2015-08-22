@@ -7,36 +7,36 @@ iRacing SDK implementation for Node.js. It provides access to
 
 You can find simple usage examples from [utils](utils/) directory.
 
-# Requirements and Install
+## Requirements and Install
 
-You need Windows version of [Node.js](https://nodejs.org/download/). And because 
-node-gyp is used to compile C++ module, you have to 
-install its dependencies. Having Python 2.7 in PATH and some version of Visual Studio 
-should be enough but check 
-[installation instructions of node-gyp](https://github.com/TooTallNate/node-gyp).
+* Windows version of [Node.js](https://nodejs.org/download/). 
+* Visual Studio and Python 2.7 for node-gyp, see details: 
+[installation instructions](https://github.com/TooTallNate/node-gyp).
 
-When prerequirements are fulfilled, you can install it:
+When you have those, you can install package:
 
 `npm install --save node-irsdk`
 
 
-# API
+## API
 
-## node-irsdk
+### node-irsdk
 
-### #init([options])
+node-irsdk object is what you get when you `require` module.
+
+#### #init([options])
 
 Can be called once to set up wrapper options. All options are optional:
 
 * telemetryUpdateInterval: milliseconds between update checks (default 5)
 * sessionInfoUpdateInterval: milliseconds between update checks (default 1000)
 
-### #getInstance()
+#### #getInstance()
 
 Returns JsIrSdk instance. Calls `init` if its not called already.
 
 
-## JsIrSdk
+### JsIrSdk
 
 JsIrSdk inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
 and exposes data from SDK using events.
