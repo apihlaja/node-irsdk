@@ -7,39 +7,41 @@ iRacing SDK implementation for Node.js. It provides access to
 
 You can find simple usage examples from [utils](utils/) directory.
 
-## Requirements and Install
 
-* Windows version of [Node.js](https://nodejs.org/download/). 
+## Requirements
+
+* Windows version of [Node.js](https://nodejs.org/download/)
 * Visual Studio and Python 2.7 for node-gyp, see details: 
-[installation instructions](https://github.com/TooTallNate/node-gyp).
+[installation instructions](https://github.com/TooTallNate/node-gyp)
 
-When you have those, you can install package:
+
+## Install
 
 `npm install --save node-irsdk`
 
 
 ## API
 
-### node-irsdk
+Module provides two methods.
 
-node-irsdk object is what you get when you `require` module.
-
-#### #init([options])
+### #init([options])
 
 Can be called once to set up wrapper options. All options are optional:
 
 * telemetryUpdateInterval: milliseconds between update checks (default 5)
 * sessionInfoUpdateInterval: milliseconds between update checks (default 1000)
 
-#### #getInstance()
+### #getInstance()
 
-Returns JsIrSdk instance. Calls `init` if its not called already.
+Returns `JsIrSdk` instance. Calls `init` if its not called already.
+
 
 
 ### JsIrSdk
 
 JsIrSdk inherits [EventEmiter](https://nodejs.org/api/events.html#events_class_events_eventemitter) 
 and exposes data from SDK using events.
+
 
 #### Event: 'Connected'
 
@@ -49,7 +51,7 @@ Emitted when iRacing SDK is available.
 #### Event: 'Disconnected'
 
 Emitted when iRacing SDK access is lost ie. when sim is shut down. 
-The `'Connected'` event is emitted again if sim is restarted.
+The `Connected` event is emitted again if sim is restarted.
 
 
 #### Event: 'TelemetryDescription'
