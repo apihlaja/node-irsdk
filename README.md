@@ -1,4 +1,4 @@
-﻿# node-irsdk
+# node-irsdk
 
 iRacing SDK implementation for Node.js. It provides access to
 
