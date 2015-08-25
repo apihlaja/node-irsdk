@@ -1,6 +1,8 @@
 # node-irsdk
 
-iRacing SDK implementation for Node.js. It provides access to
+iRacing SDK implementation for Node.js. 
+
+The current versoin provides access to
 
 * session info
 * live telemetry
