@@ -1,0 +1,624 @@
+{
+  "timestamp": "2015-08-27T20:05:54.825Z",
+  "data": {
+    "WeekendInfo": {
+      "TrackName": "twinring fullrc",
+      "TrackID": 195,
+      "TrackLength": "4.75 km",
+      "TrackDisplayName": "Twin Ring Motegi",
+      "TrackDisplayShortName": "Twin Ring",
+      "TrackConfigName": "Full Road Course",
+      "TrackCity": "Motegi",
+      "TrackCountry": "Japan",
+      "TrackAltitude": "155.80 m",
+      "TrackLatitude": "36.532465 m",
+      "TrackLongitude": "140.227102 m",
+      "TrackNumTurns": 14,
+      "TrackPitSpeedLimit": "60.00 kph",
+      "TrackType": "road course",
+      "TrackWeatherType": "Realistic",
+      "TrackSkies": "Partly Cloudy",
+      "TrackSurfaceTemp": "0.00 C",
+      "TrackAirTemp": "0.00 C",
+      "TrackAirPressure": "29.37 Hg",
+      "TrackWindVel": "0.00 m/s",
+      "TrackWindDir": "5.55 rad",
+      "TrackRelativeHumidity": "81 %",
+      "TrackFogLevel": "0 %",
+      "SeriesID": 237,
+      "SeasonID": 1389,
+      "SessionID": 59871885,
+      "SubSessionID": 14481374,
+      "LeagueID": 0,
+      "Official": 1,
+      "RaceWeek": 8,
+      "EventType": "Practice",
+      "Category": "Road",
+      "SimMode": "full",
+      "TeamRacing": 1,
+      "MinDrivers": 1,
+      "MaxDrivers": 7,
+      "DCRuleSet": "DriveFairShare",
+      "QualifierMustStartRace": 0,
+      "NumCarClasses": 1,
+      "NumCarTypes": 4,
+      "WeekendOptions": {
+        "NumStarters": 42,
+        "StartingGrid": "2x2 inline pole on left",
+        "QualifyScoring": "best lap",
+        "CourseCautions": "off",
+        "StandingStart": 1,
+        "Restarts": "single file",
+        "WeatherType": "Realistic",
+        "Skies": "Partly Cloudy",
+        "WindDirection": "N",
+        "WindSpeed": "3.22 km/h",
+        "WeatherTemp": "25.56 C",
+        "RelativeHumidity": "55 %",
+        "FogLevel": "0 %",
+        "Unofficial": 0,
+        "CommercialMode": "consumer",
+        "NightMode": 1,
+        "IsFixedSetup": 0,
+        "StrictLapsChecking": "default",
+        "HasOpenRegistration": 1,
+        "HardcoreLevel": 1
+      },
+      "TelemetryOptions": {
+        "TelemetryDiskFile": ""
+      }
+    },
+    "SessionInfo": {
+      "Sessions": [
+        {
+          "SessionNum": 0,
+          "SessionLaps": "unlimited",
+          "SessionTime": "7200.00 sec",
+          "SessionNumLapsToAvg": 0,
+          "SessionType": "Practice",
+          "ResultsPositions": null,
+          "ResultsFastestLap": [
+            {
+              "CarIdx": 255,
+              "FastestLap": 0,
+              "FastestTime": -1
+            }
+          ],
+          "ResultsAverageLapTime": -1,
+          "ResultsNumCautionFlags": 0,
+          "ResultsNumCautionLaps": 0,
+          "ResultsNumLeadChanges": 0,
+          "ResultsLapsComplete": -1,
+          "ResultsOfficial": 0
+        }
+      ]
+    },
+    "CameraInfo": {
+      "Groups": [
+        {
+          "GroupNum": 1,
+          "GroupName": "Nose",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamNose"
+            }
+          ]
+        },
+        {
+          "GroupNum": 2,
+          "GroupName": "Gearbox",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamGearbox"
+            }
+          ]
+        },
+        {
+          "GroupNum": 3,
+          "GroupName": "Roll Bar",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamRoll Bar"
+            }
+          ]
+        },
+        {
+          "GroupNum": 4,
+          "GroupName": "LF Susp",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamLF Susp"
+            }
+          ]
+        },
+        {
+          "GroupNum": 5,
+          "GroupName": "LR Susp",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamLR Susp"
+            }
+          ]
+        },
+        {
+          "GroupNum": 6,
+          "GroupName": "Gyro",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamGyro"
+            }
+          ]
+        },
+        {
+          "GroupNum": 7,
+          "GroupName": "RF Susp",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamRF Susp"
+            }
+          ]
+        },
+        {
+          "GroupNum": 8,
+          "GroupName": "RR Susp",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamRR Susp"
+            }
+          ]
+        },
+        {
+          "GroupNum": 9,
+          "GroupName": "Cockpit",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamCockpit"
+            }
+          ]
+        },
+        {
+          "GroupNum": 10,
+          "GroupName": "Blimp",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamBlimp"
+            }
+          ]
+        },
+        {
+          "GroupNum": 11,
+          "GroupName": "Chopper",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamChopper"
+            }
+          ]
+        },
+        {
+          "GroupNum": 12,
+          "GroupName": "Chase",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamChase"
+            }
+          ]
+        },
+        {
+          "GroupNum": 13,
+          "GroupName": "Far Chase",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamFar Chase"
+            }
+          ]
+        },
+        {
+          "GroupNum": 14,
+          "GroupName": "Rear Chase",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamRear Chase"
+            }
+          ]
+        },
+        {
+          "GroupNum": 15,
+          "GroupName": "Scenic",
+          "IsScenic": true,
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "Scenic_00"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "Scenic_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "Scenic_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "Scenic_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "Scenic_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "Scenic_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "Scenic_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "Scenic_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "Scenic_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "Scenic_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "Scenic_10"
+            }
+          ]
+        },
+        {
+          "GroupNum": 16,
+          "GroupName": "Pit Lane",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamPit Lane"
+            }
+          ]
+        },
+        {
+          "GroupNum": 17,
+          "GroupName": "Pit Lane 2",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamPit Lane 2"
+            }
+          ]
+        },
+        {
+          "GroupNum": 18,
+          "GroupName": "TV1",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamTV1_00"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "CamTV1_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "CamTV1_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "CamTV1_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "CamTV1_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "CamTV1_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "CamTV1_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV1_07"
+            }
+          ]
+        },
+        {
+          "GroupNum": 19,
+          "GroupName": "TV2",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamTV2_00"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "CamTV2_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "CamTV2_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "CamTV2_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "CamTV2_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "CamTV2_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "CamTV2_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV2_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "CamTV2_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "CamTV2_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "CamTV2_10"
+            }
+          ]
+        },
+        {
+          "GroupNum": 20,
+          "GroupName": "TV3",
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "CamTV3_00"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "CamTV3_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "CamTV3_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "CamTV3_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "CamTV3_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "CamTV3_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "CamTV3_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV3_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "CamTV3_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "CamTV3_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "CamTV3_10"
+            }
+          ]
+        }
+      ]
+    },
+    "RadioInfo": {
+      "SelectedRadioNum": 0,
+      "Radios": [
+        {
+          "RadioNum": 0,
+          "HopCount": 1,
+          "NumFrequencies": 6,
+          "TunedToFrequencyNum": 0,
+          "ScanningIsOn": 1,
+          "Frequencies": [
+            {
+              "FrequencyNum": 0,
+              "FrequencyName": "@TEAM",
+              "Priority": 60,
+              "CarIdx": 0,
+              "EntryIdx": -1,
+              "ClubID": 0,
+              "CanScan": 1,
+              "CanSquawk": 1,
+              "Muted": 0,
+              "IsMutable": 0,
+              "IsDeletable": 0
+            },
+            {
+              "FrequencyNum": 1,
+              "FrequencyName": "@DRIVERS",
+              "Priority": 15,
+              "CarIdx": -1,
+              "EntryIdx": -1,
+              "ClubID": 0,
+              "CanScan": 1,
+              "CanSquawk": 0,
+              "Muted": 0,
+              "IsMutable": 1,
+              "IsDeletable": 0
+            },
+            {
+              "FrequencyNum": 2,
+              "FrequencyName": "@ALLTEAMS",
+              "Priority": 12,
+              "CarIdx": -1,
+              "EntryIdx": -1,
+              "ClubID": 0,
+              "CanScan": 1,
+              "CanSquawk": 1,
+              "Muted": 0,
+              "IsMutable": 1,
+              "IsDeletable": 0
+            },
+            {
+              "FrequencyNum": 3,
+              "FrequencyName": "@CLUB",
+              "Priority": 20,
+              "CarIdx": -1,
+              "EntryIdx": -1,
+              "ClubID": 44,
+              "CanScan": 1,
+              "CanSquawk": 1,
+              "Muted": 0,
+              "IsMutable": 1,
+              "IsDeletable": 0
+            },
+            {
+              "FrequencyNum": 4,
+              "FrequencyName": "@RACECONTROL",
+              "Priority": 80,
+              "CarIdx": -1,
+              "EntryIdx": -1,
+              "ClubID": 0,
+              "CanScan": 1,
+              "CanSquawk": 0,
+              "Muted": 0,
+              "IsMutable": 0,
+              "IsDeletable": 0
+            },
+            {
+              "FrequencyNum": 5,
+              "FrequencyName": "@PRIVATE",
+              "Priority": 70,
+              "CarIdx": -1,
+              "EntryIdx": 0,
+              "ClubID": 0,
+              "CanScan": 1,
+              "CanSquawk": 1,
+              "Muted": 0,
+              "IsMutable": 0,
+              "IsDeletable": 0
+            }
+          ]
+        }
+      ]
+    },
+    "DriverInfo": {
+      "DriverCarIdx": 0,
+      "DriverHeadPosX": -0.025,
+      "DriverHeadPosY": 0.276,
+      "DriverHeadPosZ": 0.54,
+      "DriverCarIdleRPM": 1100,
+      "DriverCarRedLine": 7820,
+      "DriverCarFuelKgPerLtr": 0.75,
+      "DriverCarSLFirstRPM": 6300,
+      "DriverCarSLShiftRPM": 6900,
+      "DriverCarSLLastRPM": 7000,
+      "DriverCarSLBlinkRPM": 7400,
+      "DriverPitTrkPct": 0.996,
+      "DriverCarEstLapTime": 113.831,
+      "Drivers": [
+        {
+          "CarIdx": 0,
+          "UserName": "Antti Pihlaja",
+          "AbbrevName": "Pihlaja, A",
+          "Initials": "AP",
+          "UserID": 93910,
+          "TeamID": 27287,
+          "TeamName": "Team Antti Pihlaja",
+          "CarNumber": "37",
+          "CarNumberRaw": 37,
+          "CarPath": "mclarenmp4",
+          "CarClassID": 59,
+          "CarID": 43,
+          "CarScreenName": "McLaren MP4-12C GT3",
+          "CarScreenNameShort": "McLaren MP4-12C",
+          "CarClassShortName": "GT3 Class",
+          "CarClassRelSpeed": 52,
+          "CarClassLicenseLevel": 0,
+          "CarClassMaxFuel": "1.000 %",
+          "CarClassWeightPenalty": "0.000 kg",
+          "CarClassColor": 16777215,
+          "IRating": 6571,
+          "LicLevel": 20,
+          "LicSubLevel": 424,
+          "LicString": "A 4.24",
+          "LicColor": 87003,
+          "IsSpectator": 0,
+          "CarDesignStr": "13,ffffff,000000,1083c5,ffffff",
+          "HelmetDesignStr": "60,eeeeee,003180,000000",
+          "SuitDesignStr": "2,000000,000000,feec04",
+          "CarNumberDesignStr": "0,0,ffffff,ffffff,000000",
+          "CarSponsor_1": 123,
+          "CarSponsor_2": 109,
+          "ClubName": "Finland",
+          "DivisionName": "Division 1"
+        }
+      ]
+    },
+    "SplitTimeInfo": {
+      "Sectors": [
+        {
+          "SectorNum": 0,
+          "SectorStartPct": 0
+        },
+        {
+          "SectorNum": 1,
+          "SectorStartPct": 0.157
+        },
+        {
+          "SectorNum": 2,
+          "SectorStartPct": 0.301
+        },
+        {
+          "SectorNum": 3,
+          "SectorStartPct": 0.449
+        },
+        {
+          "SectorNum": 4,
+          "SectorStartPct": 0.629
+        },
+        {
+          "SectorNum": 5,
+          "SectorStartPct": 0.78
+        }
+      ]
+    }
+  },
+  "yaml": "---\nWeekendInfo:\n TrackName: twinring fullrc\n TrackID: 195\n TrackLength: 4.75 km\n TrackDisplayName: Twin Ring Motegi\n TrackDisplayShortName: Twin Ring\n TrackConfigName: Full Road Course\n TrackCity: Motegi\n TrackCountry: Japan\n TrackAltitude: 155.80 m\n TrackLatitude: 36.532465 m\n TrackLongitude: 140.227102 m\n TrackNumTurns: 14\n TrackPitSpeedLimit: 60.00 kph\n TrackType: road course\n TrackWeatherType: Realistic\n TrackSkies: Partly Cloudy\n TrackSurfaceTemp: 0.00 C\n TrackAirTemp: 0.00 C\n TrackAirPressure: 29.37 Hg\n TrackWindVel: 0.00 m/s\n TrackWindDir: 5.55 rad\n TrackRelativeHumidity: 81 %\n TrackFogLevel: 0 %\n SeriesID: 237\n SeasonID: 1389\n SessionID: 59871885\n SubSessionID: 14481374\n LeagueID: 0\n Official: 1\n RaceWeek: 8\n EventType: Practice\n Category: Road\n SimMode: full\n TeamRacing: 1\n MinDrivers: 1\n MaxDrivers: 7\n DCRuleSet: DriveFairShare\n QualifierMustStartRace: 0\n NumCarClasses: 1\n NumCarTypes: 4\n WeekendOptions:\n  NumStarters: 42\n  StartingGrid: 2x2 inline pole on left\n  QualifyScoring: best lap\n  CourseCautions: off\n  StandingStart: 1\n  Restarts: single file\n  WeatherType: Realistic\n  Skies: Partly Cloudy\n  WindDirection: N\n  WindSpeed: 3.22 km/h\n  WeatherTemp: 25.56 C\n  RelativeHumidity: 55 %\n  FogLevel: 0 %\n  Unofficial: 0\n  CommercialMode: consumer\n  NightMode: 1\n  IsFixedSetup: 0\n  StrictLapsChecking: default\n  HasOpenRegistration: 1\n  HardcoreLevel: 1\n TelemetryOptions:\n  TelemetryDiskFile: \"\"\n\nSessionInfo:\n Sessions:\n - SessionNum: 0\n   SessionLaps: unlimited\n   SessionTime: 7200.00 sec\n   SessionNumLapsToAvg: 0\n   SessionType: Practice\n   ResultsPositions:\n   ResultsFastestLap:\n   - CarIdx: 255\n     FastestLap: 0\n     FastestTime: -1.000\n   ResultsAverageLapTime: -1.000\n   ResultsNumCautionFlags: 0\n   ResultsNumCautionLaps: 0\n   ResultsNumLeadChanges: 0\n   ResultsLapsComplete: -1\n   ResultsOfficial: 0\n\nCameraInfo:\n Groups:\n - GroupNum: 1\n   GroupName: Nose\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamNose\n - GroupNum: 2\n   GroupName: Gearbox\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamGearbox\n - GroupNum: 3\n   GroupName: Roll Bar\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRoll Bar\n - GroupNum: 4\n   GroupName: LF Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamLF Susp\n - GroupNum: 5\n   GroupName: LR Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamLR Susp\n - GroupNum: 6\n   GroupName: Gyro\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamGyro\n - GroupNum: 7\n   GroupName: RF Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRF Susp\n - GroupNum: 8\n   GroupName: RR Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRR Susp\n - GroupNum: 9\n   GroupName: Cockpit\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamCockpit\n - GroupNum: 10\n   GroupName: Blimp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamBlimp\n - GroupNum: 11\n   GroupName: Chopper\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamChopper\n - GroupNum: 12\n   GroupName: Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamChase\n - GroupNum: 13\n   GroupName: Far Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamFar Chase\n - GroupNum: 14\n   GroupName: Rear Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRear Chase\n - GroupNum: 15\n   GroupName: Scenic\n   IsScenic: true\n   Cameras:\n   - CameraNum: 1\n     CameraName: Scenic_00\n   - CameraNum: 2\n     CameraName: Scenic_01\n   - CameraNum: 3\n     CameraName: Scenic_02\n   - CameraNum: 4\n     CameraName: Scenic_03\n   - CameraNum: 5\n     CameraName: Scenic_04\n   - CameraNum: 6\n     CameraName: Scenic_05\n   - CameraNum: 7\n     CameraName: Scenic_06\n   - CameraNum: 8\n     CameraName: Scenic_07\n   - CameraNum: 9\n     CameraName: Scenic_08\n   - CameraNum: 10\n     CameraName: Scenic_09\n   - CameraNum: 11\n     CameraName: Scenic_10\n - GroupNum: 16\n   GroupName: Pit Lane\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamPit Lane\n - GroupNum: 17\n   GroupName: Pit Lane 2\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamPit Lane 2\n - GroupNum: 18\n   GroupName: TV1\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV1_00\n   - CameraNum: 2\n     CameraName: CamTV1_01\n   - CameraNum: 3\n     CameraName: CamTV1_02\n   - CameraNum: 4\n     CameraName: CamTV1_03\n   - CameraNum: 5\n     CameraName: CamTV1_04\n   - CameraNum: 6\n     CameraName: CamTV1_05\n   - CameraNum: 7\n     CameraName: CamTV1_06\n   - CameraNum: 8\n     CameraName: CamTV1_07\n - GroupNum: 19\n   GroupName: TV2\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV2_00\n   - CameraNum: 2\n     CameraName: CamTV2_01\n   - CameraNum: 3\n     CameraName: CamTV2_02\n   - CameraNum: 4\n     CameraName: CamTV2_03\n   - CameraNum: 5\n     CameraName: CamTV2_04\n   - CameraNum: 6\n     CameraName: CamTV2_05\n   - CameraNum: 7\n     CameraName: CamTV2_06\n   - CameraNum: 8\n     CameraName: CamTV2_07\n   - CameraNum: 9\n     CameraName: CamTV2_08\n   - CameraNum: 10\n     CameraName: CamTV2_09\n   - CameraNum: 11\n     CameraName: CamTV2_10\n - GroupNum: 20\n   GroupName: TV3\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV3_00\n   - CameraNum: 2\n     CameraName: CamTV3_01\n   - CameraNum: 3\n     CameraName: CamTV3_02\n   - CameraNum: 4\n     CameraName: CamTV3_03\n   - CameraNum: 5\n     CameraName: CamTV3_04\n   - CameraNum: 6\n     CameraName: CamTV3_05\n   - CameraNum: 7\n     CameraName: CamTV3_06\n   - CameraNum: 8\n     CameraName: CamTV3_07\n   - CameraNum: 9\n     CameraName: CamTV3_08\n   - CameraNum: 10\n     CameraName: CamTV3_09\n   - CameraNum: 11\n     CameraName: CamTV3_10\n\nRadioInfo:\n SelectedRadioNum: 0\n Radios:\n - RadioNum: 0\n   HopCount: 1\n   NumFrequencies: 6\n   TunedToFrequencyNum: 0\n   ScanningIsOn: 1\n   Frequencies:\n   - FrequencyNum: 0\n     FrequencyName: \"@TEAM\"\n     Priority: 60\n     CarIdx: 0\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n   - FrequencyNum: 1\n     FrequencyName: \"@DRIVERS\"\n     Priority: 15\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 0\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 2\n     FrequencyName: \"@ALLTEAMS\"\n     Priority: 12\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 3\n     FrequencyName: \"@CLUB\"\n     Priority: 20\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 44\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 4\n     FrequencyName: \"@RACECONTROL\"\n     Priority: 80\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 0\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n   - FrequencyNum: 5\n     FrequencyName: \"@PRIVATE\"\n     Priority: 70\n     CarIdx: -1\n     EntryIdx: 0\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n\nDriverInfo:\n DriverCarIdx: 0\n DriverHeadPosX: -0.025\n DriverHeadPosY: 0.276\n DriverHeadPosZ: 0.540\n DriverCarIdleRPM: 1100.000\n DriverCarRedLine: 7820.000\n DriverCarFuelKgPerLtr: 0.750\n DriverCarSLFirstRPM: 6300.000\n DriverCarSLShiftRPM: 6900.000\n DriverCarSLLastRPM: 7000.000\n DriverCarSLBlinkRPM: 7400.000\n DriverPitTrkPct: 0.996\n DriverCarEstLapTime: 113.831\n Drivers:\n - CarIdx: 0\n   UserName: Antti Pihlaja\n   AbbrevName: Pihlaja, A\n   Initials: AP\n   UserID: 93910\n   TeamID: 27287\n   TeamName: Team Antti Pihlaja #37\n   CarNumber: \"37\"\n   CarNumberRaw: 37\n   CarPath: mclarenmp4\n   CarClassID: 59\n   CarID: 43\n   CarScreenName: McLaren MP4-12C GT3\n   CarScreenNameShort: McLaren MP4-12C\n   CarClassShortName: GT3 Class\n   CarClassRelSpeed: 52\n   CarClassLicenseLevel: 0\n   CarClassMaxFuel: 1.000 %\n   CarClassWeightPenalty: 0.000 kg\n   CarClassColor: 0xffffff\n   IRating: 6571\n   LicLevel: 20\n   LicSubLevel: 424\n   LicString: A 4.24\n   LicColor: 0x0153db\n   IsSpectator: 0\n   CarDesignStr: 13,ffffff,000000,1083c5,ffffff\n   HelmetDesignStr: 60,eeeeee,003180,000000\n   SuitDesignStr: 2,000000,000000,feec04\n   CarNumberDesignStr: 0,0,ffffff,ffffff,000000\n   CarSponsor_1: 123\n   CarSponsor_2: 109\n   ClubName: Finland\n   DivisionName: Division 1\n\nSplitTimeInfo:\n Sectors:\n - SectorNum: 0\n   SectorStartPct: 0.000\n - SectorNum: 1\n   SectorStartPct: 0.157\n - SectorNum: 2\n   SectorStartPct: 0.301\n - SectorNum: 3\n   SectorStartPct: 0.449\n - SectorNum: 4\n   SectorStartPct: 0.629\n - SectorNum: 5\n   SectorStartPct: 0.780\n\n...\n"
+}
