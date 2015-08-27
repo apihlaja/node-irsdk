@@ -3,10 +3,8 @@ var irsdk = require('../');
 var fs = require('fs');
 var moment = require('moment');
 
-var telemetryDescription;
-var telemetry;
-var sessionInfoStr;
-var sessionInfoObj;
+// enable access to raw yaml sessioninfo
+process.env.NODE_ENV = 'development'; 
 
 irsdk.init({
   telemetryUpdateInterval: 5000,
@@ -23,9 +21,7 @@ iracing.on('Connected', function () {
 });
 
 iracing.on('Disconnected', function () { 
-  // this is here just for documentation because
-  // the script doesnt wait for Disconnected-event.
-  console.log('iRacing shut down.');
+  console.log('iRacing shut down.\n');
 });
 
 iracing.once('TelemetryDescription', function (data) {
@@ -35,7 +31,6 @@ iracing.once('TelemetryDescription', function (data) {
   
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
-    telemetryDescription = data;
   });
 });
 
@@ -46,7 +41,6 @@ iracing.on('Telemetry', function (data) {
   
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
-    telemetry = data;
   });
 });
 
@@ -54,11 +48,17 @@ iracing.on('SessionInfo', function (data) {
   console.log('got SessionInfo');
   var dateStr = moment().format().replace(/:/g, '');
   var jsonFileName = './sample-data/'+dateStr+'-sessioninfo.json';
+  var yamlFileName = './sample-data/'+dateStr+'-sessioninfo.yaml';
   
   fs.writeFile(jsonFileName, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
-    sessionInfoObj = data;
   });
+  
+  if ( data.yaml ) {
+    fs.writeFile(yamlFileName, data.yaml, function (err) {
+      if (err) throw err;
+    });
+  }
 });
 
 
