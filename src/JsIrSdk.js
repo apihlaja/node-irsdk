@@ -77,7 +77,13 @@ function JsIrSdk(IrSdkWrapper, opts)
           console.error('js-irsdk: yaml error: \n' + ex);
         }
         if ( doc ) {
-          self.emit('SessionInfo', { timestamp: now, data: doc });
+          var eventObj;
+          if ( process.env.NODE_ENV === 'development' ) {
+            eventObj = { timestamp: now, data: doc, yaml: sessionInfo };
+          } else {
+            eventObj = { timestamp: now, data: doc};
+          }
+          self.emit('SessionInfo', eventObj);
         }
       });
     }
