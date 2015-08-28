@@ -1,6 +1,6 @@
-﻿// tests if node-irsdk works at all..
+// tests if node-irsdk works at all..
 
-var expect = require("chai").expect;
+var expect = require('chai').expect;
 
 var irsdk = require('../');
 

@@ -7,7 +7,7 @@
     "postinstall": "node install.js",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
-    "lint": "eslint src",
+    "lint": "eslint src utils",
     "sample-writer": "node utils/sample-writer.js",
     "smoke-test": "node utils/smoke-test.js"
   },

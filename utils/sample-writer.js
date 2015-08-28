@@ -1,4 +1,4 @@
-﻿
+
 var irsdk = require('../');
 var fs = require('fs');
 var moment = require('moment');
@@ -14,7 +14,6 @@ irsdk.init({
 var iracing = irsdk.getInstance();
 
 console.log('waiting for iRacing...');
-var dateStr = moment().format().replace(/:/g, '');
 
 iracing.on('Connected', function () {
   console.log('connected to iRacing..');
