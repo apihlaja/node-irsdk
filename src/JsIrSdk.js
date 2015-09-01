@@ -1,8 +1,6 @@
 var util = require('util');
 var events = require('events');
 
-var yaml = require('js-yaml');
-
 function JsIrSdk(IrSdkWrapper, opts) 
 {
   events.EventEmitter.call(this);
@@ -20,9 +18,13 @@ function JsIrSdk(IrSdkWrapper, opts)
   
   var parseSessionInfo = opts.sessionInfoParser;
   if ( !parseSessionInfo ) {
-    parseSessionInfo = function (sessionInfoStr) {
-      return yaml.safeLoad(sessionInfoStr);
-    };
+    parseSessionInfo = (function () {
+      var yaml = require('js-yaml');
+      
+      return function (sessionInfoStr) {
+        return yaml.safeLoad(sessionInfoStr);
+      };
+    })();
   }
   
   
