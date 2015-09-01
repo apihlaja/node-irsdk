@@ -76,14 +76,13 @@ function JsIrSdk(IrSdkWrapper, opts)
           // TODO: log faulty yaml
           console.error('js-irsdk: yaml error: \n' + ex);
         }
-        if ( doc ) {
-          var eventObj;
-          if ( process.env.NODE_ENV === 'development' ) {
-            eventObj = { timestamp: now, data: doc, yaml: sessionInfo };
-          } else {
-            eventObj = { timestamp: now, data: doc};
-          }
-          self.emit('SessionInfo', eventObj);
+        
+        // in dev mode: include yaml and emit even if parsing failed
+        if ( process.env.NODE_ENV === 'development' ) {
+          self.emit('SessionInfo', { timestamp: now, data: doc, yaml: sessionInfo });
+        } else if (doc) {
+          // normally hide emit only successfully parsed doc
+          self.emit('SessionInfo', { timestamp: now, data: doc});
         }
       });
     }
