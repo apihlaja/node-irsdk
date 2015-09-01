@@ -51,8 +51,8 @@ void getSessionInfo(const FunctionCallbackInfo<Value>& args)
 {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, irsdk.getSessionInfo().c_str()));
+  args.GetReturnValue().Set( 
+    node::Encode(irsdk.getSessionInfo().c_str(), irsdk.getSessionInfo().length(), node::BINARY));
 }
 
 void updateTelemetry(const FunctionCallbackInfo<Value>& args) 
