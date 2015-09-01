@@ -33,6 +33,7 @@ Can be called once to set up wrapper options. Subsequent calls are ignored. All 
 
 * telemetryUpdateInterval: milliseconds between update checks (default 5)
 * sessionInfoUpdateInterval: milliseconds between update checks (default 1000)
+* sessionInfoParser: replace default parser
 
 ### irsdk#getInstance()
 

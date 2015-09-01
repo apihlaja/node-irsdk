@@ -6,15 +6,25 @@ var yaml = require('js-yaml');
 function JsIrSdk(IrSdkWrapper, opts) 
 {
   events.EventEmitter.call(this);
+  
   var self = this;
   opts = opts || {};
   
   if ( opts.telemetryUpdateInterval === undefined ) {
     opts.telemetryUpdateInterval = 5;
   }
+  
   if ( opts.sessionInfoUpdateInterval === undefined ) {
     opts.sessionInfoUpdateInterval = 1000;
   }
+  
+  var parseSessionInfo = opts.sessionInfoParser;
+  if ( !parseSessionInfo ) {
+    parseSessionInfo = function (sessionInfoStr) {
+      return yaml.safeLoad(sessionInfoStr);
+    };
+  }
+  
   
   var connected = false; // if irsdk is available
   var initialized = IrSdkWrapper.start(); // if wrapper is started
@@ -71,7 +81,7 @@ function JsIrSdk(IrSdkWrapper, opts)
       var doc;
       setImmediate(function () {
         try {
-          doc = yaml.safeLoad(sessionInfo);
+          doc = parseSessionInfo(sessionInfo);
         } catch (ex) {
           // TODO: log faulty yaml
           console.error('js-irsdk: yaml error: \n' + ex);
