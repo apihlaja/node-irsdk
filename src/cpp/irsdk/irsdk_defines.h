@@ -92,6 +92,10 @@ static const int IRSDK_MAX_STRING = 32;
 // descriptions can be longer than max_string!
 static const int IRSDK_MAX_DESC = 64; 
 
+// define markers for unlimited session lap and time
+static const int IRSDK_UNLIMITED_LAPS = 32767;
+static const float IRSDK_UNLIMITED_TIME = 604800.0f;
+
 enum irsdk_StatusField
 {
 	irsdk_stConnected   = 1
@@ -210,6 +214,17 @@ enum irsdk_CameraState
 	irsdk_UseMouseAimMode          = 0x0100
 };
 
+enum irsdk_PitSvFlags
+{
+	irsdk_LFTireChange		= 0x0001,
+	irsdk_RFTireChange		= 0x0002,
+	irsdk_LRTireChange		= 0x0004,
+	irsdk_RRTireChange		= 0x0008,
+
+	irsdk_FuelFill			= 0x0010,
+	irsdk_WindshieldTearoff	= 0x0020,
+	irsdk_FastRepair		= 0x0040
+};
 
 //----
 //
@@ -225,6 +240,16 @@ struct irsdk_varHeader
 	char name[IRSDK_MAX_STRING];
 	char desc[IRSDK_MAX_DESC];
 	char unit[IRSDK_MAX_STRING];	// something like "kg/m^2"
+
+	void clear()
+	{
+		type = 0;
+		offset = 0;
+		count = 0;
+		memset(name, 0, sizeof(name));
+		memset(desc, 0, sizeof(name));
+		memset(unit, 0, sizeof(name));
+	}
 };
 
 struct irsdk_varBuf
@@ -248,7 +273,7 @@ struct irsdk_header
 	// State data, output at tickRate
 
 	int numVars;			// length of arra pointed to by varHeaderOffset
-	int varHeaderOffset;	// offset to irsdk_varHeader[numVars] array, Describes the variables recieved in varBuf
+	int varHeaderOffset;	// offset to irsdk_varHeader[numVars] array, Describes the variables received in varBuf
 
 	int numBuf;				// <= IRSDK_MAX_BUFS (3 for now)
 	int bufLen;				// length in bytes for one line
@@ -303,6 +328,8 @@ enum irsdk_BroadcastMsg
 	irsdk_BroadcastChatComand,		      // irsdk_ChatCommandMode, subCommand, unused
 	irsdk_BroadcastPitCommand,            // irsdk_PitCommandMode, parameter
 	irsdk_BroadcastTelemCommand,		  // irsdk_TelemCommandMode, unused, unused
+	irsdk_BroadcastFFBCommand,		      // irsdk_FFBCommandMode, value (float, high, low)
+	irsdk_BroadcastReplaySearchSessionTime, // sessionNum, sessionTimeMS (high, low)
 	irsdk_BroadcastLast                   // unused placeholder
 };
 
@@ -324,6 +351,7 @@ enum irsdk_PitCommandMode				// this only works when the driver is in the car
 	irsdk_PitCommand_LR,				// left rear
 	irsdk_PitCommand_RR,				// right rear
 	irsdk_PitCommand_ClearTires,		// Clear tire pit checkboxes
+	irsdk_PitCommand_FR,				// Request a fast repair
 };
 
 enum irsdk_TelemCommandMode				// You can call this any time, but telemtry only records when driver is in there car
@@ -369,6 +397,12 @@ enum irsdk_RpyPosMode
 	irsdk_RpyPos_Last                   // unused placeholder
 };
 
+enum irsdk_FFBCommandMode				// You can call this any time
+{
+	irsdk_FFBCommand_MaxForce = 0,		// Set the maximum force when mapping steering torque force to direct input units (float in Nm)
+	irsdk_FFBCommand_Last               // unused placeholder
+};
+
 // irsdk_BroadcastCamSwitchPos or irsdk_BroadcastCamSwitchNum camera focus defines
 // pass these in for the first parameter to select the 'focus at' types in the camera system.
 enum irsdk_csMode
@@ -385,6 +419,8 @@ enum irsdk_csMode
 void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, int var2, int var3);
 // var2 can be a full 32 bits
 void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, int var2);
+// var2 can be a full 32 bit float
+void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, float var2);
 
 // add a leading zero (or zeros) to a car number
 // to encode car #001 call padCarNum(1,2)
