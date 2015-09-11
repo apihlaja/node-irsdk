@@ -54,6 +54,17 @@ namespace iRBitFieldHelpers
     MaskName((int)irsdk_startSet, "StartSet"),
     MaskName((int)irsdk_startGo, "StartGo")
   };
+  
+  const std::vector<MaskName> PIT_SV_MASKS = {
+    MaskName((int)irsdk_LFTireChange, "LFTireChange"),
+    MaskName((int)irsdk_RFTireChange, "RFTireChange"),
+    MaskName((int)irsdk_LRTireChange, "LRTireChange"),
+    MaskName((int)irsdk_RRTireChange, "RRTireChange"),
+
+    MaskName((int)irsdk_FuelFill, "FuelFill"),
+    MaskName((int)irsdk_WindshieldTearoff, "WindshieldTearoff"),
+    MaskName((int)irsdk_FastRepair, "FastRepair")
+  };
 
   const std::vector<MaskName> CAMERA_STATE_MASKS = {
     MaskName((int)irsdk_IsSessionScreen, "IsSessionScreen"),

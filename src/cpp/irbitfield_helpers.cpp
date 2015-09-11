@@ -15,6 +15,9 @@ Handle<Value> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& va
   if (strcmp(unit, "irsdk_EngineWarnings") == 0) {
     return getValueArr(isolate, val, ENGINE_WARNINGS_MASKS);
   }
+  if (strcmp(unit, "irsdk_PitSvFlags") == 0) {
+    return getValueArr(isolate, val, PIT_SV_MASKS);
+  }
   cerr << "Missing converter for bitField: " << unit << endl;
   return Integer::New(isolate, static_cast<int32_t>(val));
 }
