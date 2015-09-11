@@ -566,6 +566,76 @@
     "count": 1,
     "type": "int"
   },
+  "TrackTemp": {
+    "name": "TrackTemp",
+    "desc": "Temperature of track at start/finish line",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "AirTemp": {
+    "name": "AirTemp",
+    "desc": "Temperature of air at start/finish line",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "WeatherType": {
+    "name": "WeatherType",
+    "desc": "Weather type (0=constant  1=dynamic)",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "Skies": {
+    "name": "Skies",
+    "desc": "Skies (0=clear/1=p cloudy/2=m cloudy/3=overcast)",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "AirDensity": {
+    "name": "AirDensity",
+    "desc": "Density of air at start/finish line",
+    "unit": "kg/m^3",
+    "count": 1,
+    "type": "float"
+  },
+  "AirPressure": {
+    "name": "AirPressure",
+    "desc": "Pressure of air at start/finish line",
+    "unit": "Hg",
+    "count": 1,
+    "type": "float"
+  },
+  "WindVel": {
+    "name": "WindVel",
+    "desc": "Wind velocity at start/finish line",
+    "unit": "m/s",
+    "count": 1,
+    "type": "float"
+  },
+  "WindDir": {
+    "name": "WindDir",
+    "desc": "Wind direction at start/finish line",
+    "unit": "rad",
+    "count": 1,
+    "type": "float"
+  },
+  "RelativeHumidity": {
+    "name": "RelativeHumidity",
+    "desc": "Relative Humidity",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "FogLevel": {
+    "name": "FogLevel",
+    "desc": "Fog level",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
   "DCLapStatus": {
     "name": "DCLapStatus",
     "desc": "Status of driver change lap requirements",
@@ -741,6 +811,48 @@
     "count": 1,
     "type": "float"
   },
+  "PitSvFlags": {
+    "name": "PitSvFlags",
+    "desc": "Bitfield of pit service checkboxes",
+    "unit": "irsdk_PitSvFlags",
+    "count": 1,
+    "type": "bitField"
+  },
+  "PitSvLFP": {
+    "name": "PitSvLFP",
+    "desc": "Pit service left front tire pressure",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "PitSvRFP": {
+    "name": "PitSvRFP",
+    "desc": "Pit service right front tire pressure",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "PitSvLRP": {
+    "name": "PitSvLRP",
+    "desc": "Pit service left rear tire pressure",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "PitSvRRP": {
+    "name": "PitSvRRP",
+    "desc": "Pit service right rear tire pressure",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "PitSvFuel": {
+    "name": "PitSvFuel",
+    "desc": "Pit service fuel add amount",
+    "unit": "l",
+    "count": 1,
+    "type": "float"
+  },
   "ReplayPlaySpeed": {
     "name": "ReplayPlaySpeed",
     "desc": "Replay playback speed",
@@ -790,17 +902,115 @@
     "count": 1,
     "type": "float"
   },
-  "dcThrottleShape": {
-    "name": "dcThrottleShape",
-    "desc": "In car throttle shape adjustment",
-    "unit": "",
+  "RFbrakeLinePress": {
+    "name": "RFbrakeLinePress",
+    "desc": "RF brake line pressure",
+    "unit": "bar",
     "count": 1,
     "type": "float"
   },
-  "dcFuelMixture": {
-    "name": "dcFuelMixture",
-    "desc": "In car fuel mixture adjustment",
-    "unit": "",
+  "RFcoldPressure": {
+    "name": "RFcoldPressure",
+    "desc": "RF tire cold pressure  as set in the garage",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "RFtempCL": {
+    "name": "RFtempCL",
+    "desc": "RF tire left carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "RFtempCM": {
+    "name": "RFtempCM",
+    "desc": "RF tire middle carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "RFtempCR": {
+    "name": "RFtempCR",
+    "desc": "RF tire right carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "RFwearL": {
+    "name": "RFwearL",
+    "desc": "RF tire left percent tread remaining",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "RFwearM": {
+    "name": "RFwearM",
+    "desc": "RF tire middle percent tread remaining",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "RFwearR": {
+    "name": "RFwearR",
+    "desc": "RF tire right percent tread remaining",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "LFbrakeLinePress": {
+    "name": "LFbrakeLinePress",
+    "desc": "LF brake line pressure",
+    "unit": "bar",
+    "count": 1,
+    "type": "float"
+  },
+  "LFcoldPressure": {
+    "name": "LFcoldPressure",
+    "desc": "LF tire cold pressure  as set in the garage",
+    "unit": "kPa",
+    "count": 1,
+    "type": "float"
+  },
+  "LFtempCL": {
+    "name": "LFtempCL",
+    "desc": "LF tire left carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "LFtempCM": {
+    "name": "LFtempCM",
+    "desc": "LF tire middle carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "LFtempCR": {
+    "name": "LFtempCR",
+    "desc": "LF tire right carcass temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "LFwearL": {
+    "name": "LFwearL",
+    "desc": "LF tire left percent tread remaining",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "LFwearM": {
+    "name": "LFwearM",
+    "desc": "LF tire middle percent tread remaining",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "LFwearR": {
+    "name": "LFwearR",
+    "desc": "LF tire right percent tread remaining",
+    "unit": "%",
     "count": 1,
     "type": "float"
   },
@@ -968,118 +1178,6 @@
   "LRwearR": {
     "name": "LRwearR",
     "desc": "LR tire right percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "RFbrakeLinePress": {
-    "name": "RFbrakeLinePress",
-    "desc": "RF brake line pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "RFcoldPressure": {
-    "name": "RFcoldPressure",
-    "desc": "RF tire cold pressure  as set in the garage",
-    "unit": "kPa",
-    "count": 1,
-    "type": "float"
-  },
-  "RFtempCL": {
-    "name": "RFtempCL",
-    "desc": "RF tire left carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "RFtempCM": {
-    "name": "RFtempCM",
-    "desc": "RF tire middle carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "RFtempCR": {
-    "name": "RFtempCR",
-    "desc": "RF tire right carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "RFwearL": {
-    "name": "RFwearL",
-    "desc": "RF tire left percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "RFwearM": {
-    "name": "RFwearM",
-    "desc": "RF tire middle percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "RFwearR": {
-    "name": "RFwearR",
-    "desc": "RF tire right percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "LFbrakeLinePress": {
-    "name": "LFbrakeLinePress",
-    "desc": "LF brake line pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "LFcoldPressure": {
-    "name": "LFcoldPressure",
-    "desc": "LF tire cold pressure  as set in the garage",
-    "unit": "kPa",
-    "count": 1,
-    "type": "float"
-  },
-  "LFtempCL": {
-    "name": "LFtempCL",
-    "desc": "LF tire left carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "LFtempCM": {
-    "name": "LFtempCM",
-    "desc": "LF tire middle carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "LFtempCR": {
-    "name": "LFtempCR",
-    "desc": "LF tire right carcass temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "LFwearL": {
-    "name": "LFwearL",
-    "desc": "LF tire left percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "LFwearM": {
-    "name": "LFwearM",
-    "desc": "LF tire middle percent tread remaining",
-    "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "LFwearR": {
-    "name": "LFwearR",
-    "desc": "LF tire right percent tread remaining",
     "unit": "%",
     "count": 1,
     "type": "float"
