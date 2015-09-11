@@ -84,7 +84,7 @@ var checkTelemetryValues = function (telemetry, desc) {
 var validateValue = function (val, desc) {
   if ( desc.type !== 'bitField' ) {
     if ( desc.unit.substr(0, 5) === 'irsdk' ) {
-      expect(val).to.be.a('string');
+      expect(val).to.be.a('string', 'enums should be converted to strings');
     } else {
       if ( desc.type === 'bool' ) {
         expect(val).to.be.a('boolean');
@@ -104,7 +104,7 @@ var validateValue = function (val, desc) {
     }
   } else {
     // expect bitField to be converted to array<string>
-    expect(val).to.be.an('array');
+    expect(val).to.be.an('array', 'bitField should be converted to array<string>');
     val.forEach(function(bitFieldVal) {
       expect(bitFieldVal).to.be.a('string');
     });
