@@ -20,7 +20,7 @@ namespace iRBitFieldHelpers
   Handle<Value> getSessionStateValue(Isolate* isolate, const int& val);
   Handle<Value> getTrackLoc(Isolate* isolate, const int& val);
 
-  Handle<Array> getMaskedValues(Isolate* isolate, const int& val, char* unit);
+  Handle<Value> getMaskedValues(Isolate* isolate, const int& val, char* unit);
   Handle<Array> getValueArr(Isolate* isolate, const int& val, const std::vector<iRBitFieldHelpers::MaskName> MASKS);
 
   const std::vector<MaskName> FLAG_MASKS = {

@@ -4,7 +4,7 @@
 using namespace v8;
 using namespace std;
 
-Handle<Array> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& val, char* unit)
+Handle<Value> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& val, char* unit)
 {
   if (strcmp(unit,"irsdk_Flags") == 0) {
     return getValueArr(isolate, val, FLAG_MASKS);
@@ -15,8 +15,8 @@ Handle<Array> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& va
   if (strcmp(unit, "irsdk_EngineWarnings") == 0) {
     return getValueArr(isolate, val, ENGINE_WARNINGS_MASKS);
   }
-  cout << "Unknown: " << unit << endl;
-  return Array::New(isolate);
+  cerr << "Missing converter for bitField: " << unit << endl;
+  return Integer::New(isolate, static_cast<int32_t>(val));
 }
 
 Handle<Array> iRBitFieldHelpers::getValueArr(Isolate* isolate, const int& val, const std::vector<iRBitFieldHelpers::MaskName> MASKS)
