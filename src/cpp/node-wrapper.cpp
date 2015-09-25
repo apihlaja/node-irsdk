@@ -116,9 +116,9 @@ void getTelemetry(const FunctionCallbackInfo<Value>& args)
   
   std::vector<irsdk_varHeader*> headers = irsdk.getVarHeaders();
   
-  for (int i = 0; i < headers.size(); ++i) 
+  for (const auto item : headers) 
   {
-    IRSDKWrapper::TelemetryVar var(headers.at(i));
+    IRSDKWrapper::TelemetryVar var(item);
     irsdk.getVar(var);
     Handle<Value> varValue = convertTelemetryVarToObject(isolate, var);
     valuesObj->Set(String::NewFromUtf8(isolate, var.header->name), varValue);
@@ -165,9 +165,10 @@ void getTelemetryDescription(const FunctionCallbackInfo<Value>& args)
 
   Local<Object> obj = Object::New(isolate);
   std::vector<irsdk_varHeader*> headers = irsdk.getVarHeaders();
-  for (int i = 0; i < headers.size(); ++i)
+  
+  for (const auto item : headers)
   {
-    IRSDKWrapper::TelemetryVar var(headers.at(i));
+    IRSDKWrapper::TelemetryVar var(item);
     irsdk.getVar(var);
     Handle<Object> varObj = Object::New(isolate);
     convertVarHeaderToObject(isolate, var, varObj);
