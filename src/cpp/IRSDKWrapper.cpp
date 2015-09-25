@@ -173,19 +173,6 @@ const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const
   return varHeadersArr;
 }
 
-irsdk_varHeader* IRSDKWrapper::getVarHeader(const std::string& name) const
-{
-  std::map<std::string, irsdk_varHeader*>::const_iterator it = varHeadersMap.find(name);
-
-  if (it != varHeadersMap.end()) {
-    std::cout << "varHeader found.." << std::endl;
-    return it->second;
-  }
-
-  std::cout << "varHeader not found.." << std::endl;
-  return NULL;
-}
-
 bool IRSDKWrapper::getVar(TelemetryVar& var) const 
 {
   if (data == NULL) {
