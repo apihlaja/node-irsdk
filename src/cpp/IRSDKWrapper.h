@@ -59,7 +59,6 @@ private:
   std::string sessionInfoStr;
 
   std::vector<irsdk_varHeader*> varHeadersArr;
-  std::map<std::string, irsdk_varHeader*> varHeadersMap;
 
   void updateVarHeaders(); // updates map and vector
   const char* getSessionInfoStr() const;

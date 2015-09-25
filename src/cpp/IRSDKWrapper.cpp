@@ -3,7 +3,7 @@
 
 IRSDKWrapper::IRSDKWrapper():
 hMemMapFile(NULL), pSharedMem(NULL), pHeader(NULL), lastTickCount(INT_MIN), lastSessionInfoUpdate(INT_MIN), 
-data(NULL), sessionInfoStr(), varHeadersMap()
+data(NULL), sessionInfoStr()
 {
 }
 
@@ -55,7 +55,6 @@ void IRSDKWrapper::shutdown()
   delete data;
   data = NULL;
   lastValidTime = time(NULL);
-  varHeadersMap.clear();
   varHeadersArr.clear();
   sessionInfoStr = "";
 }
@@ -84,7 +83,7 @@ bool IRSDKWrapper::updateTelemetry()
 {
   if ( startup() )
   {
-    if (varHeadersMap.empty()) {
+    if (varHeadersArr.empty()) {
       updateVarHeaders();
     }
     // if sim is not active, then no new data
@@ -145,13 +144,11 @@ const char* IRSDKWrapper::getSessionInfoStr() const
 
 void IRSDKWrapper::updateVarHeaders() 
 {
-  varHeadersMap.clear();
   varHeadersArr.clear();
 
   for (int index = 0; index < pHeader->numVars; ++index)
   {
     irsdk_varHeader* pVarHeader = &((irsdk_varHeader*)(pSharedMem + pHeader->varHeaderOffset))[index];
-    varHeadersMap.insert(std::pair<std::string, irsdk_varHeader*>(std::string(pVarHeader->name), pVarHeader));
     varHeadersArr.push_back(pVarHeader);
   }
 }
