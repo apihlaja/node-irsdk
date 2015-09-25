@@ -15,15 +15,13 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - npm -g install npm@2
   - set PATH=%APPDATA%\npm;%PATH%
-  # tool versions
+  # tools versions
   - node --version
   - npm --version
   # install modules
   - npm install
 
 test_script:
-  - node --version
-  - npm --version
   - npm test
 
 build: off
