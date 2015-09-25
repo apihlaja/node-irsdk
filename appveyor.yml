@@ -1,3 +1,5 @@
+version: {build}-{branch}
+
 environment:
   nodejs_version: "0.12"
 
