@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "bindings": "^1.2.1",
-    "js-yaml": "^3.3.1"
+    "js-yaml": "^3.3.1",
+    "nan": "^2.0.9"
   },
   "devDependencies": {
     "chai": "^3.2.0",

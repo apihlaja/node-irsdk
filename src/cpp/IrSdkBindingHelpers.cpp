@@ -1,131 +1,133 @@
 #include "IrSdkBindingHelpers.h"
+#include <nan.h>
 #include <iostream>
 
 using namespace v8;
 using namespace std;
 
-Handle<Value> NodeIrSdk::convertTelemetryValueToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, const int& index)
+Handle<Value> NodeIrSdk::convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index)
 {
   switch (var.type) {
   case irsdk_char:
-    return String::NewFromUtf8(isolate, (var.value[index]) + "\0");
+    return Nan::New((var.value[index]) + "\0").ToLocalChecked();
   case irsdk_bool:
-    return Boolean::New(isolate, var.boolValue[index]);
+    return Nan::New(var.boolValue[index]);
   case irsdk_int:
     if (strcmp(var.header->unit, "irsdk_SessionState") == 0) {
-      return getSessionStateValue(isolate, var.intValue[index]);
+      return getSessionStateValue(var.intValue[index]);
     }
     if (strcmp(var.header->unit, "irsdk_TrkLoc") == 0) {
-      return getTrackLoc(isolate, var.intValue[index]);
+      return getTrackLoc(var.intValue[index]);
     }
-    return Integer::New(isolate, static_cast<int32_t>(var.intValue[index]));
+    return Nan::New(static_cast<int32_t>(var.intValue[index]));
   case irsdk_bitField:
-    return getMaskedValues(isolate, var.intValue[index], var.header->unit);
+    return getMaskedValues(var.intValue[index], var.header->unit);
   case irsdk_float:
-    return Number::New(isolate, static_cast<double>(var.floatValue[index]));
+    return Nan::New(static_cast<double>(var.floatValue[index]));
   case irsdk_double:
-    return Number::New(isolate, var.doubleValue[index]);
+    return Nan::New(var.doubleValue[index]);
   default:
-    return Undefined(isolate);
+    return Nan::Undefined();
   }
 }
 
-Handle<Value> NodeIrSdk::convertTelemetryVarToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var)
+Handle<Value> NodeIrSdk::convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var)
 {
   if (var.header->count > 1) {
-    Handle<Array> arr = Array::New(isolate, var.header->count);
+    Handle<Array> arr = Nan::New<Array>(var.header->count);
     for (int i = 0; i < var.header->count; ++i)
     {
-      arr->Set(i, convertTelemetryValueToObject(isolate, var, i));
+      arr->Set(i, convertTelemetryValueToObject(var, i));
     }
     return arr;
   }
   else
   {
-    return convertTelemetryValueToObject(isolate, var, 0);
+    return convertTelemetryValueToObject(var, 0);
   }
 }
 
-void NodeIrSdk::convertVarHeaderToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj)
+void NodeIrSdk::convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj)
 {
-  obj->Set(String::NewFromUtf8(isolate, "name"), String::NewFromUtf8(isolate, var.header->name));
-  obj->Set(String::NewFromUtf8(isolate, "desc"), String::NewFromUtf8(isolate, var.header->desc));
-  obj->Set(String::NewFromUtf8(isolate, "unit"), String::NewFromUtf8(isolate, var.header->unit));
-  obj->Set(String::NewFromUtf8(isolate, "count"), Integer::New(isolate, var.header->count));
+  Nan::Set(obj, Nan::New("name").ToLocalChecked(), Nan::New(var.header->name).ToLocalChecked());
+  Nan::Set(obj, Nan::New("desc").ToLocalChecked(), Nan::New(var.header->desc).ToLocalChecked());
+  Nan::Set(obj, Nan::New("unit").ToLocalChecked(), Nan::New(var.header->unit).ToLocalChecked());
+  Nan::Set(obj, Nan::New("count").ToLocalChecked(), Nan::New(var.header->count));
+  
   switch (var.header->type) {
   case irsdk_char:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "char"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("char").ToLocalChecked());
     break;
   case irsdk_bool:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "bool"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("bool").ToLocalChecked());
     break;
   case irsdk_int:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "int"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("int").ToLocalChecked());
     break;
   case irsdk_bitField:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "bitField"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("bitField").ToLocalChecked());
     break;
   case irsdk_float:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "float"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("float").ToLocalChecked());
     break;
   case irsdk_double:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "double"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("double").ToLocalChecked());
     break;
   default:
-    obj->Set(String::NewFromUtf8(isolate, "type"), String::NewFromUtf8(isolate, "UNKNOWN"));
+    Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("UNKNOWN").ToLocalChecked());
     break;
   }
 }
 
-Handle<Value> NodeIrSdk::getMaskedValues(Isolate* isolate, const int& val, char* unit)
+Handle<Value> NodeIrSdk::getMaskedValues(const int& val, char* unit)
 {
   if (strcmp(unit,"irsdk_Flags") == 0) {
-    return getValueArr(isolate, val, FLAG_MASKS);
+    return getValueArr(val, FLAG_MASKS);
   }
   if (strcmp(unit, "irsdk_CameraState") == 0) {
-    return getValueArr(isolate, val, CAMERA_STATE_MASKS);
+    return getValueArr(val, CAMERA_STATE_MASKS);
   }
   if (strcmp(unit, "irsdk_EngineWarnings") == 0) {
-    return getValueArr(isolate, val, ENGINE_WARNINGS_MASKS);
+    return getValueArr(val, ENGINE_WARNINGS_MASKS);
   }
   if (strcmp(unit, "irsdk_PitSvFlags") == 0) {
-    return getValueArr(isolate, val, PIT_SV_MASKS);
+    return getValueArr(val, PIT_SV_MASKS);
   }
   cerr << "Missing converter for bitField: " << unit << endl;
-  return Integer::New(isolate, static_cast<int32_t>(val));
+  return Nan::New(static_cast<int32_t>(val));
 }
 
-Handle<Array> NodeIrSdk::getValueArr(Isolate* isolate, const int& val, const std::vector<NodeIrSdk::MaskName> MASKS)
+Handle<Array> NodeIrSdk::getValueArr(const int& val, const std::vector<NodeIrSdk::MaskName> MASKS)
 {
-  Handle<Array> arr = Array::New(isolate);
+  Handle<Array> arr = Nan::New<Array>();
   int counter = 0;
   for (const auto& mask : MASKS)
   {
     if ((mask.val & val) == mask.val) {
-      arr->Set(counter++, String::NewFromUtf8(isolate, mask.name));
+      Nan::Set(arr, counter++, Nan::New(mask.name).ToLocalChecked());
     }
   }
   return arr;
 }
 
-Handle<Value> NodeIrSdk::getSessionStateValue(Isolate* isolate, const int& val)
+Handle<Value> NodeIrSdk::getSessionStateValue(const int& val)
 {
   for (const auto& mask : SESSION_STATES) {
     if (mask.val == val) {
-      return String::NewFromUtf8(isolate,mask.name);
+      return Nan::New(mask.name).ToLocalChecked();
     }
   }
-  return Undefined(isolate);
+  return Nan::Undefined();
 }
 
-Handle<Value> NodeIrSdk::getTrackLoc(Isolate* isolate, const int& val)
+Handle<Value> NodeIrSdk::getTrackLoc(const int& val)
 {
   for (const auto& mask : TRACK_LOCS) {
     if (mask.val == val) {
-      return String::NewFromUtf8(isolate, mask.name);
+      return Nan::New(mask.name).ToLocalChecked();
     }
   }
-  return Undefined(isolate);
+  return Nan::Undefined();
 }
 
 NodeIrSdk::MaskName::MaskName(int val, const char* name) : 

@@ -10,9 +10,9 @@ using namespace v8;
 namespace NodeIrSdk
 {
 
-  Handle<Value> convertTelemetryValueToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, const int& index);
-  Handle<Value> convertTelemetryVarToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var);
-  void convertVarHeaderToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj);
+  Handle<Value> convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index);
+  Handle<Value> convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var);
+  void convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj);
 
 
   struct MaskName {
@@ -22,11 +22,11 @@ namespace NodeIrSdk
     MaskName(int val, const char* name);
   };
 
-  Handle<Value> getSessionStateValue(Isolate* isolate, const int& val);
-  Handle<Value> getTrackLoc(Isolate* isolate, const int& val);
+  Handle<Value> getSessionStateValue(const int& val);
+  Handle<Value> getTrackLoc(const int& val);
 
-  Handle<Value> getMaskedValues(Isolate* isolate, const int& val, char* unit);
-  Handle<Array> getValueArr(Isolate* isolate, const int& val, const std::vector<MaskName> MASKS);
+  Handle<Value> getMaskedValues(const int& val, char* unit);
+  Handle<Array> getValueArr(const int& val, const std::vector<MaskName> MASKS);
 
   const std::vector<MaskName> FLAG_MASKS = {
     MaskName((int)irsdk_checkered, "Checkered"),

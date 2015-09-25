@@ -9,70 +9,48 @@ using namespace v8;
 
 namespace NodeIrSdk {
 
-  void startup(const FunctionCallbackInfo<Value>& args)
+  void start(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    args.GetReturnValue().Set(Boolean::New(isolate, irsdk.startup()));
+    args.GetReturnValue().Set(Nan::New(irsdk.startup()));
   }
 
-  void shutdown(const FunctionCallbackInfo<Value>& args)
+  void shutdown(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
     irsdk.shutdown();
-    args.GetReturnValue().Set(Undefined(isolate));
+    args.GetReturnValue().Set(Nan::Undefined());
   }
 
-  void isInitialized(const FunctionCallbackInfo<Value>& args)
+  void isInitialized(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    args.GetReturnValue().Set(Boolean::New(isolate, irsdk.isInitialized()));
+    args.GetReturnValue().Set(Nan::New(irsdk.isInitialized()));
   }
 
-  void isConnected(const FunctionCallbackInfo<Value>& args)
+  void isConnected(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    args.GetReturnValue().Set(Boolean::New(isolate, irsdk.isConnected()));
+    args.GetReturnValue().Set(Nan::New(irsdk.isConnected()));
   }
 
-  void updateSessionInfo(const FunctionCallbackInfo<Value>& args)
+  void updateSessionInfo(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    args.GetReturnValue().Set(Boolean::New(isolate, irsdk.updateSessionInfo()));
+    args.GetReturnValue().Set(Nan::New(irsdk.updateSessionInfo()));
   }
 
-  void getSessionInfo(const FunctionCallbackInfo<Value>& args)
+  void getSessionInfo(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
     args.GetReturnValue().Set(
-      node::Encode(irsdk.getSessionInfo().c_str(), irsdk.getSessionInfo().length(), node::BINARY));
+      Nan::Encode(irsdk.getSessionInfo().c_str(), irsdk.getSessionInfo().length(), Nan::BINARY));
   }
 
-  void updateTelemetry(const FunctionCallbackInfo<Value>& args)
+  void updateTelemetry(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    args.GetReturnValue().Set(Boolean::New(isolate, irsdk.updateTelemetry()));
+    args.GetReturnValue().Set(Nan::New(irsdk.updateTelemetry()));
   }
 
-  void getTelemetry(const FunctionCallbackInfo<Value>& args)
+  void getTelemetry(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    Local<Object> rootObj = Object::New(isolate);
-    Local<Object> valuesObj = Object::New(isolate);
-    rootObj->Set(String::NewFromUtf8(isolate, "timestamp"), Date::New(isolate, irsdk.getLastTelemetryUpdateTS()));
+    Local<Object> rootObj = Nan::New<v8::Object>();
+    Local<Object> valuesObj = Nan::New<v8::Object>();
+    Nan::Set(rootObj, Nan::New("timestamp").ToLocalChecked(), Nan::New<Date>(irsdk.getLastTelemetryUpdateTS()).ToLocalChecked());
 
     std::vector<irsdk_varHeader*> headers = irsdk.getVarHeaders();
 
@@ -80,28 +58,25 @@ namespace NodeIrSdk {
     {
       IRSDKWrapper::TelemetryVar var(item);
       irsdk.getVarVal(var);
-      Handle<Value> varValue = convertTelemetryVarToObject(isolate, var);
-      valuesObj->Set(String::NewFromUtf8(isolate, var.header->name), varValue);
+      Handle<Value> varValue = convertTelemetryVarToObject(var);
+      Nan::Set(valuesObj, Nan::New(var.header->name).ToLocalChecked(), varValue);
     }
-    rootObj->Set(String::NewFromUtf8(isolate, "values"), valuesObj);
+    Nan::Set(rootObj, Nan::New("values").ToLocalChecked(), valuesObj);
     args.GetReturnValue().Set(rootObj);
   }
 
-  void getTelemetryDescription(const FunctionCallbackInfo<Value>& args)
+  void getTelemetryDescription(const Nan::FunctionCallbackInfo<v8::Value>& args)
   {
-    Isolate* isolate = Isolate::GetCurrent();
-    HandleScope scope(isolate);
-
-    Local<Object> obj = Object::New(isolate);
+    Local<Object> obj = Nan::New<Object>();
     std::vector<irsdk_varHeader*> headers = irsdk.getVarHeaders();
 
     for (const auto item : headers)
     {
       IRSDKWrapper::TelemetryVar var(item);
       irsdk.getVarVal(var);
-      Handle<Object> varObj = Object::New(isolate);
-      convertVarHeaderToObject(isolate, var, varObj);
-      obj->Set(String::NewFromUtf8(isolate, var.header->name), varObj);
+      Handle<Object> varObj = Nan::New<Object>();
+      convertVarHeaderToObject(var, varObj);
+      Nan::Set(obj, Nan::New(var.header->name).ToLocalChecked(), varObj);
     }
     args.GetReturnValue().Set(obj);
   }
