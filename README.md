@@ -1,5 +1,7 @@
 # node-irsdk
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ukyuuq9004wy9h5b/branch/master?svg=true)](https://ci.appveyor.com/project/apihlaja/node-irsdk/branch/master)
+
 iRacing SDK implementation for Node.js. 
 
 The current version provides 
@@ -14,7 +16,7 @@ You can find simple usage examples from [utils](utils/) directory.
 
 Before installing, you need
 
-* Windows version of [Node.js](https://nodejs.org/download/) v0.12
+* Windows version of [Node.js](https://nodejs.org/download/) v0.12 or v4
 * Visual Studio and Python 2.7 for node-gyp, see 
 [installation instructions](https://github.com/TooTallNate/node-gyp)
 
