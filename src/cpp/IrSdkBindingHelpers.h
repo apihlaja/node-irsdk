@@ -2,13 +2,18 @@
 
 #include <node.h>
 #include "irsdk/irsdk_defines.h"
+#include "IRSDKWrapper.h"
 #include <vector>
 
 using namespace v8;
 
-// methods to extract/convert bitfields and enums to v8 string/string arrays for readability
 namespace NodeIrSdk
 {
+
+  Handle<Value> convertTelemetryValueToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, const int& index);
+  Handle<Value> convertTelemetryVarToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var);
+  void convertVarHeaderToObject(Isolate* isolate, IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj);
+
 
   struct MaskName {
     int val;
