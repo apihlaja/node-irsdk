@@ -203,4 +203,4 @@ void init(Handle<Object> exports)
 }
 
 
-NODE_MODULE(IrsdkNodeWrapper, init)
+NODE_MODULE(IrSdkNodeBindings, init)
