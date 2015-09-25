@@ -7,7 +7,7 @@
 using namespace v8;
 
 // methods to extract/convert bitfields and enums to v8 string/string arrays for readability
-namespace iRBitFieldHelpers
+namespace NodeIrSdk
 {
 
   struct MaskName {
@@ -21,7 +21,7 @@ namespace iRBitFieldHelpers
   Handle<Value> getTrackLoc(Isolate* isolate, const int& val);
 
   Handle<Value> getMaskedValues(Isolate* isolate, const int& val, char* unit);
-  Handle<Array> getValueArr(Isolate* isolate, const int& val, const std::vector<iRBitFieldHelpers::MaskName> MASKS);
+  Handle<Array> getValueArr(Isolate* isolate, const int& val, const std::vector<MaskName> MASKS);
 
   const std::vector<MaskName> FLAG_MASKS = {
     MaskName((int)irsdk_checkered, "Checkered"),

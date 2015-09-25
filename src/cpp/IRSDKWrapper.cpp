@@ -1,18 +1,18 @@
 #include "IRSDKWrapper.h"
 #include <iostream>
 
-IRSDKWrapper::IRSDKWrapper():
+NodeIrSdk::IRSDKWrapper::IRSDKWrapper():
 hMemMapFile(NULL), pSharedMem(NULL), pHeader(NULL), lastTickCount(INT_MIN), lastSessionInfoUpdate(INT_MIN), 
 data(NULL), sessionInfoStr()
 {
 }
 
 
-IRSDKWrapper::~IRSDKWrapper()
+NodeIrSdk::IRSDKWrapper::~IRSDKWrapper()
 {
 }
 
-bool IRSDKWrapper::startup()
+bool NodeIrSdk::IRSDKWrapper::startup()
 {
 
   if (!hMemMapFile)
@@ -27,18 +27,18 @@ bool IRSDKWrapper::startup()
   return true;
 }
 
-bool IRSDKWrapper::isInitialized() const 
+bool NodeIrSdk::IRSDKWrapper::isInitialized() const 
 {
   if (!hMemMapFile) return false;
   return true;
 }
 
-bool IRSDKWrapper::isConnected() const 
+bool NodeIrSdk::IRSDKWrapper::isConnected() const 
 {
   return pHeader->status == irsdk_stConnected;
 }
 
-void IRSDKWrapper::shutdown() 
+void NodeIrSdk::IRSDKWrapper::shutdown() 
 {
   if (pSharedMem)
     UnmapViewOfFile(pSharedMem);
@@ -59,7 +59,7 @@ void IRSDKWrapper::shutdown()
   sessionInfoStr = "";
 }
 
-bool IRSDKWrapper::updateSessionInfo() 
+bool NodeIrSdk::IRSDKWrapper::updateSessionInfo() 
 {
   if (startup()) {
     int counter = pHeader->sessionInfoUpdate;
@@ -74,12 +74,12 @@ bool IRSDKWrapper::updateSessionInfo()
   return false;
 }
 
-const std::string IRSDKWrapper::getSessionInfo() const 
+const std::string NodeIrSdk::IRSDKWrapper::getSessionInfo() const 
 {
   return sessionInfoStr;
 }
 
-bool IRSDKWrapper::updateTelemetry() 
+bool NodeIrSdk::IRSDKWrapper::updateTelemetry() 
 {
   if ( startup() )
   {
@@ -128,12 +128,12 @@ bool IRSDKWrapper::updateTelemetry()
   return false;
 }
 
-const double IRSDKWrapper::getLastTelemetryUpdateTS() const
+const double NodeIrSdk::IRSDKWrapper::getLastTelemetryUpdateTS() const
 {
   return 1000.0f * lastValidTime;
 }
 
-const char* IRSDKWrapper::getSessionInfoStr() const
+const char* NodeIrSdk::IRSDKWrapper::getSessionInfoStr() const
 {
   if (isInitialized()) {
     return pSharedMem + pHeader->sessionInfoOffset;
@@ -142,7 +142,7 @@ const char* IRSDKWrapper::getSessionInfoStr() const
   return NULL;
 }
 
-void IRSDKWrapper::updateVarHeaders() 
+void NodeIrSdk::IRSDKWrapper::updateVarHeaders() 
 {
   varHeadersArr.clear();
 
@@ -153,24 +153,24 @@ void IRSDKWrapper::updateVarHeaders()
   }
 }
 
-IRSDKWrapper::TelemetryVar::TelemetryVar(irsdk_varHeader* varHeader):
+NodeIrSdk::IRSDKWrapper::TelemetryVar::TelemetryVar(irsdk_varHeader* varHeader):
 header(varHeader)
 {
   value = new char[irsdk_VarTypeBytes[varHeader->type] * varHeader->count];
   type = (irsdk_VarType)varHeader->type;
 }
 
-IRSDKWrapper::TelemetryVar::~TelemetryVar() 
+NodeIrSdk::IRSDKWrapper::TelemetryVar::~TelemetryVar() 
 {
   delete value;
 }
 
-const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const 
+const std::vector<irsdk_varHeader*> NodeIrSdk::IRSDKWrapper::getVarHeaders() const 
 {
   return varHeadersArr;
 }
 
-bool IRSDKWrapper::getVarVal(TelemetryVar& var) const 
+bool NodeIrSdk::IRSDKWrapper::getVarVal(TelemetryVar& var) const 
 {
   if (data == NULL) {
     std::cout << "no data available.." << std::endl;

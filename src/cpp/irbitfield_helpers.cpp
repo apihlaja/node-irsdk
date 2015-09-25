@@ -4,7 +4,7 @@
 using namespace v8;
 using namespace std;
 
-Handle<Value> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& val, char* unit)
+Handle<Value> NodeIrSdk::getMaskedValues(Isolate* isolate, const int& val, char* unit)
 {
   if (strcmp(unit,"irsdk_Flags") == 0) {
     return getValueArr(isolate, val, FLAG_MASKS);
@@ -22,7 +22,7 @@ Handle<Value> iRBitFieldHelpers::getMaskedValues(Isolate* isolate, const int& va
   return Integer::New(isolate, static_cast<int32_t>(val));
 }
 
-Handle<Array> iRBitFieldHelpers::getValueArr(Isolate* isolate, const int& val, const std::vector<iRBitFieldHelpers::MaskName> MASKS)
+Handle<Array> NodeIrSdk::getValueArr(Isolate* isolate, const int& val, const std::vector<NodeIrSdk::MaskName> MASKS)
 {
   Handle<Array> arr = Array::New(isolate);
   int counter = 0;
@@ -35,7 +35,7 @@ Handle<Array> iRBitFieldHelpers::getValueArr(Isolate* isolate, const int& val, c
   return arr;
 }
 
-Handle<Value> iRBitFieldHelpers::getSessionStateValue(Isolate* isolate, const int& val)
+Handle<Value> NodeIrSdk::getSessionStateValue(Isolate* isolate, const int& val)
 {
   for (const auto& mask : SESSION_STATES) {
     if (mask.val == val) {
@@ -45,7 +45,7 @@ Handle<Value> iRBitFieldHelpers::getSessionStateValue(Isolate* isolate, const in
   return Undefined(isolate);
 }
 
-Handle<Value> iRBitFieldHelpers::getTrackLoc(Isolate* isolate, const int& val)
+Handle<Value> NodeIrSdk::getTrackLoc(Isolate* isolate, const int& val)
 {
   for (const auto& mask : TRACK_LOCS) {
     if (mask.val == val) {
@@ -55,7 +55,7 @@ Handle<Value> iRBitFieldHelpers::getTrackLoc(Isolate* isolate, const int& val)
   return Undefined(isolate);
 }
 
-iRBitFieldHelpers::MaskName::MaskName(int val, const char* name) : 
+NodeIrSdk::MaskName::MaskName(int val, const char* name) : 
 val(val), name(name)
 {
 }
