@@ -43,7 +43,8 @@ public:
   };
 
   const std::vector<irsdk_varHeader*> getVarHeaders() const;
-  bool getVar(TelemetryVar& var) const;
+
+  bool getVarVal(TelemetryVar& var) const;
 
   const double getLastTelemetryUpdateTS() const; // returns JS compatible TS
 

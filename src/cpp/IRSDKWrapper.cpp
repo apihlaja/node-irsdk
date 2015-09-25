@@ -173,7 +173,7 @@ const std::vector<irsdk_varHeader*> IRSDKWrapper::getVarHeaders() const
   return varHeadersArr;
 }
 
-bool IRSDKWrapper::getVar(TelemetryVar& var) const 
+bool IRSDKWrapper::getVarVal(TelemetryVar& var) const 
 {
   if (data == NULL) {
     std::cout << "no data available.." << std::endl;

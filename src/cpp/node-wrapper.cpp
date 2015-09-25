@@ -119,7 +119,7 @@ void getTelemetry(const FunctionCallbackInfo<Value>& args)
   for (const auto item : headers) 
   {
     IRSDKWrapper::TelemetryVar var(item);
-    irsdk.getVar(var);
+    irsdk.getVarVal(var);
     Handle<Value> varValue = convertTelemetryVarToObject(isolate, var);
     valuesObj->Set(String::NewFromUtf8(isolate, var.header->name), varValue);
   }
@@ -169,7 +169,7 @@ void getTelemetryDescription(const FunctionCallbackInfo<Value>& args)
   for (const auto item : headers)
   {
     IRSDKWrapper::TelemetryVar var(item);
-    irsdk.getVar(var);
+    irsdk.getVarVal(var);
     Handle<Object> varObj = Object::New(isolate);
     convertVarHeaderToObject(isolate, var, varObj);
     obj->Set(String::NewFromUtf8(isolate, var.header->name), varObj);
