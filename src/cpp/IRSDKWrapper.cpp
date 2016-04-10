@@ -1,35 +1,49 @@
 #include "IRSDKWrapper.h"
 #include <iostream>
 
+// npm install --debug enables debug prints
+#ifdef _DEBUG
+  #define debug(x) std::cout << x << std::endl;
+#else
+  #define debug(x)
+#endif
+
 NodeIrSdk::IRSDKWrapper::IRSDKWrapper():
 hMemMapFile(NULL), pSharedMem(NULL), pHeader(NULL), lastTickCount(INT_MIN), lastSessionInfoUpdate(INT_MIN), 
 data(NULL), sessionInfoStr()
 {
+  debug("IRSDKWrapper: constructing...");
 }
 
 
 NodeIrSdk::IRSDKWrapper::~IRSDKWrapper()
 {
+  debug("IRSDKWrapper: deconstructing...");
 }
 
 bool NodeIrSdk::IRSDKWrapper::startup()
 {
-
+  debug("IRSDKWrapper: starting up...");
+  
   if (!hMemMapFile)
   {
+    debug("IRSDKWrapper: opening mem map...");
     hMemMapFile = OpenFileMapping(FILE_MAP_READ, FALSE, IRSDK_MEMMAPFILENAME);
     pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
     pHeader = (irsdk_header *)pSharedMem;
     lastTickCount = INT_MIN;
     data = new char[pHeader->bufLen];
   }
-
+  debug("IRSDKWrapper: start up ready.");
   return true;
 }
 
 bool NodeIrSdk::IRSDKWrapper::isInitialized() const 
 {
-  if (!hMemMapFile) return false;
+  if (!hMemMapFile) {
+    debug("IRSDKWrapper: not initialized...");
+    return false;
+  }
   return true;
 }
 
@@ -40,6 +54,7 @@ bool NodeIrSdk::IRSDKWrapper::isConnected() const
 
 void NodeIrSdk::IRSDKWrapper::shutdown() 
 {
+  debug("IRSDKWrapper: shutting down...");
   if (pSharedMem)
     UnmapViewOfFile(pSharedMem);
 
@@ -57,10 +72,13 @@ void NodeIrSdk::IRSDKWrapper::shutdown()
   lastValidTime = time(NULL);
   varHeadersArr.clear();
   sessionInfoStr = "";
+  
+  debug("IRSDKWrapper: shutdown ready.");
 }
 
 bool NodeIrSdk::IRSDKWrapper::updateSessionInfo() 
 {
+  debug("IRSDKWrapper: updating session info...");
   if (startup()) {
     int counter = pHeader->sessionInfoUpdate;
 
@@ -81,7 +99,8 @@ const std::string NodeIrSdk::IRSDKWrapper::getSessionInfo() const
 
 bool NodeIrSdk::IRSDKWrapper::updateTelemetry() 
 {
-  if ( startup() )
+  debug("IRSDKWrapper: updating telemetry...");
+  if ( isInitialized() && isConnected() )
   {
     if (varHeadersArr.empty()) {
       updateVarHeaders();
@@ -144,6 +163,7 @@ const char* NodeIrSdk::IRSDKWrapper::getSessionInfoStr() const
 
 void NodeIrSdk::IRSDKWrapper::updateVarHeaders() 
 {
+  debug("IRSDKWrapper: updating varHeaders...");
   varHeadersArr.clear();
 
   for (int index = 0; index < pHeader->numVars; ++index)
@@ -151,6 +171,7 @@ void NodeIrSdk::IRSDKWrapper::updateVarHeaders()
     irsdk_varHeader* pVarHeader = &((irsdk_varHeader*)(pSharedMem + pHeader->varHeaderOffset))[index];
     varHeadersArr.push_back(pVarHeader);
   }
+  debug("IRSDKWrapper: varHeaders update done.");
 }
 
 NodeIrSdk::IRSDKWrapper::TelemetryVar::TelemetryVar(irsdk_varHeader* varHeader):
@@ -173,7 +194,7 @@ const std::vector<irsdk_varHeader*> NodeIrSdk::IRSDKWrapper::getVarHeaders() con
 bool NodeIrSdk::IRSDKWrapper::getVarVal(TelemetryVar& var) const 
 {
   if (data == NULL) {
-    std::cout << "no data available.." << std::endl;
+    debug("no data available..");
     return false;
   }
 
