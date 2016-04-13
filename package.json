@@ -4,7 +4,6 @@
   "description": "iRacing SDK implementation for Node.js",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node install.js",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
     "lint": "eslint src utils",
@@ -31,14 +30,10 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "eslint": "^1.1.0",
-    "git-validate": "^2.0.3",
     "mocha": "^2.2.5",
     "moment": "^2.10.3",
     "sandboxed-module": "^2.0.2",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0"
-  },
-  "pre-commit": [
-    "test"
-  ]
+  }
 }
