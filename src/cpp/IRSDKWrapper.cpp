@@ -10,7 +10,7 @@
 
 NodeIrSdk::IRSDKWrapper::IRSDKWrapper():
 hMemMapFile(NULL), pSharedMem(NULL), pHeader(NULL), lastTickCount(INT_MIN), lastSessionInfoUpdate(INT_MIN), 
-data(NULL), sessionInfoStr()
+data(NULL), dataLen(-1), sessionInfoStr()
 {
   debug("IRSDKWrapper: constructing...");
 }
@@ -32,7 +32,6 @@ bool NodeIrSdk::IRSDKWrapper::startup()
     pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
     pHeader = (irsdk_header *)pSharedMem;
     lastTickCount = INT_MIN;
-    data = new char[pHeader->bufLen];
   }
   debug("IRSDKWrapper: start up ready.");
   return true;
@@ -70,7 +69,7 @@ void NodeIrSdk::IRSDKWrapper::shutdown()
   
   lastTickCount = INT_MIN;
   lastSessionInfoUpdate = INT_MIN;
-  delete data;
+  delete[] data;
   data = NULL;
   lastValidTime = time(NULL);
   varHeadersArr.clear();
@@ -127,6 +126,20 @@ bool NodeIrSdk::IRSDKWrapper::updateTelemetry()
     // if newer than last recieved, than report new data
     if (lastTickCount < pHeader->varBuf[latest].tickCount)
     {
+      debug("IRSDKWrapper: new data, attempting to copy");
+      if ( data == NULL || dataLen != pHeader->bufLen ) {
+        debug("IRSDKWrapper: create new data array");
+        if ( data != NULL ) delete[] data;
+        data = NULL;
+        
+        if ( pHeader->bufLen > 0 ) {
+          dataLen = pHeader->bufLen;
+          data = new char[dataLen];
+        } else {
+          debug("IRSDKWrapper: weird bufferLen.. skipping");
+          return false;
+        }
+      }
       // try to get data
       // try twice to get the data out
       for (int count = 0; count < 2; count++)

@@ -59,6 +59,7 @@ namespace NodeIrSdk {
     int lastSessionInfoUpdate;
     time_t lastValidTime;
     char* data;
+    int dataLen;
     std::string sessionInfoStr;
 
     std::vector<irsdk_varHeader*> varHeadersArr;
