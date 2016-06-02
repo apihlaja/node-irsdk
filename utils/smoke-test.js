@@ -5,7 +5,7 @@ var expect = require('chai').expect;
 var irsdk = require('../');
 
 irsdk.init({
-  telemetryUpdateInterval: 1000,
+  telemetryUpdateInterval: 0,
   sessionInfoUpdateInterval: 1000
 });
 
@@ -120,7 +120,7 @@ var done = (function () {
     tasks.push(taskName);
     if ( tasks.length >= totalTasks ) {
       console.log();
-      console.log('checks done.');
+      console.log('checks done', new Date());
       process.exit();
     }
   };
