@@ -44,12 +44,15 @@ bool NodeIrSdk::IRSDKWrapper::isInitialized() const
     debug("IRSDKWrapper: not initialized...");
     return false;
   }
+  debug("IRSDKWrapper: is initialized...");
   return true;
 }
 
 bool NodeIrSdk::IRSDKWrapper::isConnected() const 
 {
-  return pHeader->status == irsdk_stConnected;
+  bool status = pHeader->status == irsdk_stConnected;
+  debug("IRSDKWrapper: sim status: " << status);
+  return status;
 }
 
 void NodeIrSdk::IRSDKWrapper::shutdown() 
@@ -106,16 +109,20 @@ bool NodeIrSdk::IRSDKWrapper::updateTelemetry()
       updateVarHeaders();
     }
     // if sim is not active, then no new data
-    if (!pHeader->status)
+    if (pHeader->status != irsdk_stConnected)
     {
+      debug("IRSDKWrapper: not connected, break");
       lastTickCount = INT_MIN;
       return false;
     }
-
+    
+    debug("IRSDKWrapper: finding lastest buffer");
     int latest = 0;
     for (int i = 1; i<pHeader->numBuf; i++)
       if (pHeader->varBuf[latest].tickCount < pHeader->varBuf[i].tickCount)
         latest = i;
+    
+    debug("IRSDKWrapper: lastest buffer " << latest);
 
     // if newer than last recieved, than report new data
     if (lastTickCount < pHeader->varBuf[latest].tickCount)
@@ -124,26 +131,31 @@ bool NodeIrSdk::IRSDKWrapper::updateTelemetry()
       // try twice to get the data out
       for (int count = 0; count < 2; count++)
       {
+        debug("IRSDKWrapper: copy attempt " << count);
         int curTickCount = pHeader->varBuf[latest].tickCount;
         memcpy(data, pSharedMem + pHeader->varBuf[latest].bufOffset, pHeader->bufLen);
         if (curTickCount == pHeader->varBuf[latest].tickCount)
         {
           lastTickCount = curTickCount;
           lastValidTime = time(NULL);
+          debug("IRSDKWrapper: copy complete");
           return true;
         }
       }
       // if here, the data changed out from under us.
+      debug("IRSDKWrapper: copy failed");
       return false;
     }
     // if older than last recieved, than reset, we probably disconnected
     else if (lastTickCount >  pHeader->varBuf[latest].tickCount)
     {
+      debug("IRSDKWrapper: ???");
       lastTickCount = INT_MIN;
       return false;
     }
     // else the same, and nothing changed this tick
   }
+  debug("IRSDKWrapper: no new telemetry data");
   return false;
 }
 
@@ -154,6 +166,7 @@ const double NodeIrSdk::IRSDKWrapper::getLastTelemetryUpdateTS() const
 
 const char* NodeIrSdk::IRSDKWrapper::getSessionInfoStr() const
 {
+  debug("IRSDKWrapper: getSessionInfoStr");
   if (isInitialized()) {
     return pSharedMem + pHeader->sessionInfoOffset;
   }
@@ -188,11 +201,13 @@ NodeIrSdk::IRSDKWrapper::TelemetryVar::~TelemetryVar()
 
 const std::vector<irsdk_varHeader*> NodeIrSdk::IRSDKWrapper::getVarHeaders() const 
 {
+  debug("IRSDKWrapper: getVarHeaders");
   return varHeadersArr;
 }
 
 bool NodeIrSdk::IRSDKWrapper::getVarVal(TelemetryVar& var) const 
 {
+  debug("IRSDKWrapper: getVarVal " << var.header->name);
   if (data == NULL) {
     debug("no data available..");
     return false;
