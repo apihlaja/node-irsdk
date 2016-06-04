@@ -29,6 +29,9 @@ bool NodeIrSdk::IRSDKWrapper::startup()
   {
     debug("IRSDKWrapper: opening mem map...");
     hMemMapFile = OpenFileMapping(FILE_MAP_READ, FALSE, IRSDK_MEMMAPFILENAME);
+    if ( hMemMapFile == NULL ) {
+      return false;
+    }
     pSharedMem = (const char *)MapViewOfFile(hMemMapFile, FILE_MAP_READ, 0, 0, 0);
     pHeader = (irsdk_header *)pSharedMem;
     lastTickCount = INT_MIN;
