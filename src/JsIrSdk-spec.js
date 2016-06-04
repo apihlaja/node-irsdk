@@ -66,11 +66,14 @@ describe('JsIrSdk', function () {
     start.should.have.been.calledOnce;
     this.clock.tick(2500);
     isConnected.returns(false);
-    this.clock.tick(14000);
+    var isInitialized = sinon.stub(mock,'isInitialized');
+    isInitialized.returns(false);
+    this.clock.tick(11000);
     start.should.have.been.calledTwice;
+    isConnected.returns(true);
+    isInitialized.returns(true);
     var restartSpy = sinon.spy();
     irsdk.on('Connected', restartSpy);
-    isConnected.returns(true);
     this.clock.tick(2500);
     restartSpy.should.have.been.called;
     irsdk.stop();

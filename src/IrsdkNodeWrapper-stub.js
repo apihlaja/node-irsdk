@@ -2,7 +2,7 @@ var mock = {};
 
 mock.start = function() {return true;};
 mock.shutdown = function() {};
-mock.isInitialized = function() {return false;};
+mock.isInitialized = function() {return true;};
 mock.isConnected = function() {return false;};
   
 mock.updateSessionInfo = function() {return false;};

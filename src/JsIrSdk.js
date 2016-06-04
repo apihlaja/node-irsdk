@@ -29,12 +29,19 @@ function JsIrSdk(IrSdkWrapper, opts)
   
   
   var connected = false; // if irsdk is available
-  var initialized = IrSdkWrapper.start(); // if wrapper is started
+  
+  var startIntervalId = setInterval(function () {
+    if ( !IrSdkWrapper.isInitialized() ) {
+      IrSdkWrapper.start();
+    }
+  }, 10000);
+  
+  IrSdkWrapper.start();
   
   var telemetryDescription;
   
   var checkConnection = function () {
-    if (initialized && IrSdkWrapper.isConnected()) {
+    if (IrSdkWrapper.isInitialized() && IrSdkWrapper.isConnected()) {
       if (!connected) {
         connected = true;
         self.emit('Connected');
@@ -45,15 +52,7 @@ function JsIrSdk(IrSdkWrapper, opts)
         self.emit('Disconnected');
 
         IrSdkWrapper.shutdown();
-        initialized = false;
         telemetryDescription = null;
-        
-        // restarts after 10s
-        // so if iRacing is started again,
-        // new Connected event is emitted
-        setTimeout(function () {
-          initialized = IrSdkWrapper.start();
-        }, 10000);
       }
     }
   };
@@ -107,6 +106,7 @@ function JsIrSdk(IrSdkWrapper, opts)
   this.stop = function () {
     clearInterval(telemetryIntervalId);
     clearInterval(sessionInfoIntervalId);
+    clearInterval(startIntervalId);
     IrSdkWrapper.shutdown();
   };
 }
