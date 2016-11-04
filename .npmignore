@@ -1,5 +1,9 @@
-node_modules/
 build/
+sample-data/
+utils/
+test/
+.eslintrc
+appveyor.yml
 
 
 # Visual Studio
