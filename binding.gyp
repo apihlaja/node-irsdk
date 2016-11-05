@@ -5,6 +5,7 @@
       "cflags": [ "-Wall", "-std=c++11" ],
       "sources": [ 
         "src/cpp/IrSdkNodeBindings.cpp", 
+        "src/cpp/IrSdkCommand.cpp", 
         "src/cpp/IRSDKWrapper.cpp", 
         "src/cpp/IrSdkBindingHelpers.cpp" 
       ],

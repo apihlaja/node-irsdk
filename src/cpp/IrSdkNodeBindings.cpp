@@ -3,6 +3,9 @@
 #include "IRSDKWrapper.h"
 #include "IrSdkBindingHelpers.h"
 #include "IrSdkNodeBindings.h"
+#include "IrSdkCommand.h"
+
+#include <iostream>
 #include <stdint.h>
 
 using namespace v8;
@@ -79,6 +82,42 @@ namespace NodeIrSdk {
       Nan::Set(obj, Nan::New(var.header->name).ToLocalChecked(), varObj);
     }
     args.GetReturnValue().Set(obj);
+  }
+  
+  NAN_METHOD(sendCmd) {
+
+    if (!irsdk.isConnected()) return;
+    
+    if (0 < info.Length() && info.Length() < 4 ) {
+      std::cerr << "sendCommand: invalid arguments (1 to 4 accepted)" << std::endl;
+      return;
+    }
+    
+    
+    for (int i = 0; i < info.Length(); ++i) {
+      if (!info[i]->IsInt32()) {
+        std::cerr << "sendCommand: invalid argument type, int32 needed" << std::endl;
+        return;
+      }
+    }
+    
+    switch (info.Length()) {
+    case 1:
+      broadcastCmd(info[0]->Int32Value(), 0, 0);
+      break;
+    case 2:
+      broadcastCmd(info[0]->Int32Value(), info[1]->Int32Value(), 0);
+      break;
+    case 3:
+      broadcastCmd(
+        info[0]->Int32Value(), info[1]->Int32Value(), info[2]->Int32Value());
+      break;
+    case 4:
+      broadcastCmd(
+        info[0]->Int32Value(), info[1]->Int32Value(), 
+        info[2]->Int32Value(), info[3]->Int32Value());
+      break;
+    }
   }
 
   static void cleanUp(void* arg)

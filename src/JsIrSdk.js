@@ -5,6 +5,8 @@ function JsIrSdk(IrSdkWrapper, opts)
 {
   events.EventEmitter.call(this);
   
+  this.sendCmd = IrSdkWrapper.sendCmd;
+  
   var self = this;
   opts = opts || {};
   
@@ -114,3 +116,4 @@ function JsIrSdk(IrSdkWrapper, opts)
 util.inherits(JsIrSdk, events.EventEmitter);
 
 module.exports = JsIrSdk;
+
