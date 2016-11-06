@@ -7,6 +7,70 @@ function JsIrSdk(IrSdkWrapper, opts)
   
   this.sendCmd = IrSdkWrapper.sendCmd;
   
+  this.Consts = require('./Consts');
+  
+  this.focusOnPos = function (position, camGroupNum, camNum) {
+    camGroupNum = (camGroupNum) ? camGroupNum : 0;
+    camNum = (camNum) ? camNum : 0;
+    this.sendCmd(this.Consts.BroadcastMsg.CamSwitchPos, position, camGroupNum, camNum)
+  }
+  
+  this.focusOnCar = function (carNum, camGroupNum, camNum) {
+    camGroupNum = (camGroupNum) ? camGroupNum : 0;
+    camNum = (camNum) ? camNum : 0;
+    this.sendCmd(this.Consts.BroadcastMsg.CamSwitchNum, carNum, camGroupNum, camNum)
+  }
+  
+  this.setCameraState = function (state) {
+    this.sendCmd(this.Consts.BroadcastMsg.CamSetState, state)
+  }
+  
+  this.setReplaySpeed = function (speed, slowMotion) {
+    slowMotion = (slowMotion) ? 1 : 0;
+    this.sendCmd(this.Consts.BroadcastMsg.ReplaySetPlaySpeed, speed, slowMotion)
+  }
+  
+  this.setReplayPosition = function (rpyPosMode, frameNum) {
+    this.sendCmd(this.Consts.BroadcastMsg.ReplaySetPlayPosition, rpyPosMode, frameNum)
+  }
+  
+  this.searchFromReplay = function (mode) {
+    this.sendCmd(this.Consts.BroadcastMsg.ReplaySearch, mode)
+  }
+  
+  this.searchFromReplayByTS = function (sessionNum, sessionTimeMS) {
+    this.sendCmd(this.Consts.BroadcastMsg.ReplaySearchSessionTime, sessionNum, sessionTimeMS)
+  }
+  
+  this.reloadTextures = function () {
+    this.sendCmd(this.Consts.BroadcastMsg.ReloadTextures, this.Consts.ReloadTexturesMode.All)
+  }
+  
+  this.reloadTexture = function (carIdx) {
+    this.sendCmd(this.Consts.BroadcastMsg.ReloadTextures, this.Consts.ReloadTexturesMode.CarIdx, carIdx)
+  }
+  
+  this.chat = function (mode, subCommand) {
+    subCommand = (subCommand) ? subCommand : 0;
+    this.sendCmd(this.Consts.BroadcastMsg.ChatComand, mode, subCommand)
+  }
+  
+  this.configurePitService = function (pitCommand, arg) {
+    arg = (arg) ? arg : 0;
+    this.sendCmd(this.Consts.BroadcastMsg.PitCommand, pitCommand, arg)
+  }
+  
+  this.enableTelemetry = function (arg) {
+    if (arg === 'restart') {
+      this.sendCmd(this.Consts.BroadcastMsg.TelemCommand, this.Consts.TelemCommand.Restart)
+    } else if (arg === false) {
+      this.sendCmd(this.Consts.BroadcastMsg.TelemCommand, this.Consts.TelemCommand.Stop)
+    } else {
+      this.sendCmd(this.Consts.BroadcastMsg.TelemCommand, this.Consts.TelemCommand.Start)
+    }
+  }
+ 
+  
   var self = this;
   opts = opts || {};
   

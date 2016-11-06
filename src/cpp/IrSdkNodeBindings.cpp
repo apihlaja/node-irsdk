@@ -88,7 +88,7 @@ namespace NodeIrSdk {
 
     if (!irsdk.isConnected()) return;
     
-    if (0 < info.Length() && info.Length() < 4 ) {
+    if (info.Length() > 4 || info.Length() < 1 ) {
       std::cerr << "sendCommand: invalid arguments (1 to 4 accepted)" << std::endl;
       return;
     }
