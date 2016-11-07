@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
-    "lint": "eslint src utils",
+    "lint": "standard",
     "sample-writer": "node utils/sample-writer.js",
     "smoke-test": "node utils/smoke-test.js"
   },
@@ -29,11 +29,20 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "eslint": "^1.1.0",
     "mocha": "^2.2.5",
     "moment": "^2.10.3",
     "sandboxed-module": "^2.0.2",
     "sinon": "^1.15.4",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "standard": "^8.5.0"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "sinon"
+    ]
   }
 }
