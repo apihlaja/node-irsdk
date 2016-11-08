@@ -163,10 +163,11 @@ function JsIrSdk (IrSdkWrapper, opts) {
   }, opts.sessionInfoUpdateInterval)
 
   /**
-    * makes instance garbage, useless:
-    * any events arent emited after this call.
-    */
-  this.stop = function () {
+    Stops JsIrSdk, no new events are fired after calling this
+    @function
+    @private
+  */
+  this._stop = function () {
     clearInterval(telemetryIntervalId)
     clearInterval(sessionInfoIntervalId)
     clearInterval(startIntervalId)

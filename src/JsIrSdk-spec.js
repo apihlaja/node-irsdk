@@ -31,7 +31,7 @@ describe('JsIrSdk', function () {
     this.clock.tick(2)
     spy.should.have.been.called
     start.should.have.been.calledOnce
-    irsdk.stop()
+    irsdk._stop()
   })
   it('emits "Disconnected" when iRacing shut down', function () {
     var opts = {
@@ -49,7 +49,7 @@ describe('JsIrSdk', function () {
     isConnected.returns(false)
     this.clock.tick(2)
     spy.should.have.been.called
-    irsdk.stop()
+    irsdk._stop()
   })
   it('emits "Connected" again after reconnect', function () {
     var opts = {
@@ -75,7 +75,7 @@ describe('JsIrSdk', function () {
     irsdk.on('Connected', restartSpy)
     this.clock.tick(2500)
     restartSpy.should.have.been.called
-    irsdk.stop()
+    irsdk._stop()
   })
   it('emits "TelemetryDescription" once after "Connected"', function () {
     var opts = {
@@ -98,7 +98,7 @@ describe('JsIrSdk', function () {
     spy.should.have.been.calledWith(desc)
     this.clock.tick(5)
     spy.should.have.been.calledOnce
-    irsdk.stop()
+    irsdk._stop()
   })
   it('emits "Telemetry" when update available', function () {
     var opts = {
@@ -125,7 +125,7 @@ describe('JsIrSdk', function () {
     updateTelemetry.returns(true)
     this.clock.tick(12)
     spy.should.have.been.calledTwice
-    irsdk.stop()
+    irsdk._stop()
   })
   it('emits "SessionInfo" when update available', function () {
     var opts = {
@@ -152,6 +152,6 @@ describe('JsIrSdk', function () {
     updateSessionInfo.returns(true)
     this.clock.tick(12)
     spy.should.have.been.calledTwice
-    irsdk.stop()
+    irsdk._stop()
   })
 })
