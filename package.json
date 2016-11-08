@@ -2,7 +2,7 @@
   "name": "node-irsdk",
   "version": "1.0.16",
   "description": "iRacing SDK implementation for Node.js",
-  "main": "index.js",
+  "main": "src/node-irsdk.js",
   "scripts": {
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
