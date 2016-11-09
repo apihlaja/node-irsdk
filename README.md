@@ -13,7 +13,7 @@ Released under the [MIT License](LICENSE.md).
 
 Before installing, you need
 
-* Windows version of [Node.js](https://nodejs.org/download/) v0.12 or later
+* Windows version of [Node.js](https://nodejs.org/download/) v4 or later
 * Visual Studio and Python 2.7 for node-gyp, see 
 [installation instructions](https://github.com/TooTallNate/node-gyp)
 
