@@ -33,7 +33,7 @@ iracing.on('Connected', function () {
 
     setInterval(function () {
       console.log('showing P' + currentPosition)
-      iracing.sendCmd(0, currentPosition++, camGroupNum, 0)
+      iracing.camControls.switchCamToPos(currentPosition++, camGroupNum, 0)
 
       if (currentPosition > 10) {
         currentPosition = 1

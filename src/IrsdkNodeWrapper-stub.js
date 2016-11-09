@@ -12,4 +12,6 @@ mock.updateTelemetry = function () { return false }
 mock.getTelemetryDescription = function () { return {'telemetry': 'is telemetry'} }
 mock.getTelemetry = function () { return {} }
 
+mock.sendCmd = function () {}
+
 module.exports = mock

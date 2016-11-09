@@ -12,3 +12,4 @@ build/
 *.sdf
 *.suo
 *.vcxproj.user
+npm-debug.log

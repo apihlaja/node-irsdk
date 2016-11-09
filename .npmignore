@@ -4,6 +4,7 @@ utils/
 test/
 .eslintrc
 appveyor.yml
+npm-debug.log
 
 
 # Visual Studio

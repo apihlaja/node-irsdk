@@ -7,8 +7,8 @@
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
     "lint": "standard",
-    "sample-writer": "node utils/sample-writer.js",
-    "smoke-test": "node utils/smoke-test.js"
+    "doc": "jsdoc2md -t src/doc/README.hbs --partial src/doc/examples.hbs -m none -g none src/node-irsdk.js src/JsIrSdk.js src/IrSdkConsts.js > README.md",
+    "ready": "npm test && npm run doc"
   },
   "keywords": [
     "iracing"
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
+    "jsdoc-to-markdown": "^2.0.1",
     "mocha": "^3.1.2",
     "moment": "^2.15.2",
     "sandboxed-module": "^2.0.2",
