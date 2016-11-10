@@ -9,6 +9,8 @@ var BroadcastMsg = Consts.BroadcastMsg
   Don't use constructor directly, use {@link module:irsdk.getInstance}.
 
   @class
+  @extends events.EventEmitter
+  @see {@link https://nodejs.org/api/events.html#events_class_eventemitter|EventEmitter API}
   @alias iracing
   @fires iracing#Connected
   @fires iracing#Disconnected
@@ -44,9 +46,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
       @method
       @param {IrSdkConsts.CameraState} state new state
       @example
-      * var CamState = iracing.Consts.CameraState
-      * var state = CamState.CamToolActive | CamState.UIHidden | CamState.UseMouseAimMode
-      * iracing.camControls.setState(state) // hide UI and enable mouse aim
+      * // hide UI and enable mouse aim
+      * var States = iracing.Consts.CameraState
+      * var state = States.CamToolActive | States.UIHidden | States.UseMouseAimMode
+      * iracing.camControls.setState(state)
     */
     setState: function (state) {
       self.execCmd(BroadcastMsg.CamSetState, state)
@@ -164,7 +167,9 @@ function JsIrSdk (IrSdkWrapper, opts) {
       @method
       @param {Integer} sessionNum Session number
       @param {Integer} sessionTimeMS Session time in milliseconds
-      @example iracing.playbackControls.searchTs(2, 2*60*1000) // 2nd minute of 3rd session
+      @example
+      * // jump to 2nd minute of 3rd session
+      * iracing.playbackControls.searchTs(2, 2*60*1000)
     */
     searchTs: function (sessionNum, sessionTimeMS) {
       self.execCmd(BroadcastMsg.ReplaySearchSessionTime, sessionNum, sessionTimeMS)
@@ -231,7 +236,9 @@ function JsIrSdk (IrSdkWrapper, opts) {
     @example
     * // full tank, no tires, no tear off
     * iracing.execPitCmd('clear')
-    * iracing.execPitCmd('fuel', 999) // request 999 liters
+    * iracing.execPitCmd('fuel', 999) // 999 liters
+    * iracing.execPitCmd('lf') // new left front
+    * iracing.execPitCmd('lr', 200) // new left rear, 200 kPa
   */
   this.execPitCmd = function (cmd, arg) {
     arg = arg || 0
@@ -316,7 +323,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
         /**
           iRacing, sim, is started
           @event iracing#Connected
-          @example iracing.on('Connected', function () {console.log('connected')})
+          @example
+          * iracing.on('Connected', function () {
+          *   console.log('connected')
+          * })
         */
         self.emit('Connected')
       }
@@ -326,7 +336,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
         /**
           iRacing, sim, was closed
           @event iracing#Disconnected
-          @example iracing.on('Disconnected', function () {console.log('disconnected')})
+          @example
+          * iracing.on('Disconnected', function () {
+          *   console.log('disconnected')
+          * })
         */
         self.emit('Disconnected')
 
@@ -350,7 +363,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
             Telemetry description, contains description of available telemetry values
             @event iracing#TelemetryDescription
             @type Object
-            @example iracing.on('TelemetryDescription', function (data) { console.log('TelemetryDesc:', data)})
+            @example
+            * iracing.on('TelemetryDescription', function (data) {
+            *   console.log('TelemetryDesc:', data)
+            * })
           */
           self.emit('TelemetryDescription', self.telemetryDescription)
         }
@@ -358,7 +374,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
           Telemetry update
           @event iracing#Telemetry
           @type Object
-          @example iracing.on('Telemetry', function (data) { console.log('Telemetry:', data)})
+          @example
+          * iracing.on('Telemetry', function (data) {
+          *   console.log('Telemetry:', data)
+          * })
         */
         self.emit('Telemetry', self.telemetry)
       })
@@ -385,7 +404,10 @@ function JsIrSdk (IrSdkWrapper, opts) {
             SessionInfo update
             @event iracing#SessionInfo
             @type Object
-            @example iracing.on('SessionInfo', function (data) { console.log('SessionInfo:', data)})
+            @example
+            * iracing.on('SessionInfo', function (data) {
+            *   console.log('SessionInfo:', data)
+            * })
           */
           self.emit('SessionInfo', self.sessionInfo)
         }

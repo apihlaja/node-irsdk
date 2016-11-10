@@ -18,7 +18,8 @@ var instance
   @param {iracing~sessionInfoParser} [opts.sessionInfoParser] Custom parser for session info
   @example
   * var irsdk = require('node-irsdk')
-  * irsdk.init({telemetryUpdateInterval: 0}) // update telemetry as fast as possible
+  * // update telemetry as fast as possible
+  * irsdk.init({telemetryUpdateInterval: 0})
   * var iracing = irsdk.getInstance()
 */
 var init = module.exports.init = function (opts) {

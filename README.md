@@ -45,7 +45,8 @@ Initialize JsIrSdk, can be done once before using getInstance first time.
   
 ```js
 var irsdk = require('node-irsdk')
-irsdk.init({telemetryUpdateInterval: 0}) // update telemetry as fast as possible
+// update telemetry as fast as possible
+irsdk.init({telemetryUpdateInterval: 0})
 var iracing = irsdk.getInstance()
 ```
 <a name="module_irsdk.getInstance"></a>
@@ -62,11 +63,13 @@ var iracing = irsdk.getInstance()
 ```
 <a name="iracing"></a>
 
-## iracing
+## iracing ⇐ <code>events.EventEmitter</code>
 **Kind**: global class  
+**Extends:** <code>events.EventEmitter</code>  
 **Emits**: <code>[Connected](#iracing+event_Connected)</code>, <code>[Disconnected](#iracing+event_Disconnected)</code>, <code>[Telemetry](#iracing+event_Telemetry)</code>, <code>[TelemetryDescription](#iracing+event_TelemetryDescription)</code>, <code>[SessionInfo](#iracing+event_SessionInfo)</code>  
+**See**: [EventEmitter API](https://nodejs.org/api/events.html#events_class_eventemitter)  
 
-* [iracing](#iracing)
+* [iracing](#iracing) ⇐ <code>events.EventEmitter</code>
     * [new JsIrSdk()](#new_iracing_new)
     * _instance_
         * [.Consts](#iracing+Consts) : <code>[IrSdkConsts](#IrSdkConsts)</code>
@@ -144,9 +147,10 @@ Change camera tool state
 
   
 ```js
-var CamState = iracing.Consts.CameraState
-var state = CamState.CamToolActive | CamState.UIHidden | CamState.UseMouseAimMode
-iracing.camControls.setState(state) // hide UI and enable mouse aim
+// hide UI and enable mouse aim
+var States = iracing.Consts.CameraState
+var state = States.CamToolActive | States.UIHidden | States.UseMouseAimMode
+iracing.camControls.setState(state)
 ```
 <a name="iracing+camControls.switchToCar"></a>
 
@@ -309,7 +313,8 @@ Search timestamp
 
   
 ```js
-iracing.playbackControls.searchTs(2, 2*60*1000) // 2nd minute of 3rd session
+// jump to 2nd minute of 3rd session
+iracing.playbackControls.searchTs(2, 2*60*1000)
 ```
 <a name="iracing+playbackControls.searchFrame"></a>
 
@@ -431,7 +436,9 @@ Execute pit command
 ```js
 // full tank, no tires, no tear off
 iracing.execPitCmd('clear')
-iracing.execPitCmd('fuel', 999) // request 999 liters
+iracing.execPitCmd('fuel', 999) // 999 liters
+iracing.execPitCmd('lf') // new left front
+iracing.execPitCmd('lr', 200) // new left rear, 200 kPa
 ```
 <a name="iracing+execTelemetryCmd"></a>
 
@@ -456,7 +463,9 @@ iRacing, sim, is started
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Connected', function () {console.log('connected')})
+iracing.on('Connected', function () {
+  console.log('connected')
+})
 ```
 <a name="iracing+event_Disconnected"></a>
 
@@ -466,7 +475,9 @@ iRacing, sim, was closed
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Disconnected', function () {console.log('disconnected')})
+iracing.on('Disconnected', function () {
+  console.log('disconnected')
+})
 ```
 <a name="iracing+event_TelemetryDescription"></a>
 
@@ -476,7 +487,9 @@ Telemetry description, contains description of available telemetry values
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('TelemetryDescription', function (data) { console.log('TelemetryDesc:', data)})
+iracing.on('TelemetryDescription', function (data) {
+  console.log('TelemetryDesc:', data)
+})
 ```
 <a name="iracing+event_Telemetry"></a>
 
@@ -486,7 +499,9 @@ Telemetry update
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Telemetry', function (data) { console.log('Telemetry:', data)})
+iracing.on('Telemetry', function (data) {
+  console.log('Telemetry:', data)
+})
 ```
 <a name="iracing+event_SessionInfo"></a>
 
@@ -496,7 +511,9 @@ SessionInfo update
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('SessionInfo', function (data) { console.log('SessionInfo:', data)})
+iracing.on('SessionInfo', function (data) {
+  console.log('SessionInfo:', data)
+})
 ```
 <a name="iracing..sessionInfoParser"></a>
 
