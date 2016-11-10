@@ -19,7 +19,6 @@ Before installing, you need
 
 `npm install --save node-irsdk`
 
-# API
 
 <a name="module_irsdk"></a>
 
