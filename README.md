@@ -2,11 +2,21 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ukyuuq9004wy9h5b/branch/master?svg=true)](https://ci.appveyor.com/project/apihlaja/node-irsdk/branch/master)
 
-iRacing SDK implementation for Node.js. 
+Unofficial [iRacing](http://www.iracing.com/) SDK implementation for Node.js.
 
-You can find simple usage examples from [utils](utils/) directory.
+**node-irsdk** provides data access (live telemetry and session info) and most of available commands. You can find some usage examples from [utils](https://github.com/apihlaja/node-irsdk/tree/master/utils) directory, and there is some [data samples](https://github.com/apihlaja/node-irsdk/tree/master/sample-data) too.
 
-Released under the [MIT License](LICENSE.md).
+* [GitHub repo](https://github.com/apihlaja/node-irsdk)
+* [documentation](https://apihlaja.github.io/node-irsdk)
+* [forum thread](http://members.iracing.com/jforum/posts/list/3329583.page)
+
+Official C/C++ SDK is available [here](http://members.iracing.com/jforum/posts/list/1470675.page).
+
+Other iRSDK implementations: 
+
+* [iRacingSdkWrapper (C#)](https://github.com/NickThissen/iRacingSdkWrapper)
+* [pyirsdk (python3)](https://github.com/kutu/pyirsdk/)
+* [iRacingSDK.Net](https://github.com/vipoo/iRacingSDK.Net)
 
 
 ## Installing
@@ -705,3 +715,8 @@ When switching camera, these can be used instead of car number / position
 | Exciting | <code>-1</code> |  |
 | Driver | <code>0</code> | Use car number / position instead of this |
 
+
+
+## License
+
+Released under the [MIT License](https://github.com/apihlaja/node-irsdk/blob/master/LICENSE.md).
