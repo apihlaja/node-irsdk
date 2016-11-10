@@ -2,6 +2,7 @@ build/
 sample-data/
 utils/
 test/
+src/doc
 .eslintrc
 appveyor.yml
 npm-debug.log
