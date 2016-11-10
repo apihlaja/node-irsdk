@@ -100,6 +100,12 @@ a
     font-family: $mono-font
 
   ul > li
+    list-style-type: circle
+  
+  ul > li > ul > li
+    list-style-type: square
+
+  ul > li > ul > li > ul > li
     list-style-type: disc
 
   ol > li
@@ -107,20 +113,6 @@ a
 
   ul, ol
     margin-left: 20px
-
-  ul > li
-    list-style-type: none
-    position: relative
-    &:before
-      content: ''
-      display: block
-      absolute: left -17px top 7px
-      width: 5px
-      height: 5px
-      border-radius: 4px
-      box-sizing: border-box
-      background: white
-      border: solid 1px $grey
 
   li > :first-child
     padding-top: 0

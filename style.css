@@ -160,6 +160,12 @@ a:hover {
   font-family: monospace;
 }
 .content ul > li {
+  list-style-type: circle;
+}
+.content ul > li > ul > li {
+  list-style-type: square;
+}
+.content ul > li > ul > li > ul > li {
   list-style-type: disc;
 }
 .content ol > li {
@@ -168,25 +174,6 @@ a:hover {
 .content ul,
 .content ol {
   margin-left: 20px;
-}
-.content ul > li {
-  list-style-type: none;
-  position: relative;
-}
-.content ul > li:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: -17px;
-  top: 7px;
-  width: 5px;
-  height: 5px;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background: #fff;
-  border: solid 1px #222b77;
 }
 .content li > :first-child {
   padding-top: 0;
