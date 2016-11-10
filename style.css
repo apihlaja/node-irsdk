@@ -107,9 +107,9 @@ body,
 td,
 textarea,
 input {
-  font-family: Helvetica Neue, Open Sans, sans-serif;
+  font-family: sans-serif;
   line-height: 1.6;
-  font-size: 13px;
+  font-size: 14px;
   color: #181818;
 }
 @media (max-width: 480px) {
@@ -157,7 +157,7 @@ a:hover {
   text-rendering: optimizeLegibility;
 }
 .content pre {
-  font-family: Menlo, monospace;
+  font-family: monospace;
 }
 .content ul > li {
   list-style-type: disc;
@@ -201,16 +201,15 @@ a:hover {
   color: #222b77;
 }
 .content code {
-  font-family: Menlo, monospace;
+  font-family: monospace;
   background: #fafafa;
   padding: 1px 3px;
-  font-size: 0.95em;
+  font-size: 0.95rem;
 }
 .content pre > code {
   display: block;
   background: transparent;
-  font-size: 0.85em;
-  letter-spacing: -1px;
+  font-size: 0.85rem;
 }
 .content blockquote :first-child {
   padding-top: 0;
@@ -247,12 +246,19 @@ a:hover {
   margin: 0;
   padding: 6px 13px;
 }
+.content table tr th,
+.content table tr td,
+.content table tr td > code {
+  font-size: 0.8rem;
+}
 .content table tr th :first-child,
-.content table tr td :first-child {
+.content table tr td :first-child,
+.content table tr td > code :first-child {
   margin-top: 0;
 }
 .content table tr th :last-child,
-.content table tr td :last-child {
+.content table tr td :last-child,
+.content table tr td > code :last-child {
   margin-bottom: 0;
 }
 /* ----------------------------------------------------------------------------
@@ -305,10 +311,10 @@ a:hover {
 .content h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 .content h3 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 .content h1,
 .content h2,
@@ -362,7 +368,7 @@ body:not(.big-h3) .content h3 {
   padding-bottom: 10px;
 }
 body:not(.big-h3) .content h3 {
-  font-size: 0.9em;
+  font-size: 1rem;
 }
 .content h1:first-child {
   padding-top: 0;
@@ -422,7 +428,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
 }
-@media (max-width: 1180px) {
+@media (max-width: 1450px) {
   .content pre > code {
     background: #fafafa;
     border: solid 1px #eee;
@@ -455,7 +461,6 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: montserrat, sans-serif;
-  letter-spacing: -1px;
   font-weight: bold;
   display: inline-block;
   padding: 3px 25px;
@@ -489,18 +494,18 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 .content .button + em {
   color: #222b77;
 }
-@media (min-width: 1180px) {
+@media (min-width: 1450px) {
   body:not(.no-literate) .content-root {
     background-color: #fafafa;
-    -webkit-box-shadow: inset 780px 0 #fff, inset 781px 0 #d9d4e5, inset 790px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 780px 0 #fff, inset 781px 0 #d9d4e5, inset 790px 0 5px -10px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 950px 0 #fff, inset 951px 0 #d9d4e5, inset 960px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 950px 0 #fff, inset 951px 0 #d9d4e5, inset 960px 0 5px -10px rgba(0,0,0,0.1);
   }
 }
-@media (min-width: 1180px) {
+@media (min-width: 1450px) {
   body:not(.no-literate) .content {
     padding-left: 0;
     padding-right: 0;
-    width: 930px;
+    width: 1010px;
     max-width: none;
   }
   body:not(.no-literate) .content > p,
@@ -514,7 +519,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > h6,
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
-    width: 550px;
+    width: 630px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -564,7 +569,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > .small-heading,
   body:not(.big-h3) body:not(.no-literate) .content > h3 {
     margin-left: 40px;
-    width: 470px;
+    width: 550px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -572,11 +577,11 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > table {
     margin-left: 40px;
     margin-right: 40px;
-    max-width: 470px;
+    max-width: 550px;
   }
   body:not(.no-literate):not(.big-h3) .content > h3 {
     margin-left: 40px;
-    width: 470px;
+    width: 550px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -586,7 +591,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   background: #fafafa;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   border-bottom: solid 1px #d9d4e5;
-  padding: 15px 15px 15px 30px;
+  padding: 15px 15px 15px 20px;
   zoom: 1;
   line-height: 20px;
   position: relative;
@@ -617,7 +622,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   text-rendering: optimizeLegibility;
   font-weight: bold;
   font-family: montserrat, sans-serif;
-  font-size: 13px;
+  font-size: 1rem;
 }
 .header h1,
 .header h1 a,
@@ -628,7 +633,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   color: #181818;
 }
 .header li a {
-  font-size: 0.88em;
+  font-size: 0.9rem;
   color: #222b77;
   display: block;
 }
@@ -672,7 +677,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   text-rendering: optimizeLegibility;
 }
 .menubar .section {
-  padding: 30px 30px;
+  padding: 20px 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -693,7 +698,7 @@ a.big.button {
   padding: 10px 20px;
   text-align: center;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.1rem;
   background: transparent;
   border: solid 3px #2a3695;
   border-radius: 30px;
@@ -724,14 +729,14 @@ a.big.button:hover:visited {
 }
 @media (min-width: 768px) {
   .content-root {
-    padding-left: 230px;
+    padding-left: 320px;
   }
   .menubar {
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 230px;
+    width: 320px;
     border-right: solid 1px #d9d4e5;
   }
   .menubar.fixed {
@@ -757,7 +762,7 @@ a.big.button:hover:visited {
   }
 }
 .menubar {
-  font-size: 0.9em;
+  font-size: 1rem;
 }
 .menu ul.level-1 > li + li {
   margin-top: 20px;
@@ -770,7 +775,7 @@ a.big.button:hover:visited {
   display: block;
   padding-top: 1px;
   padding-bottom: 1px;
-  margin-right: -30px;
+  margin-right: -20px;
 }
 .menu a,
 .menu a:visited {
@@ -782,7 +787,7 @@ a.big.button:hover:visited {
 .menu a.level-1 {
   font-family: montserrat, sans-serif;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 1rem;
   font-weight: bold;
 }
 .menu a.level-1,
@@ -797,7 +802,7 @@ a.big.button:hover:visited {
 }
 .menu a.level-3 {
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 0.78rem;
   padding-left: 10px;
 }
 .menu a.active {
@@ -816,9 +821,9 @@ a.big.button:hover:visited {
   box-sizing: border-box;
   position: absolute;
   top: 10px;
-  right: 30px;
-  width: 9px;
-  height: 3px;
+  right: 20px;
+  width: 4px;
+  height: 4px;
   border-radius: 2px;
   background: #2a3695;
 }
@@ -837,7 +842,7 @@ code .comment {
 }
 .large-brief .content > h1:first-child + p,
 .content > p.brief {
-  font-size: 1.3em;
+  font-size: 1.3rem;
   font-family: Open Sans, sans-serif;
   font-weight: 300;
 }

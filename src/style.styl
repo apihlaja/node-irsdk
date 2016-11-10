@@ -3,12 +3,12 @@ support-for-ie = true
 @import 'nib'
 
 // Fonts
-$body-font = Helvetica Neue, Open Sans, sans-serif
-$mono-font = Menlo, monospace
+$body-font = sans-serif
+$mono-font = monospace
 
 // Margins
 $pad = 40px      // Space between things
-$sidepad = 30px  // Padding to the left of the sidebar
+$sidepad = 20px  // Padding to the left of the sidebar
 $minipad = 20px  // Space for mobile
 $vmargin = 10px  // Margin between blocks
 
@@ -23,9 +23,11 @@ $line = #D9D4E5
 $shadow-str = 0.1
 
 // Dimensions
-$sidebar-width = 230px
-$content-width = 550px
+$sidebar-width = 320px
+$content-width = 630px
 $pre-width = 380px
+
+$literate-min = $sidebar-width + $content-width + $pre-width + 3*$pad
 
 /* ----------------------------------------------------------------------------
  * Fonts
@@ -69,7 +71,7 @@ html
 body, td, textarea, input
   font-family: $body-font
   line-height: 1.6
-  font-size: 13px
+  font-size: 14px
   color:$txt
 
   @media (max-width: 480px) /* Mobile */
@@ -134,13 +136,12 @@ a
     font-family: $mono-font
     background: $offwhite
     padding: 1px 3px
-    font-size: 0.95em
+    font-size: 0.95rem
 
   pre > code
     display: block
     background: transparent
-    font-size: 0.85em
-    letter-spacing: -1px
+    font-size: 0.85rem
 
   blockquote
     :first-child
@@ -177,9 +178,10 @@ a
         margin: 0
         padding: 6px 13px
 
-      th, td
+      th, td, td > code
+        font-size: 0.8rem
+        
         :first-child
-
           margin-top: 0;
         :last-child
           margin-bottom: 0;
@@ -220,10 +222,10 @@ a
   h1, h2
     text-transform: uppercase
     letter-spacing: 1px
-    font-size: 1.5em
+    font-size: 1.5rem
 
   h3
-    font-size: 1.2em
+    font-size: 1.2rem
 
   // Lines
   h1, h2, .big-heading
@@ -256,7 +258,7 @@ a
 
   body:not(.big-h3) & h3
     @extends .content .small-heading
-    font-size: 0.9em
+    font-size: 1.0rem
 
   body.big-h3 & h3
     @extends .content .big-heading
@@ -299,7 +301,7 @@ inset-box()
 body.no-literate .content pre > code
   inset-box()
 
-@media (max-width: 1180px) /* Small desktop */
+@media (max-width: $literate-min) /* Small desktop */
   .content pre > code
     inset-box()
     
@@ -309,7 +311,6 @@ body.no-literate .content pre > code
 .button
   antialias()
   font-family: montserrat, sans-serif
-  letter-spacing: -1px
   font-weight: bold
 
   display: inline-block
@@ -350,7 +351,7 @@ body.no-literate .content pre > code
 // ----------------------------------------------------------------------------
 // Literate mode content
 
-@media (min-width: 1180px) /* Big desktop */
+@media (min-width: $literate-min) /* Big desktop */
   body:not(.no-literate)
     .content-root
       background-color: $offwhite
@@ -358,7 +359,7 @@ body.no-literate .content pre > code
       box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 5px -10px rgba(black, $shadow-str)
 
 // Literate mode
-@media (min-width: 1180px) /* Big desktop */
+@media (min-width: $literate-min) /* Big desktop */
   small-heading()
     margin-left: $pad
     width: $content-width - $pad * 2
@@ -439,7 +440,7 @@ body.no-literate .content pre > code
     antialias()
     font-weight: bold
     font-family: montserrat, sans-serif
-    font-size: 13px
+    font-size: 1.0rem
 
     &, a, a:visited
       color: $grey
@@ -447,7 +448,7 @@ body.no-literate .content pre > code
       color: $txt
 
   li a
-    font-size: 0.88em
+    font-size: 0.9rem
     color: $grey
     display: block
 
@@ -507,7 +508,7 @@ a.big.button
   text-align: center
 
   font-weight: bold
-  font-size: 1.1em
+  font-size: 1.1rem
 
   background: transparent
   border: solid 3px $accent
@@ -551,7 +552,7 @@ a.big.button
     overflow-y: auto
 
 .menubar
-  font-size: 0.9em
+  font-size: 1.0rem
 
 // Menu items
 .menu
@@ -561,7 +562,6 @@ a.big.button
   a
     box-sizing: border-box
     position: relative
-
     display: block
     padding-top: 1px
     padding-bottom: 1px
@@ -575,7 +575,7 @@ a.big.button
   a.level-1
     font-family: montserrat, sans-serif
     text-transform: uppercase
-    font-size: 0.9em
+    font-size: 1.0rem
     font-weight: bold
     &, &:visited
       color: $grey
@@ -587,7 +587,7 @@ a.big.button
 
   a.level-3
     font-weight: normal
-    font-size: 0.9em
+    font-size: 0.78rem
     padding-left: 10px
 
   a.active
@@ -603,8 +603,8 @@ a.big.button
 
       absolute: top 10px right $sidepad
 
-      width: 9px
-      height: 3px
+      width: 4px
+      height: 4px
       border-radius: 2px
       background: $accent
 
@@ -626,7 +626,7 @@ code
 .content
   .large-brief & > h1:first-child + p,
   > p.brief
-    font-size: 1.3em
+    font-size: 1.3rem
     font-family: Open Sans, sans-serif
     font-weight: 300
 
