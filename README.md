@@ -702,6 +702,6 @@ When switching camera, these can be used instead of car number / position
 | --- | --- | --- |
 | Incident | <code>-3</code> |  |
 | Leader | <code>-2</code> |  |
-| Exiting | <code>-1</code> |  |
+| Exciting | <code>-1</code> |  |
 | Driver | <code>0</code> | Use car number / position instead of this |
 

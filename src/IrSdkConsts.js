@@ -148,7 +148,7 @@ var IrSdkConsts = {
   {
     Incident: -3,
     Leader: -2,
-    Exiting: -1,
+    Exciting: -1,
     /** Use car number / position instead of this */
     Driver: 0
   }
