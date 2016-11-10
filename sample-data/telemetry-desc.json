@@ -6,6 +6,13 @@
     "count": 1,
     "type": "double"
   },
+  "SessionTick": {
+    "name": "SessionTick",
+    "desc": "Current update number",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
   "SessionNum": {
     "name": "SessionNum",
     "desc": "Session number",
@@ -43,7 +50,14 @@
   },
   "SessionLapsRemain": {
     "name": "SessionLapsRemain",
-    "desc": "Laps left till session ends",
+    "desc": "Old laps left till session ends use SessionLapsRemainEx",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "SessionLapsRemainEx": {
+    "name": "SessionLapsRemainEx",
+    "desc": "New improved laps left till session ends",
     "unit": "",
     "count": 1,
     "type": "int"
@@ -153,9 +167,51 @@
     "count": 1,
     "type": "int"
   },
+  "PlayerTrackSurface": {
+    "name": "PlayerTrackSurface",
+    "desc": "Players car track surface type",
+    "unit": "irsdk_TrkLoc",
+    "count": 1,
+    "type": "int"
+  },
+  "PlayerCarIdx": {
+    "name": "PlayerCarIdx",
+    "desc": "Players carIdx",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "PlayerCarTeamIncidentCount": {
+    "name": "PlayerCarTeamIncidentCount",
+    "desc": "Players team incident count for this session",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "PlayerCarMyIncidentCount": {
+    "name": "PlayerCarMyIncidentCount",
+    "desc": "Players own incident count for this session",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "PlayerCarDriverIncidentCount": {
+    "name": "PlayerCarDriverIncidentCount",
+    "desc": "Teams current drivers incident count for this session",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
   "CarIdxLap": {
     "name": "CarIdxLap",
-    "desc": "Lap count by car index",
+    "desc": "Laps started by car index",
+    "unit": "",
+    "count": 64,
+    "type": "int"
+  },
+  "CarIdxLapCompleted": {
+    "name": "CarIdxLapCompleted",
+    "desc": "Laps completed by car index",
     "unit": "",
     "count": 64,
     "type": "int"
@@ -281,7 +337,14 @@
   },
   "Lap": {
     "name": "Lap",
-    "desc": "Lap count",
+    "desc": "Laps started count",
+    "unit": "",
+    "count": 1,
+    "type": "int"
+  },
+  "LapCompleted": {
+    "name": "LapCompleted",
+    "desc": "Laps completed count",
     "unit": "",
     "count": 1,
     "type": "int"
@@ -545,6 +608,13 @@
     "count": 1,
     "type": "float"
   },
+  "YawNorth": {
+    "name": "YawNorth",
+    "desc": "Yaw orientation relative to north",
+    "unit": "rad",
+    "count": 1,
+    "type": "float"
+  },
   "Pitch": {
     "name": "Pitch",
     "desc": "Pitch orientation",
@@ -569,6 +639,13 @@
   "TrackTemp": {
     "name": "TrackTemp",
     "desc": "Temperature of track at start/finish line",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "TrackTempCrew": {
+    "name": "TrackTempCrew",
+    "desc": "Temperature of track measured by crew around track",
     "unit": "C",
     "count": 1,
     "type": "float"
@@ -649,6 +726,13 @@
     "unit": "",
     "count": 1,
     "type": "int"
+  },
+  "OkToReloadTextures": {
+    "name": "OkToReloadTextures",
+    "desc": "True if it is ok to reload car textures at this time",
+    "unit": "",
+    "count": 1,
+    "type": "bool"
   },
   "PitRepairLeft": {
     "name": "PitRepairLeft",
@@ -783,6 +867,13 @@
     "count": 1,
     "type": "float"
   },
+  "HandbrakeRaw": {
+    "name": "HandbrakeRaw",
+    "desc": "Raw handbrake input 0=handbrake released to 1=max force",
+    "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
   "SteeringWheelPeakForceNm": {
     "name": "SteeringWheelPeakForceNm",
     "desc": "Peak torque mapping to direct input units for FFB",
@@ -888,23 +979,65 @@
     "count": 1,
     "type": "float"
   },
-  "dcTractionControl": {
-    "name": "dcTractionControl",
-    "desc": "In car traction control adjustment",
-    "unit": "",
+  "WaterTemp": {
+    "name": "WaterTemp",
+    "desc": "Engine coolant temp",
+    "unit": "C",
     "count": 1,
     "type": "float"
   },
-  "dcABS": {
-    "name": "dcABS",
-    "desc": "In car abs adjustment",
-    "unit": "",
+  "WaterLevel": {
+    "name": "WaterLevel",
+    "desc": "Engine coolant level",
+    "unit": "l",
     "count": 1,
     "type": "float"
   },
-  "RFbrakeLinePress": {
-    "name": "RFbrakeLinePress",
-    "desc": "RF brake line pressure",
+  "FuelPress": {
+    "name": "FuelPress",
+    "desc": "Engine fuel pressure",
+    "unit": "bar",
+    "count": 1,
+    "type": "float"
+  },
+  "FuelUsePerHour": {
+    "name": "FuelUsePerHour",
+    "desc": "Engine fuel used instantaneous",
+    "unit": "kg/h",
+    "count": 1,
+    "type": "float"
+  },
+  "OilTemp": {
+    "name": "OilTemp",
+    "desc": "Engine oil temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "OilPress": {
+    "name": "OilPress",
+    "desc": "Engine oil pressure",
+    "unit": "bar",
+    "count": 1,
+    "type": "float"
+  },
+  "OilLevel": {
+    "name": "OilLevel",
+    "desc": "Engine oil level",
+    "unit": "l",
+    "count": 1,
+    "type": "float"
+  },
+  "Voltage": {
+    "name": "Voltage",
+    "desc": "Engine voltage",
+    "unit": "V",
+    "count": 1,
+    "type": "float"
+  },
+  "ManifoldPress": {
+    "name": "ManifoldPress",
+    "desc": "Engine manifold pressure",
     "unit": "bar",
     "count": 1,
     "type": "float"
@@ -958,13 +1091,6 @@
     "count": 1,
     "type": "float"
   },
-  "LFbrakeLinePress": {
-    "name": "LFbrakeLinePress",
-    "desc": "LF brake line pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
   "LFcoldPressure": {
     "name": "LFcoldPressure",
     "desc": "LF tire cold pressure  as set in the garage",
@@ -1014,69 +1140,6 @@
     "count": 1,
     "type": "float"
   },
-  "WaterTemp": {
-    "name": "WaterTemp",
-    "desc": "Engine coolant temp",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "WaterLevel": {
-    "name": "WaterLevel",
-    "desc": "Engine coolant level",
-    "unit": "l",
-    "count": 1,
-    "type": "float"
-  },
-  "FuelPress": {
-    "name": "FuelPress",
-    "desc": "Engine fuel pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "OilTemp": {
-    "name": "OilTemp",
-    "desc": "Engine oil temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "OilPress": {
-    "name": "OilPress",
-    "desc": "Engine oil pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "OilLevel": {
-    "name": "OilLevel",
-    "desc": "Engine oil level",
-    "unit": "l",
-    "count": 1,
-    "type": "float"
-  },
-  "Voltage": {
-    "name": "Voltage",
-    "desc": "Engine voltage",
-    "unit": "V",
-    "count": 1,
-    "type": "float"
-  },
-  "ManifoldPress": {
-    "name": "ManifoldPress",
-    "desc": "Engine manifold pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "RRbrakeLinePress": {
-    "name": "RRbrakeLinePress",
-    "desc": "RR brake line pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
   "RRcoldPressure": {
     "name": "RRcoldPressure",
     "desc": "RR tire cold pressure  as set in the garage",
@@ -1123,13 +1186,6 @@
     "name": "RRwearR",
     "desc": "RR tire right percent tread remaining",
     "unit": "%",
-    "count": 1,
-    "type": "float"
-  },
-  "LRbrakeLinePress": {
-    "name": "LRbrakeLinePress",
-    "desc": "LR brake line pressure",
-    "unit": "bar",
     "count": 1,
     "type": "float"
   },

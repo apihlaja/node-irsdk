@@ -1,30 +1,33 @@
 {
-  "timestamp": "2015-09-11T01:51:03.279Z",
+  "timestamp": "2016-11-10T08:18:01.946Z",
   "data": {
     "WeekendInfo": {
-      "TrackName": "monza full",
-      "TrackID": 239,
-      "TrackLength": "5.75 km",
-      "TrackDisplayName": "Autodromo Nazionale Monza",
-      "TrackDisplayShortName": "Monza Full",
+      "TrackName": "lanier",
+      "TrackID": 17,
+      "TrackLength": "0.51 km",
+      "TrackDisplayName": "Lanier National Speedway",
+      "TrackDisplayShortName": "Lanier",
       "TrackConfigName": null,
-      "TrackCity": "Monza",
-      "TrackCountry": "Italy",
-      "TrackAltitude": "182.71 m",
-      "TrackLatitude": "45.616196 m",
-      "TrackLongitude": "9.280776 m",
-      "TrackNumTurns": 11,
-      "TrackPitSpeedLimit": "64.37 kph",
-      "TrackType": "road course",
-      "TrackWeatherType": "Constant",
+      "TrackCity": "Braselton",
+      "TrackCountry": "USA",
+      "TrackAltitude": "285.48 m",
+      "TrackLatitude": "34.153764 m",
+      "TrackLongitude": "-83.812358 m",
+      "TrackNorthOffset": "5.6090 rad",
+      "TrackNumTurns": 4,
+      "TrackPitSpeedLimit": "47.99 kph",
+      "TrackType": "short oval",
+      "TrackWeatherType": "Realistic",
       "TrackSkies": "Partly Cloudy",
-      "TrackSurfaceTemp": "39.81 C",
-      "TrackAirTemp": "25.56 C",
-      "TrackAirPressure": "29.28 Hg",
-      "TrackWindVel": "0.89 m/s",
-      "TrackWindDir": "0.00 rad",
-      "TrackRelativeHumidity": "55 %",
+      "TrackSurfaceTemp": "41.74 C",
+      "TrackAirTemp": "27.49 C",
+      "TrackAirPressure": "28.92 Hg",
+      "TrackWindVel": "0.72 m/s",
+      "TrackWindDir": "7.39 rad",
+      "TrackRelativeHumidity": "38 %",
       "TrackFogLevel": "0 %",
+      "TrackCleanup": 1,
+      "TrackDynamicTrack": 1,
       "SeriesID": 0,
       "SeasonID": 0,
       "SessionID": 0,
@@ -33,7 +36,7 @@
       "Official": 0,
       "RaceWeek": 0,
       "EventType": "Test",
-      "Category": "Road",
+      "Category": "Oval",
       "SimMode": "full",
       "TeamRacing": 0,
       "MinDrivers": 0,
@@ -49,20 +52,22 @@
         "CourseCautions": "off",
         "StandingStart": 0,
         "Restarts": "single file",
-        "WeatherType": "Constant",
+        "WeatherType": "Realistic",
         "Skies": "Partly Cloudy",
         "WindDirection": "N",
         "WindSpeed": "3.22 km/h",
         "WeatherTemp": "25.56 C",
         "RelativeHumidity": "55 %",
         "FogLevel": "0 %",
+        "TimeOfDay": "10:00 am",
         "Unofficial": 0,
         "CommercialMode": "consumer",
         "NightMode": 0,
         "IsFixedSetup": 0,
         "StrictLapsChecking": "default",
         "HasOpenRegistration": 0,
-        "HardcoreLevel": 1
+        "HardcoreLevel": 1,
+        "IncidentLimit": "unlimited"
       },
       "TelemetryOptions": {
         "TelemetryDiskFile": ""
@@ -76,6 +81,7 @@
           "SessionTime": "unlimited",
           "SessionNumLapsToAvg": 0,
           "SessionType": "Offline Testing",
+          "SessionTrackRubberState": "moderately low usage",
           "ResultsPositions": null,
           "ResultsFastestLap": [
             {
@@ -187,129 +193,6 @@
         },
         {
           "GroupNum": 10,
-          "GroupName": "Scenic",
-          "IsScenic": true,
-          "Cameras": [
-            {
-              "CameraNum": 1,
-              "CameraName": "Scenic_00"
-            },
-            {
-              "CameraNum": 2,
-              "CameraName": "Scenic_01"
-            },
-            {
-              "CameraNum": 3,
-              "CameraName": "Scenic_02"
-            },
-            {
-              "CameraNum": 4,
-              "CameraName": "Scenic_03"
-            },
-            {
-              "CameraNum": 5,
-              "CameraName": "Scenic_04"
-            },
-            {
-              "CameraNum": 6,
-              "CameraName": "Scenic_05"
-            },
-            {
-              "CameraNum": 7,
-              "CameraName": "Scenic_06"
-            },
-            {
-              "CameraNum": 8,
-              "CameraName": "Scenic_07"
-            },
-            {
-              "CameraNum": 9,
-              "CameraName": "Scenic_08"
-            },
-            {
-              "CameraNum": 10,
-              "CameraName": "Scenic_09"
-            },
-            {
-              "CameraNum": 11,
-              "CameraName": "Scenic_10"
-            },
-            {
-              "CameraNum": 12,
-              "CameraName": "Scenic_11"
-            },
-            {
-              "CameraNum": 13,
-              "CameraName": "Scenic_12"
-            },
-            {
-              "CameraNum": 14,
-              "CameraName": "Scenic_13"
-            },
-            {
-              "CameraNum": 15,
-              "CameraName": "Scenic_14"
-            },
-            {
-              "CameraNum": 16,
-              "CameraName": "Scenic_15"
-            },
-            {
-              "CameraNum": 17,
-              "CameraName": "Scenic_16"
-            },
-            {
-              "CameraNum": 18,
-              "CameraName": "Scenic_17"
-            },
-            {
-              "CameraNum": 19,
-              "CameraName": "Scenic_18"
-            },
-            {
-              "CameraNum": 20,
-              "CameraName": "Scenic_19"
-            },
-            {
-              "CameraNum": 21,
-              "CameraName": "Scenic_20"
-            },
-            {
-              "CameraNum": 22,
-              "CameraName": "Scenic_21"
-            },
-            {
-              "CameraNum": 23,
-              "CameraName": "Scenic_22"
-            },
-            {
-              "CameraNum": 24,
-              "CameraName": "Scenic_23"
-            },
-            {
-              "CameraNum": 25,
-              "CameraName": "Scenic_24"
-            },
-            {
-              "CameraNum": 26,
-              "CameraName": "Scenic_25"
-            },
-            {
-              "CameraNum": 27,
-              "CameraName": "Scenic_26"
-            },
-            {
-              "CameraNum": 28,
-              "CameraName": "Scenic_27"
-            },
-            {
-              "CameraNum": 29,
-              "CameraName": "Scenic_28"
-            }
-          ]
-        },
-        {
-          "GroupNum": 11,
           "GroupName": "TV1",
           "Cameras": [
             {
@@ -323,42 +206,41 @@
             {
               "CameraNum": 3,
               "CameraName": "CamTV1_02"
+            }
+          ]
+        },
+        {
+          "GroupNum": 11,
+          "GroupName": "Scenic",
+          "IsScenic": true,
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "Scenic_01"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "Scenic_02"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "Scenic_04"
             },
             {
               "CameraNum": 4,
-              "CameraName": "CamTV1_03"
+              "CameraName": "Scenic_06"
             },
             {
               "CameraNum": 5,
-              "CameraName": "CamTV1_04"
+              "CameraName": "Scenic_08"
             },
             {
               "CameraNum": 6,
-              "CameraName": "CamTV1_05"
+              "CameraName": "Scenic_09"
             },
             {
               "CameraNum": 7,
-              "CameraName": "CamTV1_06"
-            },
-            {
-              "CameraNum": 8,
-              "CameraName": "CamTV1_08"
-            },
-            {
-              "CameraNum": 9,
-              "CameraName": "CamTV1_09"
-            },
-            {
-              "CameraNum": 10,
-              "CameraName": "CamTV1_11"
-            },
-            {
-              "CameraNum": 11,
-              "CameraName": "CamTV1_10"
-            },
-            {
-              "CameraNum": 12,
-              "CameraName": "CamTV1_07"
+              "CameraName": "Scenic_10"
             }
           ]
         },
@@ -368,59 +250,19 @@
           "Cameras": [
             {
               "CameraNum": 1,
-              "CameraName": "CamTV2_03"
+              "CameraName": "CamTV2_00"
             },
             {
               "CameraNum": 2,
-              "CameraName": "CamTV2_09"
-            },
-            {
-              "CameraNum": 3,
-              "CameraName": "CamTV2_10"
-            },
-            {
-              "CameraNum": 4,
-              "CameraName": "CamTV2_11"
-            },
-            {
-              "CameraNum": 5,
-              "CameraName": "CamTV2_12"
-            },
-            {
-              "CameraNum": 6,
-              "CameraName": "CamTV2_13"
-            },
-            {
-              "CameraNum": 7,
-              "CameraName": "CamTV2_08"
-            },
-            {
-              "CameraNum": 8,
-              "CameraName": "CamTV2_07"
-            },
-            {
-              "CameraNum": 9,
-              "CameraName": "CamTV2_06"
-            },
-            {
-              "CameraNum": 10,
-              "CameraName": "CamTV2_05"
-            },
-            {
-              "CameraNum": 11,
-              "CameraName": "CamTV2_04"
-            },
-            {
-              "CameraNum": 12,
-              "CameraName": "CamTV2_02"
-            },
-            {
-              "CameraNum": 13,
               "CameraName": "CamTV2_01"
             },
             {
-              "CameraNum": 14,
-              "CameraName": "CamTV2_00"
+              "CameraNum": 3,
+              "CameraName": "CamTV2_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "CamTV2_03"
             }
           ]
         },
@@ -435,38 +277,6 @@
             {
               "CameraNum": 2,
               "CameraName": "CamTV3_01"
-            },
-            {
-              "CameraNum": 3,
-              "CameraName": "CamTV3_02"
-            },
-            {
-              "CameraNum": 4,
-              "CameraName": "CamTV3_03"
-            },
-            {
-              "CameraNum": 5,
-              "CameraName": "CamTV3_04"
-            },
-            {
-              "CameraNum": 6,
-              "CameraName": "CamTV3_05"
-            },
-            {
-              "CameraNum": 7,
-              "CameraName": "CamTV3_06"
-            },
-            {
-              "CameraNum": 8,
-              "CameraName": "CamTV3_07"
-            },
-            {
-              "CameraNum": 9,
-              "CameraName": "CamTV3_08"
-            },
-            {
-              "CameraNum": 10,
-              "CameraName": "CamTV3_09"
             }
           ]
         },
@@ -649,23 +459,25 @@
     },
     "DriverInfo": {
       "DriverCarIdx": 0,
-      "DriverHeadPosX": -0.106,
-      "DriverHeadPosY": 0.43,
-      "DriverHeadPosZ": 0.521,
-      "DriverCarIdleRPM": 1100,
-      "DriverCarRedLine": 7600,
-      "DriverCarFuelKgPerLtr": 0.75,
-      "DriverCarFuelMaxLtr": 115,
+      "DriverUserID": 0,
+      "PaceCarIdx": -1,
+      "DriverHeadPosX": -0.541,
+      "DriverHeadPosY": 0.08,
+      "DriverHeadPosZ": 0.698,
+      "DriverCarIdleRPM": 1200,
+      "DriverCarRedLine": 9000,
+      "DriverCarFuelKgPerLtr": 0.789,
+      "DriverCarFuelMaxLtr": 105.991,
       "DriverCarMaxFuelPct": 1,
-      "DriverCarSLFirstRPM": 7100,
-      "DriverCarSLShiftRPM": 7400,
-      "DriverCarSLLastRPM": 7400,
-      "DriverCarSLBlinkRPM": 7600,
-      "DriverPitTrkPct": 0.043,
-      "DriverCarEstLapTime": 110.497,
-      "DriverSetupName": "2015s4_AP_Suzuka_hl.sto",
-      "DriverSetupIsModified": 1,
-      "DriverSetupLoadTypeName": "user",
+      "DriverCarSLFirstRPM": 8455,
+      "DriverCarSLShiftRPM": 8900,
+      "DriverCarSLLastRPM": 8900,
+      "DriverCarSLBlinkRPM": 8900,
+      "DriverPitTrkPct": 0.794794,
+      "DriverCarEstLapTime": 13.7101,
+      "DriverSetupName": "lanier.sto",
+      "DriverSetupIsModified": 0,
+      "DriverSetupLoadTypeName": "iracing",
       "DriverSetupPassedTech": 1,
       "Drivers": [
         {
@@ -678,11 +490,13 @@
           "TeamName": "Antti Pihlaja",
           "CarNumber": "37",
           "CarNumberRaw": 37,
-          "CarPath": "fordgt gt3",
+          "CarPath": "sprint",
           "CarClassID": 0,
-          "CarID": 59,
-          "CarScreenName": "Ford GT GT3",
-          "CarScreenNameShort": "Ford GT GT3",
+          "CarID": 37,
+          "CarIsPaceCar": 0,
+          "CarIsAI": 0,
+          "CarScreenName": "Sprint Car",
+          "CarScreenNameShort": "Sprint Car",
           "CarClassShortName": null,
           "CarClassRelSpeed": 0,
           "CarClassLicenseLevel": 0,
@@ -695,12 +509,12 @@
           "LicString": "R 0.01",
           "LicColor": 87003,
           "IsSpectator": 0,
-          "CarDesignStr": "0,ffffff,000000,000000",
+          "CarDesignStr": "21,feec04,000000,000000",
           "HelmetDesignStr": "60,eeeeee,003180,000000",
-          "SuitDesignStr": "2,000000,000000,feec04",
-          "CarNumberDesignStr": "0,ffffff,777777,000000",
+          "SuitDesignStr": "2,231f20,231f20,ffde00",
+          "CarNumberDesignStr": "5,0,ffffff,ffffff,000000",
           "CarSponsor_1": 0,
-          "CarSponsor_2": 109
+          "CarSponsor_2": 0
         }
       ]
     },
@@ -712,22 +526,94 @@
         },
         {
           "SectorNum": 1,
-          "SectorStartPct": 0.345
-        },
-        {
-          "SectorNum": 2,
-          "SectorStartPct": 0.476
-        },
-        {
-          "SectorNum": 3,
-          "SectorStartPct": 0.658
-        },
-        {
-          "SectorNum": 4,
-          "SectorStartPct": 0.853
+          "SectorStartPct": 0.5
         }
       ]
+    },
+    "CarSetup": {
+      "UpdateCount": 1,
+      "Tires": {
+        "LeftFront": {
+          "ColdPressure": "90 kPa",
+          "LastHotPressure": "90 kPa",
+          "LastTempsOMI": "41C, 41C, 41C",
+          "TreadRemaining": "100%, 100%, 100%"
+        },
+        "LeftRear": {
+          "ColdPressure": "117 kPa",
+          "LastHotPressure": "117 kPa",
+          "LastTempsOMI": "41C, 41C, 41C",
+          "TreadRemaining": "100%, 100%, 100%"
+        },
+        "RightFront": {
+          "ColdPressure": "131 kPa",
+          "LastHotPressure": "131 kPa",
+          "LastTempsIMO": "41C, 41C, 41C",
+          "TreadRemaining": "100%, 100%, 100%",
+          "Stagger": "13 mm"
+        },
+        "RightRear": {
+          "ColdPressure": "131 kPa",
+          "LastHotPressure": "131 kPa",
+          "LastTempsIMO": "41C, 41C, 41C",
+          "TreadRemaining": "100%, 100%, 100%",
+          "Stagger": "64 mm"
+        }
+      },
+      "Chassis": {
+        "Front": {
+          "SteeringBoxRatio": "8.5:1",
+          "SteeringOffset": "+4 deg",
+          "FrontBrakeBias": "54%"
+        },
+        "LeftFront": {
+          "CornerWeight": "1796 N",
+          "RideHeight": "21 mm",
+          "ShockCollarOffset": "105 mm",
+          "SpringRate": "96 N/mm",
+          "BumpStiffness": "+5 clicks",
+          "ReboundStiffness": "+5 clicks",
+          "Camber": "+1.6 deg",
+          "Caster": "+4.8 deg",
+          "ToeIn": "-3 mm"
+        },
+        "LeftRear": {
+          "CornerWeight": "2389 N",
+          "RideHeight": "65 mm",
+          "ShockCollarOffset": "51 mm",
+          "SpringRate": "70 N/mm",
+          "BumpStiffness": "+6 clicks",
+          "ReboundStiffness": "+6 clicks",
+          "Camber": "+0.6 deg"
+        },
+        "RightFront": {
+          "CornerWeight": "2058 N",
+          "RideHeight": "29 mm",
+          "ShockCollarOffset": "121 mm",
+          "SpringRate": "88 N/mm",
+          "BumpStiffness": "+5 clicks",
+          "ReboundStiffness": "+4 clicks",
+          "Camber": "-1.6 deg",
+          "Caster": "+6.5 deg",
+          "ToeIn": "-0 mm",
+          "FrontTrackBarHeight": "+248 mm"
+        },
+        "RightRear": {
+          "CornerWeight": "1558 N",
+          "RideHeight": "76 mm",
+          "ShockCollarOffset": "83 mm",
+          "SpringRate": "61 N/mm",
+          "BumpStiffness": "+5 clicks",
+          "ReboundStiffness": "+4 clicks",
+          "Camber": "-0.6 deg",
+          "TrackBarHeight": "+318 mm"
+        },
+        "Rear": {
+          "FuelFillTo": "106.0 L",
+          "CrossWeight": "57.0%",
+          "RearEndRatio": 5.69
+        }
+      }
     }
-  },
-  "yaml": "---\nWeekendInfo:\n TrackName: monza full\n TrackID: 239\n TrackLength: 5.75 km\n TrackDisplayName: Autodromo Nazionale Monza\n TrackDisplayShortName: Monza Full\n TrackConfigName: \n TrackCity: Monza\n TrackCountry: Italy\n TrackAltitude: 182.71 m\n TrackLatitude: 45.616196 m\n TrackLongitude: 9.280776 m\n TrackNumTurns: 11\n TrackPitSpeedLimit: 64.37 kph\n TrackType: road course\n TrackWeatherType: Constant\n TrackSkies: Partly Cloudy\n TrackSurfaceTemp: 39.81 C\n TrackAirTemp: 25.56 C\n TrackAirPressure: 29.28 Hg\n TrackWindVel: 0.89 m/s\n TrackWindDir: 0.00 rad\n TrackRelativeHumidity: 55 %\n TrackFogLevel: 0 %\n SeriesID: 0\n SeasonID: 0\n SessionID: 0\n SubSessionID: 0\n LeagueID: 0\n Official: 0\n RaceWeek: 0\n EventType: Test\n Category: Road\n SimMode: full\n TeamRacing: 0\n MinDrivers: 0\n MaxDrivers: 0\n DCRuleSet: None\n QualifierMustStartRace: 0\n NumCarClasses: 1\n NumCarTypes: 1\n WeekendOptions:\n  NumStarters: 0\n  StartingGrid: single file\n  QualifyScoring: best lap\n  CourseCautions: off\n  StandingStart: 0\n  Restarts: single file\n  WeatherType: Constant\n  Skies: Partly Cloudy\n  WindDirection: N\n  WindSpeed: 3.22 km/h\n  WeatherTemp: 25.56 C\n  RelativeHumidity: 55 %\n  FogLevel: 0 %\n  Unofficial: 0\n  CommercialMode: consumer\n  NightMode: 0\n  IsFixedSetup: 0\n  StrictLapsChecking: default\n  HasOpenRegistration: 0\n  HardcoreLevel: 1\n TelemetryOptions:\n  TelemetryDiskFile: \"\"\n\nSessionInfo:\n Sessions:\n - SessionNum: 0\n   SessionLaps: unlimited\n   SessionTime: unlimited\n   SessionNumLapsToAvg: 0\n   SessionType: Offline Testing\n   ResultsPositions:\n   ResultsFastestLap:\n   - CarIdx: 255\n     FastestLap: 0\n     FastestTime: -1.000\n   ResultsAverageLapTime: -1.000\n   ResultsNumCautionFlags: 0\n   ResultsNumCautionLaps: 0\n   ResultsNumLeadChanges: 0\n   ResultsLapsComplete: -1\n   ResultsOfficial: 0\n\nCameraInfo:\n Groups:\n - GroupNum: 1\n   GroupName: Nose\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamNose\n - GroupNum: 2\n   GroupName: Gearbox\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamGearbox\n - GroupNum: 3\n   GroupName: Roll Bar\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRoll Bar\n - GroupNum: 4\n   GroupName: LF Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamLF Susp\n - GroupNum: 5\n   GroupName: LR Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamLR Susp\n - GroupNum: 6\n   GroupName: Gyro\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamGyro\n - GroupNum: 7\n   GroupName: RF Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRF Susp\n - GroupNum: 8\n   GroupName: RR Susp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRR Susp\n - GroupNum: 9\n   GroupName: Cockpit\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamCockpit\n - GroupNum: 10\n   GroupName: Scenic\n   IsScenic: true\n   Cameras:\n   - CameraNum: 1\n     CameraName: Scenic_00\n   - CameraNum: 2\n     CameraName: Scenic_01\n   - CameraNum: 3\n     CameraName: Scenic_02\n   - CameraNum: 4\n     CameraName: Scenic_03\n   - CameraNum: 5\n     CameraName: Scenic_04\n   - CameraNum: 6\n     CameraName: Scenic_05\n   - CameraNum: 7\n     CameraName: Scenic_06\n   - CameraNum: 8\n     CameraName: Scenic_07\n   - CameraNum: 9\n     CameraName: Scenic_08\n   - CameraNum: 10\n     CameraName: Scenic_09\n   - CameraNum: 11\n     CameraName: Scenic_10\n   - CameraNum: 12\n     CameraName: Scenic_11\n   - CameraNum: 13\n     CameraName: Scenic_12\n   - CameraNum: 14\n     CameraName: Scenic_13\n   - CameraNum: 15\n     CameraName: Scenic_14\n   - CameraNum: 16\n     CameraName: Scenic_15\n   - CameraNum: 17\n     CameraName: Scenic_16\n   - CameraNum: 18\n     CameraName: Scenic_17\n   - CameraNum: 19\n     CameraName: Scenic_18\n   - CameraNum: 20\n     CameraName: Scenic_19\n   - CameraNum: 21\n     CameraName: Scenic_20\n   - CameraNum: 22\n     CameraName: Scenic_21\n   - CameraNum: 23\n     CameraName: Scenic_22\n   - CameraNum: 24\n     CameraName: Scenic_23\n   - CameraNum: 25\n     CameraName: Scenic_24\n   - CameraNum: 26\n     CameraName: Scenic_25\n   - CameraNum: 27\n     CameraName: Scenic_26\n   - CameraNum: 28\n     CameraName: Scenic_27\n   - CameraNum: 29\n     CameraName: Scenic_28\n - GroupNum: 11\n   GroupName: TV1\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV1_00\n   - CameraNum: 2\n     CameraName: CamTV1_01\n   - CameraNum: 3\n     CameraName: CamTV1_02\n   - CameraNum: 4\n     CameraName: CamTV1_03\n   - CameraNum: 5\n     CameraName: CamTV1_04\n   - CameraNum: 6\n     CameraName: CamTV1_05\n   - CameraNum: 7\n     CameraName: CamTV1_06\n   - CameraNum: 8\n     CameraName: CamTV1_08\n   - CameraNum: 9\n     CameraName: CamTV1_09\n   - CameraNum: 10\n     CameraName: CamTV1_11\n   - CameraNum: 11\n     CameraName: CamTV1_10\n   - CameraNum: 12\n     CameraName: CamTV1_07\n - GroupNum: 12\n   GroupName: TV2\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV2_03\n   - CameraNum: 2\n     CameraName: CamTV2_09\n   - CameraNum: 3\n     CameraName: CamTV2_10\n   - CameraNum: 4\n     CameraName: CamTV2_11\n   - CameraNum: 5\n     CameraName: CamTV2_12\n   - CameraNum: 6\n     CameraName: CamTV2_13\n   - CameraNum: 7\n     CameraName: CamTV2_08\n   - CameraNum: 8\n     CameraName: CamTV2_07\n   - CameraNum: 9\n     CameraName: CamTV2_06\n   - CameraNum: 10\n     CameraName: CamTV2_05\n   - CameraNum: 11\n     CameraName: CamTV2_04\n   - CameraNum: 12\n     CameraName: CamTV2_02\n   - CameraNum: 13\n     CameraName: CamTV2_01\n   - CameraNum: 14\n     CameraName: CamTV2_00\n - GroupNum: 13\n   GroupName: TV3\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamTV3_00\n   - CameraNum: 2\n     CameraName: CamTV3_01\n   - CameraNum: 3\n     CameraName: CamTV3_02\n   - CameraNum: 4\n     CameraName: CamTV3_03\n   - CameraNum: 5\n     CameraName: CamTV3_04\n   - CameraNum: 6\n     CameraName: CamTV3_05\n   - CameraNum: 7\n     CameraName: CamTV3_06\n   - CameraNum: 8\n     CameraName: CamTV3_07\n   - CameraNum: 9\n     CameraName: CamTV3_08\n   - CameraNum: 10\n     CameraName: CamTV3_09\n - GroupNum: 14\n   GroupName: Pit Lane\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamPit Lane\n - GroupNum: 15\n   GroupName: Pit Lane 2\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamPit Lane 2\n - GroupNum: 16\n   GroupName: Chopper\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamChopper\n - GroupNum: 17\n   GroupName: Blimp\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamBlimp\n - GroupNum: 18\n   GroupName: Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamChase\n - GroupNum: 19\n   GroupName: Far Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamFar Chase\n - GroupNum: 20\n   GroupName: Rear Chase\n   Cameras:\n   - CameraNum: 1\n     CameraName: CamRear Chase\n\nRadioInfo:\n SelectedRadioNum: 0\n Radios:\n - RadioNum: 0\n   HopCount: 1\n   NumFrequencies: 7\n   TunedToFrequencyNum: 0\n   ScanningIsOn: 1\n   Frequencies:\n   - FrequencyNum: 0\n     FrequencyName: \"@ALLTEAMS\"\n     Priority: 12\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 1\n     FrequencyName: \"@DRIVERS\"\n     Priority: 15\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 2\n     FrequencyName: \"@TEAM\"\n     Priority: 60\n     CarIdx: 0\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n   - FrequencyNum: 3\n     FrequencyName: \"@CLUB\"\n     Priority: 20\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 44\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 1\n     IsDeletable: 0\n   - FrequencyNum: 4\n     FrequencyName: \"@ADMIN\"\n     Priority: 90\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n   - FrequencyNum: 5\n     FrequencyName: \"@RACECONTROL\"\n     Priority: 80\n     CarIdx: -1\n     EntryIdx: -1\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n   - FrequencyNum: 6\n     FrequencyName: \"@PRIVATE\"\n     Priority: 70\n     CarIdx: -1\n     EntryIdx: 0\n     ClubID: 0\n     CanScan: 1\n     CanSquawk: 1\n     Muted: 0\n     IsMutable: 0\n     IsDeletable: 0\n\nDriverInfo:\n DriverCarIdx: 0\n DriverHeadPosX: -0.106\n DriverHeadPosY: 0.430\n DriverHeadPosZ: 0.521\n DriverCarIdleRPM: 1100.000\n DriverCarRedLine: 7600.000\n DriverCarFuelKgPerLtr: 0.750\n DriverCarFuelMaxLtr: 115.000\n DriverCarMaxFuelPct: 1.000\n DriverCarSLFirstRPM: 7100.000\n DriverCarSLShiftRPM: 7400.000\n DriverCarSLLastRPM: 7400.000\n DriverCarSLBlinkRPM: 7600.000\n DriverPitTrkPct: 0.043\n DriverCarEstLapTime: 110.497\n DriverSetupName: 2015s4_AP_Suzuka_hl.sto\n DriverSetupIsModified: 1\n DriverSetupLoadTypeName: user\n DriverSetupPassedTech: 1\n Drivers:\n - CarIdx: 0\n   UserName: Antti Pihlaja\n   AbbrevName: \n   Initials: \n   UserID: 93910\n   TeamID: 0\n   TeamName: Antti Pihlaja\n   CarNumber: \"37\"\n   CarNumberRaw: 37\n   CarPath: fordgt gt3\n   CarClassID: 0\n   CarID: 59\n   CarScreenName: Ford GT GT3\n   CarScreenNameShort: Ford GT GT3\n   CarClassShortName: \n   CarClassRelSpeed: 0\n   CarClassLicenseLevel: 0\n   CarClassMaxFuelPct: 1.000 %\n   CarClassWeightPenalty: 0.000 kg\n   CarClassColor: 0xffffff\n   IRating: 1\n   LicLevel: 1\n   LicSubLevel: 1\n   LicString: R 0.01\n   LicColor: 0x0153db\n   IsSpectator: 0\n   CarDesignStr: 0,ffffff,000000,000000\n   HelmetDesignStr: 60,eeeeee,003180,000000\n   SuitDesignStr: 2,000000,000000,feec04\n   CarNumberDesignStr: 0,ffffff,777777,000000\n   CarSponsor_1: 0\n   CarSponsor_2: 109\n\nSplitTimeInfo:\n Sectors:\n - SectorNum: 0\n   SectorStartPct: 0.000\n - SectorNum: 1\n   SectorStartPct: 0.345\n - SectorNum: 2\n   SectorStartPct: 0.476\n - SectorNum: 3\n   SectorStartPct: 0.658\n - SectorNum: 4\n   SectorStartPct: 0.853\n\n...\n"
+  }
 }
