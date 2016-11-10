@@ -73,8 +73,8 @@ var iracing = irsdk.getInstance()
         * [.Consts](#iracing+Consts) : <code>[IrSdkConsts](#IrSdkConsts)</code>
         * [.camControls](#iracing+camControls) : <code>Object</code>
             * [.setState(state)](#iracing+camControls.setState)
-            * [.switchCamToCar(carNum, [camGroupNum], [camNum])](#iracing+camControls.switchCamToCar)
-            * [.switchCamToPos(position, [camGroupNum], [camNum])](#iracing+camControls.switchCamToPos)
+            * [.switchToCar(carNum, [camGroupNum], [camNum])](#iracing+camControls.switchToCar)
+            * [.switchToPos(position, [camGroupNum], [camNum])](#iracing+camControls.switchToPos)
         * [.playbackControls](#iracing+playbackControls) : <code>Object</code>
             * [.play()](#iracing+playbackControls.play)
             * [.pause()](#iracing+playbackControls.pause)
@@ -82,9 +82,9 @@ var iracing = irsdk.getInstance()
             * [.rewind([speed])](#iracing+playbackControls.rewind)
             * [.slowForward([divider])](#iracing+playbackControls.slowForward)
             * [.slowBackward([divider])](#iracing+playbackControls.slowBackward)
-            * [.searchTs(sessionNum, sessionTimeMS)](#iracing+playbackControls.searchTs)
             * [.search(searchMode)](#iracing+playbackControls.search)
-            * [.goToFrame(frameNum, rpyPosMode)](#iracing+playbackControls.goToFrame)
+            * [.searchTs(sessionNum, sessionTimeMS)](#iracing+playbackControls.searchTs)
+            * [.searchFrame(frameNum, rpyPosMode)](#iracing+playbackControls.searchFrame)
         * [.telemetry](#iracing+telemetry)
         * [.telemetryDescription](#iracing+telemetryDescription)
         * [.sessionInfo](#iracing+sessionInfo)
@@ -129,8 +129,8 @@ Camera controls
 
 * [.camControls](#iracing+camControls) : <code>Object</code>
     * [.setState(state)](#iracing+camControls.setState)
-    * [.switchCamToCar(carNum, [camGroupNum], [camNum])](#iracing+camControls.switchCamToCar)
-    * [.switchCamToPos(position, [camGroupNum], [camNum])](#iracing+camControls.switchCamToPos)
+    * [.switchToCar(carNum, [camGroupNum], [camNum])](#iracing+camControls.switchToCar)
+    * [.switchToPos(position, [camGroupNum], [camNum])](#iracing+camControls.switchToPos)
 
 <a name="iracing+camControls.setState"></a>
 
@@ -149,9 +149,9 @@ var CamState = iracing.Consts.CameraState
 var state = CamState.CamToolActive | CamState.UIHidden | CamState.UseMouseAimMode
 iracing.camControls.setState(state) // hide UI and enable mouse aim
 ```
-<a name="iracing+camControls.switchCamToCar"></a>
+<a name="iracing+camControls.switchToCar"></a>
 
-#### camControls.switchCamToCar(carNum, [camGroupNum], [camNum])
+#### camControls.switchToCar(carNum, [camGroupNum], [camNum])
 Switch camera, focus on car
 
 **Kind**: static method of <code>[camControls](#iracing+camControls)</code>  
@@ -164,11 +164,11 @@ Switch camera, focus on car
 
   
 ```js
-iracing.camControls.switchCamToCar(2) // show car #2
+iracing.camControls.switchToCar(2) // show car #2
 ```
-<a name="iracing+camControls.switchCamToPos"></a>
+<a name="iracing+camControls.switchToPos"></a>
 
-#### camControls.switchCamToPos(position, [camGroupNum], [camNum])
+#### camControls.switchToPos(position, [camGroupNum], [camNum])
 Switch camera, focus on position
 
 **Kind**: static method of <code>[camControls](#iracing+camControls)</code>  
@@ -181,7 +181,7 @@ Switch camera, focus on position
 
   
 ```js
-iracing.camControls.switchCamToPos(2) // show P2
+iracing.camControls.switchToPos(2) // show P2
 ```
 <a name="iracing+playbackControls"></a>
 
@@ -197,9 +197,9 @@ Replay and playback controls
     * [.rewind([speed])](#iracing+playbackControls.rewind)
     * [.slowForward([divider])](#iracing+playbackControls.slowForward)
     * [.slowBackward([divider])](#iracing+playbackControls.slowBackward)
-    * [.searchTs(sessionNum, sessionTimeMS)](#iracing+playbackControls.searchTs)
     * [.search(searchMode)](#iracing+playbackControls.search)
-    * [.goToFrame(frameNum, rpyPosMode)](#iracing+playbackControls.goToFrame)
+    * [.searchTs(sessionNum, sessionTimeMS)](#iracing+playbackControls.searchTs)
+    * [.searchFrame(frameNum, rpyPosMode)](#iracing+playbackControls.searchFrame)
 
 <a name="iracing+playbackControls.play"></a>
 
@@ -281,6 +281,21 @@ slow-backward replay, reverse slow motion
 ```js
 iracing.playbackControls.slowBackward(2) // half speed RW
 ```
+<a name="iracing+playbackControls.search"></a>
+
+#### playbackControls.search(searchMode)
+Search things from replay
+
+**Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| searchMode | <code>[RpySrchMode](#IrSdkConsts.RpySrchMode)</code> | what to search |
+
+  
+```js
+iracing.playbackControls.search('nextIncident')
+```
 <a name="iracing+playbackControls.searchTs"></a>
 
 #### playbackControls.searchTs(sessionNum, sessionTimeMS)
@@ -297,24 +312,9 @@ Search timestamp
 ```js
 iracing.playbackControls.searchTs(2, 2*60*1000) // 2nd minute of 3rd session
 ```
-<a name="iracing+playbackControls.search"></a>
+<a name="iracing+playbackControls.searchFrame"></a>
 
-#### playbackControls.search(searchMode)
-Search things from replay
-
-**Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| searchMode | <code>[RpySrchMode](#IrSdkConsts.RpySrchMode)</code> | what to search |
-
-  
-```js
-iracing.playbackControls.search('nextIncident')
-```
-<a name="iracing+playbackControls.goToFrame"></a>
-
-#### playbackControls.goToFrame(frameNum, rpyPosMode)
+#### playbackControls.searchFrame(frameNum, rpyPosMode)
 Go to frame. Frame counting can be relative to begin, end or current.
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -326,7 +326,7 @@ Go to frame. Frame counting can be relative to begin, end or current.
 
   
 ```js
-iracing.playbackControls.goToFrame(1, 'current') // go to 1 frame forward
+iracing.playbackControls.searchFrame(1, 'current') // go to 1 frame forward
 ```
 <a name="iracing+telemetry"></a>
 

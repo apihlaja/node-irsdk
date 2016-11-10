@@ -57,9 +57,9 @@ function JsIrSdk (IrSdkWrapper, opts) {
       @param {Integer} [camGroupNum] Select camera group
       @param {Integer} [camNum] Select camera
 
-      @example iracing.camControls.switchCamToCar(2) // show car #2
+      @example iracing.camControls.switchToCar(2) // show car #2
     */
-    switchCamToCar: function (carNum, camGroupNum, camNum) {
+    switchToCar: function (carNum, camGroupNum, camNum) {
       camGroupNum = camGroupNum | 0
       camNum = camNum | 0
 
@@ -76,9 +76,9 @@ function JsIrSdk (IrSdkWrapper, opts) {
       @param {Integer} [camGroupNum] Select camera group
       @param {Integer} [camNum] Select camera
 
-      @example iracing.camControls.switchCamToPos(2) // show P2
+      @example iracing.camControls.switchToPos(2) // show P2
     */
-    switchCamToPos: function (position, camGroupNum, camNum) {
+    switchToPos: function (position, camGroupNum, camNum) {
       camGroupNum = camGroupNum | 0
       camNum = camNum | 0
 
@@ -147,15 +147,6 @@ function JsIrSdk (IrSdkWrapper, opts) {
       divider -= 1
       self.execCmd(BroadcastMsg.ReplaySetPlaySpeed, -1 * divider, 1)
     },
-    /** Search timestamp
-      @method
-      @param {Integer} sessionNum Session number
-      @param {Integer} sessionTimeMS Session time in milliseconds
-      @example iracing.playbackControls.searchTs(2, 2*60*1000) // 2nd minute of 3rd session
-    */
-    searchTs: function (sessionNum, sessionTimeMS) {
-      self.execCmd(BroadcastMsg.ReplaySearchSessionTime, sessionNum, sessionTimeMS)
-    },
     /** Search things from replay
       @method
       @param {IrSdkConsts.RpySrchMode} searchMode what to search
@@ -169,13 +160,22 @@ function JsIrSdk (IrSdkWrapper, opts) {
         self.execCmd(BroadcastMsg.ReplaySearch, searchMode)
       }
     },
+    /** Search timestamp
+      @method
+      @param {Integer} sessionNum Session number
+      @param {Integer} sessionTimeMS Session time in milliseconds
+      @example iracing.playbackControls.searchTs(2, 2*60*1000) // 2nd minute of 3rd session
+    */
+    searchTs: function (sessionNum, sessionTimeMS) {
+      self.execCmd(BroadcastMsg.ReplaySearchSessionTime, sessionNum, sessionTimeMS)
+    },
     /** Go to frame. Frame counting can be relative to begin, end or current.
       @method
       @param {Integer} frameNum Frame number
       @param {IrSdkConsts.RpyPosMode} rpyPosMode Is frame number relative to begin, end or current frame
-      @example iracing.playbackControls.goToFrame(1, 'current') // go to 1 frame forward
+      @example iracing.playbackControls.searchFrame(1, 'current') // go to 1 frame forward
     */
-    goToFrame: function (frameNum, rpyPosMode) {
+    searchFrame: function (frameNum, rpyPosMode) {
       if (typeof rpyPosMode === 'string') {
         rpyPosMode = stringToEnum(rpyPosMode, Consts.RpyPosMode)
       }
