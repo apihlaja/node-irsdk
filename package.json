@@ -1,0 +1,27 @@
+{
+  "name": "node-irsdk-gh-pages",
+  "version": "1.0.0",
+  "description": "Scripts to build node-irsdk's gh-pages",
+  "main": "index.js",
+  "scripts": {
+    "style:watch": "stylus  -U -u nib -w src/style.styl -o style.css",
+    "serve": "serve",
+    "start": "run-p style:watch serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apihlaja/node-irsdk.git"
+  },
+  "author": "Antti Pihlaja",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apihlaja/node-irsdk/issues"
+  },
+  "homepage": "https://github.com/apihlaja/node-irsdk#readme",
+  "dependencies": {
+    "nib": "^1.1.2",
+    "npm-run-all": "^3.1.1",
+    "serve": "^1.4.0",
+    "stylus": "^0.54.5"
+  }
+}
