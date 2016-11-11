@@ -121,3 +121,8 @@ var done = (function () {
     }
   }
 })()
+
+setTimeout(function () {
+  console.log('no iRacing detected, skipping telemetry checks.')
+  process.exit(0)
+}, 3000)
