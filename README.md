@@ -171,13 +171,32 @@ Switch camera, focus on car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| carNum | <code>Integer</code> | Car to focus on |
+| carNum | <code>Integer</code> &#124; <code>String</code> &#124; <code>[CamFocusAt](#IrSdkConsts.CamFocusAt)</code> | Car to focus on |
 | [camGroupNum] | <code>Integer</code> | Select camera group |
 | [camNum] | <code>Integer</code> | Select camera |
 
   
 ```js
-iracing.camControls.switchToCar(2) // show car #2
+// show car #2
+iracing.camControls.switchToCar(2)
+      
+```
+  
+```js
+// show car #02
+iracing.camControls.switchToCar('02')
+      
+```
+  
+```js
+// show leader
+iracing.camControls.switchToCar('leader')
+      
+```
+  
+```js
+// show car #2 using cam group 3
+iracing.camControls.switchToCar(2, 3)
 ```
 <a name="iracing+camControls.switchToPos"></a>
 
@@ -188,7 +207,7 @@ Switch camera, focus on position
 
 | Param | Type | Description |
 | --- | --- | --- |
-| position | <code>Integer</code> | Position to focus on |
+| position | <code>Integer</code> &#124; <code>[CamFocusAt](#IrSdkConsts.CamFocusAt)</code> | Position to focus on |
 | [camGroupNum] | <code>Integer</code> | Select camera group |
 | [camNum] | <code>Integer</code> | Select camera |
 

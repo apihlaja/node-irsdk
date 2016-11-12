@@ -56,18 +56,33 @@ function JsIrSdk (IrSdkWrapper, opts) {
     },
     /** Switch camera, focus on car
       @method
-      @param {Integer} carNum Car to focus on
+      @param {Integer|String|IrSdkConsts.CamFocusAt} carNum Car to focus on
       @param {Integer} [camGroupNum] Select camera group
       @param {Integer} [camNum] Select camera
 
-      @example iracing.camControls.switchToCar(2) // show car #2
+      @example
+      * // show car #2
+      * iracing.camControls.switchToCar(2)
+      @example
+      * // show car #02
+      * iracing.camControls.switchToCar('02')
+      @example
+      * // show leader
+      * iracing.camControls.switchToCar('leader')
+      @example
+      * // show car #2 using cam group 3
+      * iracing.camControls.switchToCar(2, 3)
     */
     switchToCar: function (carNum, camGroupNum, camNum) {
       camGroupNum = camGroupNum | 0
       camNum = camNum | 0
 
       if (typeof carNum === 'string') {
-        carNum = stringToEnum(carNum, Consts.CamFocusAt)
+        if (isNaN(parseInt(carNum))) {
+          carNum = stringToEnum(carNum, Consts.CamFocusAt)
+        } else {
+          carNum = padCarNum(carNum)
+        }
       }
       if (Number.isInteger(carNum)) {
         self.execCmd(BroadcastMsg.CamSwitchNum, carNum, camGroupNum, camNum)
@@ -75,7 +90,7 @@ function JsIrSdk (IrSdkWrapper, opts) {
     },
     /** Switch camera, focus on position
       @method
-      @param {Integer} position Position to focus on
+      @param {Integer|IrSdkConsts.CamFocusAt} position Position to focus on
       @param {Integer} [camGroupNum] Select camera group
       @param {Integer} [camNum] Select camera
 
@@ -425,6 +440,24 @@ function JsIrSdk (IrSdkWrapper, opts) {
     clearInterval(sessionInfoIntervalId)
     clearInterval(startIntervalId)
     IrSdkWrapper.shutdown()
+  }
+
+  /** pad car number
+    @function
+    @private
+  */
+  function padCarNum (numStr) {
+    if (typeof numStr === 'string') {
+      var num = parseInt(numStr)
+      var zeros = numStr.length - num.toString().length
+      if (!zeros) return num
+
+      var numPlaces = 1
+      if (num > 9) numPlaces = 2
+      if (num > 99) numPlaces = 3
+
+      return (numPlaces + zeros) * 1000 + num
+    }
   }
 }
 

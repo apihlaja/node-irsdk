@@ -278,6 +278,43 @@ describe('JsIrSdk', function () {
         sendCmd.should.have.been.calledWithExactly(1, 12, 0, 0)
         iracing._stop()
       })
+      describe('leading zeros are padded if car num is given as string', function () {
+        var sendCmd, iracing
+        beforeEach(function () {
+          var mock = Object.create(IrSdkWrapper)
+          sendCmd = sinon.spy(mock, 'sendCmd')
+          iracing = new JsIrSdk(mock)
+        })
+        afterEach(function () {
+          iracing._stop()
+          sendCmd = null
+          iracing = null
+        })
+        it('"1" -> 1', function () {
+          iracing.camControls.switchToCar('1')
+          sendCmd.should.have.been.calledWithExactly(1, 1, 0, 0)
+        })
+        it('"100" -> 100', function () {
+          iracing.camControls.switchToCar('100')
+          sendCmd.should.have.been.calledWithExactly(1, 100, 0, 0)
+        })
+        it('"110" -> 110', function () {
+          iracing.camControls.switchToCar('100')
+          sendCmd.should.have.been.calledWithExactly(1, 100, 0, 0)
+        })
+        it('"01" -> 2001', function () {
+          iracing.camControls.switchToCar('01')
+          sendCmd.should.have.been.calledWithExactly(1, 2001, 0, 0)
+        })
+        it('"001" -> 3001', function () {
+          iracing.camControls.switchToCar('001')
+          sendCmd.should.have.been.calledWithExactly(1, 3001, 0, 0)
+        })
+        it('"011" -> 3011', function () {
+          iracing.camControls.switchToCar('011')
+          sendCmd.should.have.been.calledWithExactly(1, 3011, 0, 0)
+        })
+      })
       it('sends focus at cmd', function () {
         var mock = Object.create(IrSdkWrapper)
         var sendCmd = sinon.spy(mock, 'sendCmd')
