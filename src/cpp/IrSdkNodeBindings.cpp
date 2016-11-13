@@ -86,7 +86,7 @@ namespace NodeIrSdk {
   
   NAN_METHOD(sendCmd) {
 
-    if (!irsdk.isConnected()) return;
+    if (!irsdk.isInitialized() || !irsdk.isConnected()) return;
     
     if (info.Length() > 4 || info.Length() < 1 ) {
       std::cerr << "sendCommand: invalid arguments (1 to 4 accepted)" << std::endl;
