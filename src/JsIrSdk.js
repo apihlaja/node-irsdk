@@ -277,6 +277,15 @@ function JsIrSdk (IrSdkWrapper, opts) {
       this.execCmd(BroadcastMsg.TelemCommand, cmd)
     }
   }
+  /** Set the maximum force when mapping steering torque force to direct input units (float in Nm)
+
+      @param {Number} torque Torque in Nm
+      @example iracing.setFFBMaxTorque(10)
+  */
+  this.setFFBMaxTorque = function (torque) {
+    self.execCmd(BroadcastMsg.FFBCommand,
+      Consts.FFBCommand.MaxForce, torque * 65536)
+  }
 
   var self = this
   opts = opts || {}

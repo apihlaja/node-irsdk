@@ -151,6 +151,16 @@ var IrSdkConsts = {
     Exciting: -1,
     /** Use car number / position instead of this */
     Driver: 0
+  },
+  /** Change FFB config
+    @enum
+  */
+  FFBCommand:
+  {
+    /** Set the maximum force when mapping steering torque force to direct
+        input units (float in Nm)
+    */
+    MaxForce: 0
   }
 }
 

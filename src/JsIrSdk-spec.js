@@ -257,6 +257,16 @@ describe('JsIrSdk', function () {
       iracing._stop()
     })
   })
+  describe('.setFFBMaxTorque(torque)', function () {
+    it('sends command when cmd given as integer', function () {
+      var mock = Object.create(IrSdkWrapper)
+      var sendCmd = sinon.spy(mock, 'sendCmd')
+      var iracing = new JsIrSdk(mock)
+      iracing.setFFBMaxTorque(10)
+      sendCmd.should.have.been.calledWithExactly(11, 0, 655360)
+      iracing._stop()
+    })
+  })
 
   describe('.camControls', function () {
     describe('.setState(state)', function () {

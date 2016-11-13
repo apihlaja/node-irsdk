@@ -107,6 +107,7 @@ var iracing = irsdk.getInstance()
         * [.execChatMacro(num)](#iracing+execChatMacro)
         * [.execPitCmd(cmd, [arg])](#iracing+execPitCmd)
         * [.execTelemetryCmd(cmd)](#iracing+execTelemetryCmd)
+        * [.setFFBMaxTorque(torque)](#iracing+setFFBMaxTorque)
         * ["Connected"](#iracing+event_Connected)
         * ["Disconnected"](#iracing+event_Disconnected)
         * ["TelemetryDescription"](#iracing+event_TelemetryDescription)
@@ -484,6 +485,21 @@ Control telemetry logging (ibt file)
 ```js
 iracing.execTelemetryCmd('restart')
 ```
+<a name="iracing+setFFBMaxTorque"></a>
+
+### iracing.setFFBMaxTorque(torque)
+Set the maximum force when mapping steering torque force to direct input units (float in Nm)
+
+**Kind**: instance method of <code>[iracing](#iracing)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| torque | <code>Number</code> | Torque in Nm |
+
+  
+```js
+iracing.setFFBMaxTorque(10)
+```
 <a name="iracing+event_Connected"></a>
 
 ### "Connected"
@@ -578,6 +594,7 @@ var IrSdkConsts = require('node-irsdk').getInstance().Consts
     * [.PitCommand](#IrSdkConsts.PitCommand)
     * [.TelemCommand](#IrSdkConsts.TelemCommand)
     * [.CamFocusAt](#IrSdkConsts.CamFocusAt)
+    * [.FFBCommand](#IrSdkConsts.FFBCommand)
 
 <a name="IrSdkConsts.BroadcastMsg"></a>
 
@@ -733,6 +750,18 @@ When switching camera, these can be used instead of car number / position
 | Leader | <code>-2</code> |  |
 | Exciting | <code>-1</code> |  |
 | Driver | <code>0</code> | Use car number / position instead of this |
+
+<a name="IrSdkConsts.FFBCommand"></a>
+
+### IrSdkConsts.FFBCommand
+Change FFB config
+
+**Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| MaxForce | <code>0</code> | Set the maximum force when mapping steering torque force to direct         input units (float in Nm) |
 
 
 
