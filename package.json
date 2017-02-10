@@ -8,7 +8,7 @@
     "mocha": "mocha src/**/*-spec.js",
     "lint": "standard",
     "doc": "jsdoc2md -t src/doc/README.hbs --partial src/doc/examples.hbs -m none -g none src/node-irsdk.js src/JsIrSdk.js src/IrSdkConsts.js > README.md",
-    "ready": "npm test && npm run doc"
+    "ready": "npm test && node test/smoke-test.js && npm run doc"
   },
   "keywords": [
     "iracing"
