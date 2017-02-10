@@ -9,6 +9,11 @@ environment:
 platform:
   - x64
 
+# master + PRs
+branches:
+  only:
+    - master
+
 install:
   - ps: Install-Product node $env:nodejs_version
   - set PATH=%APPDATA%\npm;%PATH%
