@@ -19,7 +19,6 @@ install:
   - npm install
 
 test_script:
-  - npm test
-  - node test/smoke-test.js
+  - npm run ready
 
 build: off
