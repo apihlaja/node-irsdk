@@ -339,11 +339,11 @@ function JsIrSdk (IrSdkWrapper, opts) {
           iRacing, sim, is started
           @event iracing#Connected
           @example
-          * iracing.on('Connected', function () {
-          *   console.log('connected')
+          * iracing.on('Connected', function (evt) {
+          *   console.log(evt)
           * })
         */
-        self.emit('Connected')
+        self.emit('update', {type: 'Connected', timestamp: new Date()})
       }
     } else {
       if (connected) {
@@ -352,11 +352,11 @@ function JsIrSdk (IrSdkWrapper, opts) {
           iRacing, sim, was closed
           @event iracing#Disconnected
           @example
-          * iracing.on('Disconnected', function () {
-          *   console.log('disconnected')
+          * iracing.on('Disconnected', function (evt) {
+          *   console.log(evt)
           * })
         */
-        self.emit('Disconnected')
+        self.emit('update', {type: 'Disconnected', timestamp: new Date()})
 
         IrSdkWrapper.shutdown()
         self.telemetryDescription = null
@@ -371,6 +371,7 @@ function JsIrSdk (IrSdkWrapper, opts) {
       self.telemetry = IrSdkWrapper.getTelemetry()
       // replace ctime timestamp
       self.telemetry.timestamp = now
+
       setImmediate(function () {
         if (!self.telemetryDescription) {
           self.telemetryDescription = IrSdkWrapper.getTelemetryDescription()
@@ -380,21 +381,21 @@ function JsIrSdk (IrSdkWrapper, opts) {
             @type Object
             @example
             * iracing.on('TelemetryDescription', function (data) {
-            *   console.log('TelemetryDesc:', data)
+            *   console.log(evt)
             * })
           */
-          self.emit('TelemetryDescription', self.telemetryDescription)
+          self.emit('update', {type: 'TelemetryDescription', data: self.telemetryDescription, timestamp: now})
         }
         /**
           Telemetry update
           @event iracing#Telemetry
           @type Object
           @example
-          * iracing.on('Telemetry', function (data) {
-          *   console.log('Telemetry:', data)
+          * iracing.on('Telemetry', function (evt) {
+          *   console.log(evt)
           * })
         */
-        self.emit('Telemetry', self.telemetry)
+        self.emit('update', {type: 'Telemetry', data: self.telemetry.values, timestamp: now})
       })
     }
   }, opts.telemetryUpdateInterval)
@@ -420,15 +421,51 @@ function JsIrSdk (IrSdkWrapper, opts) {
             @event iracing#SessionInfo
             @type Object
             @example
-            * iracing.on('SessionInfo', function (data) {
-            *   console.log('SessionInfo:', data)
+            * iracing.on('SessionInfo', function (evt) {
+            *   console.log(evt)
             * })
           */
-          self.emit('SessionInfo', self.sessionInfo)
+          self.emit('update', {type: 'SessionInfo', data: self.sessionInfo.data, timestamp: now})
         }
       })
     }
   }, opts.sessionInfoUpdateInterval)
+
+  /**
+    any update event
+    @event iracing#update
+    @type Object
+    @example
+    * iracing.on('update', function (evt) {
+    *   console.log(evt)
+    * })
+    */
+  self.on('update', evt => {
+    // fire old events as well.
+    const timestamp = evt.timestamp
+    const data = evt.data
+    const type = evt.type
+
+    switch (type) {
+      case 'SessionInfo':
+        self.emit('SessionInfo', {timestamp, data})
+        break
+      case 'Telemetry':
+        self.emit('Telemetry', {timestamp, values: data})
+        break
+      case 'TelemetryDescription':
+        self.emit('TelemetryDescription', data)
+        break
+      case 'Connected':
+        self.emit('Connected')
+        break
+      case 'Disconnected':
+        self.emit('Disconnected')
+        break
+      default:
+        break
+    }
+  })
 
   /**
     Stops JsIrSdk, no new events are fired after calling this

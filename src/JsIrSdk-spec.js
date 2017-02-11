@@ -109,7 +109,7 @@ describe('JsIrSdk', function () {
     var updateTelemetry = sinon.stub(mock, 'updateTelemetry')
     updateTelemetry.returns(true)
     var getTelemetry = sinon.stub(mock, 'getTelemetry')
-    var data = [{'RPM': 1100}]
+    var data = {values: {'RPM': 1100}}
     getTelemetry.returns(data)
     var isConnected = sinon.stub(mock, 'isConnected')
     isConnected.returns(true)

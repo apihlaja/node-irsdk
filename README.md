@@ -112,6 +112,7 @@ var iracing = irsdk.getInstance()
         * ["TelemetryDescription"](#iracing+event_TelemetryDescription)
         * ["Telemetry"](#iracing+event_Telemetry)
         * ["SessionInfo"](#iracing+event_SessionInfo)
+        * ["update"](#iracing+event_update)
     * _inner_
         * [~sessionInfoParser](#iracing..sessionInfoParser) ⇒ <code>Object</code>
 
@@ -492,8 +493,8 @@ iRacing, sim, is started
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Connected', function () {
-  console.log('connected')
+iracing.on('Connected', function (evt) {
+  console.log(evt)
 })
 ```
 <a name="iracing+event_Disconnected"></a>
@@ -504,8 +505,8 @@ iRacing, sim, was closed
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Disconnected', function () {
-  console.log('disconnected')
+iracing.on('Disconnected', function (evt) {
+  console.log(evt)
 })
 ```
 <a name="iracing+event_TelemetryDescription"></a>
@@ -517,7 +518,7 @@ Telemetry description, contains description of available telemetry values
   
 ```js
 iracing.on('TelemetryDescription', function (data) {
-  console.log('TelemetryDesc:', data)
+  console.log(evt)
 })
 ```
 <a name="iracing+event_Telemetry"></a>
@@ -528,8 +529,8 @@ Telemetry update
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('Telemetry', function (data) {
-  console.log('Telemetry:', data)
+iracing.on('Telemetry', function (evt) {
+  console.log(evt)
 })
 ```
 <a name="iracing+event_SessionInfo"></a>
@@ -540,8 +541,20 @@ SessionInfo update
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
   
 ```js
-iracing.on('SessionInfo', function (data) {
-  console.log('SessionInfo:', data)
+iracing.on('SessionInfo', function (evt) {
+  console.log(evt)
+})
+```
+<a name="iracing+event_update"></a>
+
+### "update"
+any update event
+
+**Kind**: event emitted by <code>[iracing](#iracing)</code>  
+  
+```js
+iracing.on('update', function (evt) {
+  console.log(evt)
 })
 ```
 <a name="iracing..sessionInfoParser"></a>
