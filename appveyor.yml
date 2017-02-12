@@ -9,10 +9,7 @@ environment:
 platform:
   - x64
 
-# master + PRs
-branches:
-  only:
-    - master
+skip_branch_with_pr: true
 
 install:
   - ps: Install-Product node $env:nodejs_version
