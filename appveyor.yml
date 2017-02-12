@@ -1,6 +1,8 @@
 version: "{build}"
 
 environment:
+  GH_TOKEN:
+    secure: vEml4pXq1xxpAvSWWjPX7nIpBLOtJ4cIhL8CUsXGbh6g/Wh3hXEJZslxYZRdS/hx
   matrix:
     - nodejs_version: 4
     - nodejs_version: 6
@@ -29,4 +31,4 @@ test_script:
 build: off
 
 on_success:
-  - ps: if ($env:nodejs_version -eq "Stable" -and $env:APPVEYOR_REPO_TAG -eq "true" ) {npm run prebuild-upload}
+  - IF "%nodejs_version%"=="Stable" IF "%APPVEYOR_REPO_TAG%"=="true" npm run prebuild-upload
