@@ -2,9 +2,12 @@ version: "{build}"
 
 environment:
   matrix:
-    - nodejs_version: "Stable" # latest
-    - nodejs_version: 6
     - nodejs_version: 4
+    - nodejs_version: 6
+    - nodejs_version: "Stable" # latest
+
+matrix:
+  fast_finish: true
 
 platform:
   - x64
@@ -24,3 +27,6 @@ test_script:
   - npm run ready
 
 build: off
+
+on_success:
+  - ps: if ($env:nodejs_version -eq "Stable" -and $env:APPVEYOR_REPO_TAG -eq "true" ) {npm run prebuild-upload}

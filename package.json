@@ -1,9 +1,11 @@
 {
   "name": "node-irsdk",
-  "version": "1.1.2",
+  "version": "2.0.0-beta1",
   "description": "iRacing SDK implementation for Node.js",
   "main": "src/node-irsdk.js",
   "scripts": {
+    "install": "prebuild-install || node-gyp rebuild",
+    "prebuild-upload": "prebuild --all --strip --verbose --upload-all -u $GH_TOKEN",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
     "lint": "standard",
@@ -25,13 +27,15 @@
   "dependencies": {
     "bindings": "^1.2.1",
     "js-yaml": "^3.3.1",
-    "nan": "2.5.1"
+    "nan": "2.5.1",
+    "prebuild-install": "2.1.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.1.2",
     "moment": "^2.15.2",
+    "prebuild": "6.0.2",
     "sandboxed-module": "^2.0.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
