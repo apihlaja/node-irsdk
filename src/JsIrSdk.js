@@ -3,6 +3,29 @@ var events = require('events')
 var Consts = require('./IrSdkConsts')
 var BroadcastMsg = Consts.BroadcastMsg
 
+/** Default parser used for SessionInfo YAML
+  Fixes TeamName issue, uses js-yaml for actual parsing
+  @private
+  @param {string} sessionInfoStr raw session info YAML string
+  @returns {Object} parsed session info or falsy
+*/
+function createSessionInfoParser () {
+  var yaml = require('js-yaml')
+
+  return function (sessionInfoStr) {
+    var fixedYamlStr = sessionInfoStr.replace(/TeamName: ([^\n]+)/g, function (match, p1) {
+      if ((p1[0] === '"' && p1[p1.length - 1] === '"') ||
+          (p1[0] === "'" && p1[p1.length - 1] === "'")) {
+        return match // skip if quoted already
+      } else {
+        // 2nd replace is unnecessary atm but its here just in case
+        return "TeamName: '" + p1.replace(/'/g, "''") + "'"
+      }
+    })
+    return yaml.safeLoad(fixedYamlStr)
+  }
+}
+
 /**
   JsIrSdk is javascript implementation of iRacing SDK.
 
@@ -281,14 +304,6 @@ function JsIrSdk (IrSdkWrapper, opts) {
   var self = this
   opts = opts || {}
 
-  if (opts.telemetryUpdateInterval === undefined) {
-    opts.telemetryUpdateInterval = 5
-  }
-
-  if (opts.sessionInfoUpdateInterval === undefined) {
-    opts.sessionInfoUpdateInterval = 1000
-  }
-
   /**
    Parser for SessionInfo YAML
    @callback iracing~sessionInfoParser
@@ -296,15 +311,7 @@ function JsIrSdk (IrSdkWrapper, opts) {
    @returns {Object} parsed session info
   */
   var parseSessionInfo = opts.sessionInfoParser
-  if (!parseSessionInfo) {
-    parseSessionInfo = (function () {
-      var yaml = require('js-yaml')
-
-      return function (sessionInfoStr) {
-        return yaml.safeLoad(sessionInfoStr)
-      }
-    })()
-  }
+  if (!parseSessionInfo) parseSessionInfo = createSessionInfoParser()
 
   var connected = false // if irsdk is available
 
