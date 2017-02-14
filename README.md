@@ -35,29 +35,29 @@ Before installing, you need
 ## irsdk
 
 * [irsdk](#module_irsdk)
-    * [.init([opts])](#module_irsdk.init)
+    * [.init([opts])](#module_irsdk.init) ⇒ <code>[iracing](#iracing)</code>
     * [.getInstance()](#module_irsdk.getInstance) ⇒ <code>[iracing](#iracing)</code>
 
 <a name="module_irsdk.init"></a>
 
-### irsdk.init([opts])
+### irsdk.init([opts]) ⇒ <code>[iracing](#iracing)</code>
 Initialize JsIrSdk, can be done once before using getInstance first time.
 
 **Kind**: static method of <code>[irsdk](#module_irsdk)</code>  
+**Returns**: <code>[iracing](#iracing)</code> - Running instance of JsIrSdk  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [opts] | <code>Object</code> |  | Options |
-| [opts.telemetryUpdateInterval] | <code>Integer</code> | <code>5</code> | Telemetry update interval, milliseconds |
-| [opts.sessionInfoUpdateInterval] | <code>Integer</code> | <code>1000</code> | SessionInfo update interval, milliseconds |
+| [opts.telemetryUpdateInterval] | <code>Integer</code> | <code>0</code> | Telemetry update interval, milliseconds |
+| [opts.sessionInfoUpdateInterval] | <code>Integer</code> | <code>0</code> | SessionInfo update interval, milliseconds |
 | [opts.sessionInfoParser] | <code>[sessionInfoParser](#iracing..sessionInfoParser)</code> |  | Custom parser for session info |
 
   
 ```js
 var irsdk = require('node-irsdk')
-// update telemetry as fast as possible
-irsdk.init({telemetryUpdateInterval: 0})
-var iracing = irsdk.getInstance()
+// look for telemetry updates only once per 100 ms
+var iracing = irsdk.init({telemetryUpdateInterval: 100})
 ```
 <a name="module_irsdk.getInstance"></a>
 
