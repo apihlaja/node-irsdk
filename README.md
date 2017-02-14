@@ -10,10 +10,9 @@ Unofficial [iRacing](http://www.iracing.com/) SDK implementation for Node.js.
 * [documentation](https://apihlaja.github.io/node-irsdk)
 * [forum thread](http://members.iracing.com/jforum/posts/list/3329583.page)
 
-Official C/C++ SDK is available [here](http://members.iracing.com/jforum/posts/list/1470675.page).
+Other iRSDK implementations:
 
-Other iRSDK implementations: 
-
+* [Official C/C++ SDK](http://members.iracing.com/jforum/posts/list/1470675.page)
 * [iRacingSdkWrapper (C#)](https://github.com/NickThissen/iRacingSdkWrapper)
 * [pyirsdk (python3)](https://github.com/kutu/pyirsdk/)
 * [iRacingSDK.Net](https://github.com/vipoo/iRacingSDK.Net)
@@ -21,18 +20,16 @@ Other iRSDK implementations:
 
 ## Installing
 
-Before installing, you need
-
-* Windows version of [Node.js](https://nodejs.org/download/) v4 or later
-* Visual Studio and Python 2.7 for node-gyp, see 
-[installation instructions](https://github.com/TooTallNate/node-gyp)
+Make sure you have [Node.js](https://nodejs.org/download/) v4 x64 or later.
 
 `npm install --save node-irsdk`
 
 
+## API documentation
+
 <a name="module_irsdk"></a>
 
-## irsdk
+### irsdk
 
 * [irsdk](#module_irsdk)
     * [.init([opts])](#module_irsdk.init) ⇒ <code>[iracing](#iracing)</code>
@@ -40,7 +37,7 @@ Before installing, you need
 
 <a name="module_irsdk.init"></a>
 
-### irsdk.init([opts]) ⇒ <code>[iracing](#iracing)</code>
+#### irsdk.init([opts]) ⇒ <code>[iracing](#iracing)</code>
 Initialize JsIrSdk, can be done once before using getInstance first time.
 
 **Kind**: static method of <code>[irsdk](#module_irsdk)</code>  
@@ -61,7 +58,7 @@ var iracing = irsdk.init({telemetryUpdateInterval: 100})
 ```
 <a name="module_irsdk.getInstance"></a>
 
-### irsdk.getInstance() ⇒ <code>[iracing](#iracing)</code>
+#### irsdk.getInstance() ⇒ <code>[iracing](#iracing)</code>
 Get initialized instance of JsIrSdk
 
 **Kind**: static method of <code>[irsdk](#module_irsdk)</code>  
@@ -73,7 +70,7 @@ var iracing = irsdk.getInstance()
 ```
 <a name="iracing"></a>
 
-## iracing ⇐ <code>events.EventEmitter</code>
+### iracing ⇐ <code>events.EventEmitter</code>
 **Kind**: global class  
 **Extends:** <code>events.EventEmitter</code>  
 **Emits**: <code>[Connected](#iracing+event_Connected)</code>, <code>[Disconnected](#iracing+event_Disconnected)</code>, <code>[Telemetry](#iracing+event_Telemetry)</code>, <code>[TelemetryDescription](#iracing+event_TelemetryDescription)</code>, <code>[SessionInfo](#iracing+event_SessionInfo)</code>  
@@ -118,7 +115,7 @@ var iracing = irsdk.getInstance()
 
 <a name="new_iracing_new"></a>
 
-### new JsIrSdk()
+#### new JsIrSdk()
 JsIrSdk is javascript implementation of iRacing SDK.
 
   Don't use constructor directly, use [getInstance](#module_irsdk.getInstance).
@@ -129,13 +126,13 @@ var iracing = require('node-irsdk').getInstance()
 ```
 <a name="iracing+Consts"></a>
 
-### iracing.Consts : <code>[IrSdkConsts](#IrSdkConsts)</code>
+#### iracing.Consts : <code>[IrSdkConsts](#IrSdkConsts)</code>
 iRacing SDK related constants
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
 <a name="iracing+camControls"></a>
 
-### iracing.camControls : <code>Object</code>
+#### iracing.camControls : <code>Object</code>
 Camera controls
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
@@ -147,7 +144,7 @@ Camera controls
 
 <a name="iracing+camControls.setState"></a>
 
-#### camControls.setState(state)
+##### camControls.setState(state)
 Change camera tool state
 
 **Kind**: static method of <code>[camControls](#iracing+camControls)</code>  
@@ -165,7 +162,7 @@ iracing.camControls.setState(state)
 ```
 <a name="iracing+camControls.switchToCar"></a>
 
-#### camControls.switchToCar(carNum, [camGroupNum], [camNum])
+##### camControls.switchToCar(carNum, [camGroupNum], [camNum])
 Switch camera, focus on car
 
 **Kind**: static method of <code>[camControls](#iracing+camControls)</code>  
@@ -201,7 +198,7 @@ iracing.camControls.switchToCar(2, 3)
 ```
 <a name="iracing+camControls.switchToPos"></a>
 
-#### camControls.switchToPos(position, [camGroupNum], [camNum])
+##### camControls.switchToPos(position, [camGroupNum], [camNum])
 Switch camera, focus on position
 
 **Kind**: static method of <code>[camControls](#iracing+camControls)</code>  
@@ -218,7 +215,7 @@ iracing.camControls.switchToPos(2) // show P2
 ```
 <a name="iracing+playbackControls"></a>
 
-### iracing.playbackControls : <code>Object</code>
+#### iracing.playbackControls : <code>Object</code>
 Replay and playback controls
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
@@ -236,7 +233,7 @@ Replay and playback controls
 
 <a name="iracing+playbackControls.play"></a>
 
-#### playbackControls.play()
+##### playbackControls.play()
 Play replay
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -246,7 +243,7 @@ iracing.playbackControls.play()
 ```
 <a name="iracing+playbackControls.pause"></a>
 
-#### playbackControls.pause()
+##### playbackControls.pause()
 Pause replay
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -256,7 +253,7 @@ iracing.playbackControls.pause()
 ```
 <a name="iracing+playbackControls.fastForward"></a>
 
-#### playbackControls.fastForward([speed])
+##### playbackControls.fastForward([speed])
 fast-forward replay
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -271,7 +268,7 @@ iracing.playbackControls.fastForward() // double speed FF
 ```
 <a name="iracing+playbackControls.rewind"></a>
 
-#### playbackControls.rewind([speed])
+##### playbackControls.rewind([speed])
 rewind replay
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -286,7 +283,7 @@ iracing.playbackControls.rewind() // double speed RW
 ```
 <a name="iracing+playbackControls.slowForward"></a>
 
-#### playbackControls.slowForward([divider])
+##### playbackControls.slowForward([divider])
 slow-forward replay, slow motion
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -301,7 +298,7 @@ iracing.playbackControls.slowForward(2) // half speed
 ```
 <a name="iracing+playbackControls.slowBackward"></a>
 
-#### playbackControls.slowBackward([divider])
+##### playbackControls.slowBackward([divider])
 slow-backward replay, reverse slow motion
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -316,7 +313,7 @@ iracing.playbackControls.slowBackward(2) // half speed RW
 ```
 <a name="iracing+playbackControls.search"></a>
 
-#### playbackControls.search(searchMode)
+##### playbackControls.search(searchMode)
 Search things from replay
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -331,7 +328,7 @@ iracing.playbackControls.search('nextIncident')
 ```
 <a name="iracing+playbackControls.searchTs"></a>
 
-#### playbackControls.searchTs(sessionNum, sessionTimeMS)
+##### playbackControls.searchTs(sessionNum, sessionTimeMS)
 Search timestamp
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -348,7 +345,7 @@ iracing.playbackControls.searchTs(2, 2*60*1000)
 ```
 <a name="iracing+playbackControls.searchFrame"></a>
 
-#### playbackControls.searchFrame(frameNum, rpyPosMode)
+##### playbackControls.searchFrame(frameNum, rpyPosMode)
 Go to frame. Frame counting can be relative to begin, end or current.
 
 **Kind**: static method of <code>[playbackControls](#iracing+playbackControls)</code>  
@@ -364,25 +361,25 @@ iracing.playbackControls.searchFrame(1, 'current') // go to 1 frame forward
 ```
 <a name="iracing+telemetry"></a>
 
-### iracing.telemetry
+#### iracing.telemetry
 Latest telemetry, may be null or undefined
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
 <a name="iracing+telemetryDescription"></a>
 
-### iracing.telemetryDescription
+#### iracing.telemetryDescription
 Latest telemetry, may be null or undefined
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
 <a name="iracing+sessionInfo"></a>
 
-### iracing.sessionInfo
+#### iracing.sessionInfo
 Latest telemetry, may be null or undefined
 
 **Kind**: instance property of <code>[iracing](#iracing)</code>  
 <a name="iracing+execCmd"></a>
 
-### iracing.execCmd(msgId, [arg1], [arg2], [arg3])
+#### iracing.execCmd(msgId, [arg1], [arg2], [arg3])
 Execute any of available commands, excl. FFB command
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -396,7 +393,7 @@ Execute any of available commands, excl. FFB command
 
 <a name="iracing+reloadTextures"></a>
 
-### iracing.reloadTextures()
+#### iracing.reloadTextures()
 Reload all car textures
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -406,7 +403,7 @@ iracing.reloadTextures() // reload all paints
 ```
 <a name="iracing+reloadTexture"></a>
 
-### iracing.reloadTexture(carIdx)
+#### iracing.reloadTexture(carIdx)
 Reload car's texture
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -421,7 +418,7 @@ iracing.reloadTexture(1) // reload paint of carIdx=1
 ```
 <a name="iracing+execChatCmd"></a>
 
-### iracing.execChatCmd(cmd, [arg])
+#### iracing.execChatCmd(cmd, [arg])
 Execute chat command
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -437,7 +434,7 @@ iracing.execChatCmd('cancel') // close chat window
 ```
 <a name="iracing+execChatMacro"></a>
 
-### iracing.execChatMacro(num)
+#### iracing.execChatMacro(num)
 Execute chat macro
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -452,7 +449,7 @@ iracing.execChatMacro(1) // macro 1
 ```
 <a name="iracing+execPitCmd"></a>
 
-### iracing.execPitCmd(cmd, [arg])
+#### iracing.execPitCmd(cmd, [arg])
 Execute pit command
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -472,7 +469,7 @@ iracing.execPitCmd('lr', 200) // new left rear, 200 kPa
 ```
 <a name="iracing+execTelemetryCmd"></a>
 
-### iracing.execTelemetryCmd(cmd)
+#### iracing.execTelemetryCmd(cmd)
 Control telemetry logging (ibt file)
 
 **Kind**: instance method of <code>[iracing](#iracing)</code>  
@@ -487,7 +484,7 @@ iracing.execTelemetryCmd('restart')
 ```
 <a name="iracing+event_Connected"></a>
 
-### "Connected"
+#### "Connected"
 iRacing, sim, is started
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -499,7 +496,7 @@ iracing.on('Connected', function (evt) {
 ```
 <a name="iracing+event_Disconnected"></a>
 
-### "Disconnected"
+#### "Disconnected"
 iRacing, sim, was closed
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -511,7 +508,7 @@ iracing.on('Disconnected', function (evt) {
 ```
 <a name="iracing+event_TelemetryDescription"></a>
 
-### "TelemetryDescription"
+#### "TelemetryDescription"
 Telemetry description, contains description of available telemetry values
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -523,7 +520,7 @@ iracing.on('TelemetryDescription', function (data) {
 ```
 <a name="iracing+event_Telemetry"></a>
 
-### "Telemetry"
+#### "Telemetry"
 Telemetry update
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -535,7 +532,7 @@ iracing.on('Telemetry', function (evt) {
 ```
 <a name="iracing+event_SessionInfo"></a>
 
-### "SessionInfo"
+#### "SessionInfo"
 SessionInfo update
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -547,7 +544,7 @@ iracing.on('SessionInfo', function (evt) {
 ```
 <a name="iracing+event_update"></a>
 
-### "update"
+#### "update"
 any update event
 
 **Kind**: event emitted by <code>[iracing](#iracing)</code>  
@@ -559,7 +556,7 @@ iracing.on('update', function (evt) {
 ```
 <a name="iracing..sessionInfoParser"></a>
 
-### iracing~sessionInfoParser ⇒ <code>Object</code>
+#### iracing~sessionInfoParser ⇒ <code>Object</code>
 Parser for SessionInfo YAML
 
 **Kind**: inner typedef of <code>[iracing](#iracing)</code>  
@@ -571,7 +568,7 @@ Parser for SessionInfo YAML
 
 <a name="IrSdkConsts"></a>
 
-## IrSdkConsts
+### IrSdkConsts
 IrSdkConsts, iRacing SDK constants/enums.
 
 **Kind**: global constant  
@@ -594,7 +591,7 @@ var IrSdkConsts = require('node-irsdk').getInstance().Consts
 
 <a name="IrSdkConsts.BroadcastMsg"></a>
 
-### IrSdkConsts.BroadcastMsg
+#### IrSdkConsts.BroadcastMsg
 Available command messages.
 
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
@@ -618,7 +615,7 @@ Available command messages.
 
 <a name="IrSdkConsts.CameraState"></a>
 
-### IrSdkConsts.CameraState
+#### IrSdkConsts.CameraState
 Camera state
     Camera state is bitfield; use these values to compose a new state.
 
@@ -639,7 +636,7 @@ Camera state
 
 <a name="IrSdkConsts.RpyPosMode"></a>
 
-### IrSdkConsts.RpyPosMode
+#### IrSdkConsts.RpyPosMode
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -651,7 +648,7 @@ Camera state
 
 <a name="IrSdkConsts.RpySrchMode"></a>
 
-### IrSdkConsts.RpySrchMode
+#### IrSdkConsts.RpySrchMode
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -670,7 +667,7 @@ Camera state
 
 <a name="IrSdkConsts.RpyStateMode"></a>
 
-### IrSdkConsts.RpyStateMode
+#### IrSdkConsts.RpyStateMode
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -680,7 +677,7 @@ Camera state
 
 <a name="IrSdkConsts.ReloadTexturesMode"></a>
 
-### IrSdkConsts.ReloadTexturesMode
+#### IrSdkConsts.ReloadTexturesMode
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -691,7 +688,7 @@ Camera state
 
 <a name="IrSdkConsts.ChatCommand"></a>
 
-### IrSdkConsts.ChatCommand
+#### IrSdkConsts.ChatCommand
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -704,7 +701,7 @@ Camera state
 
 <a name="IrSdkConsts.PitCommand"></a>
 
-### IrSdkConsts.PitCommand
+#### IrSdkConsts.PitCommand
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -722,7 +719,7 @@ Camera state
 
 <a name="IrSdkConsts.TelemCommand"></a>
 
-### IrSdkConsts.TelemCommand
+#### IrSdkConsts.TelemCommand
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
 **Properties**
 
@@ -734,7 +731,7 @@ Camera state
 
 <a name="IrSdkConsts.CamFocusAt"></a>
 
-### IrSdkConsts.CamFocusAt
+#### IrSdkConsts.CamFocusAt
 When switching camera, these can be used instead of car number / position
 
 **Kind**: static enum of <code>[IrSdkConsts](#IrSdkConsts)</code>  
@@ -752,3 +749,8 @@ When switching camera, these can be used instead of car number / position
 ## License
 
 Released under the [MIT License](https://github.com/apihlaja/node-irsdk/blob/master/LICENSE.md).
+
+
+## Credits
+
+Parts of original irsdk used, license available here: https://github.com/apihlaja/node-irsdk/blob/master/src/cpp/irsdk/irsdk_defines.h (BSD-3-Clause)
