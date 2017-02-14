@@ -7,7 +7,10 @@ describe('node-irsdk', function () {
     it('instantiates JsIrSdk once', function () {
       var jsIrSdkSpy = sinon.spy()
       var nodeWrapperMock = {}
-      var opts = {}
+      var opts = {
+        telemetryUpdateInterval: 1,
+        sessionInfoUpdateInterval: 2
+      }
       var nodeIrSdk = sandboxed.require('./node-irsdk', {
         requires: {
           '../build/Release/IrSdkNodeBindings': nodeWrapperMock,

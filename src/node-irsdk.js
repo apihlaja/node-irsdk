@@ -13,19 +13,24 @@ var instance
   @function
   @static
   @param {Object} [opts] Options
-  @param {Integer} [opts.telemetryUpdateInterval=5] Telemetry update interval, milliseconds
-  @param {Integer} [opts.sessionInfoUpdateInterval=1000] SessionInfo update interval, milliseconds
+  @param {Integer} [opts.telemetryUpdateInterval=0] Telemetry update interval, milliseconds
+  @param {Integer} [opts.sessionInfoUpdateInterval=0] SessionInfo update interval, milliseconds
   @param {iracing~sessionInfoParser} [opts.sessionInfoParser] Custom parser for session info
+  @returns {iracing} Running instance of JsIrSdk
   @example
   * var irsdk = require('node-irsdk')
-  * // update telemetry as fast as possible
-  * irsdk.init({telemetryUpdateInterval: 0})
-  * var iracing = irsdk.getInstance()
+  * // look for telemetry updates only once per 100 ms
+  * var iracing = irsdk.init({telemetryUpdateInterval: 100})
 */
 var init = module.exports.init = function (opts) {
   if (!instance) {
-    instance = new JsIrSdk(IrSdkNodeWrapper, opts)
+    instance = new JsIrSdk(IrSdkNodeWrapper,
+      Object.assign({
+        telemetryUpdateInterval: 0,
+        sessionInfoUpdateInterval: 0
+      }, opts))
   }
+  return instance
 }
 
 /**
@@ -38,9 +43,5 @@ var init = module.exports.init = function (opts) {
   * var iracing = irsdk.getInstance()
 */
 module.exports.getInstance = function () {
-  if (!instance) {
-    init()
-  }
-  return instance
+  return init()
 }
-
