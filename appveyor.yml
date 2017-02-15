@@ -25,6 +25,7 @@ install:
 
 test_script:
   - npm run ready
+  - IF "%nodejs_version%"=="Stable" npm run prebuild
 
 build: off
 

@@ -5,6 +5,7 @@
   "main": "src/node-irsdk.js",
   "scripts": {
     "install": "prebuild-install || node-gyp rebuild",
+    "prebuild": "prebuild --all --strip",
     "prebuild-upload": "prebuild --all --strip -u %GH_TOKEN%",
     "test": "npm run lint && npm run mocha",
     "mocha": "mocha src/**/*-spec.js",
