@@ -38,7 +38,7 @@
     "moment": "^2.15.2",
     "prebuild": "^6.1.0",
     "sandboxed-module": "^2.0.2",
-    "sinon": "^1.17.6",
+    "sinon": "^2.0.0",
     "sinon-chai": "^2.8.0",
     "standard": "^8.5.0"
   },
