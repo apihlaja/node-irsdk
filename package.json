@@ -28,7 +28,7 @@
   "dependencies": {
     "bindings": "^1.2.1",
     "js-yaml": "^3.3.1",
-    "nan": "2.5.1",
+    "nan": "2.6.1",
     "prebuild-install": "^2.1.1"
   },
   "devDependencies": {
