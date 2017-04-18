@@ -40,7 +40,7 @@
     "sandboxed-module": "^2.0.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "standard": "^8.5.0"
+    "standard": "^9.0.2"
   },
   "standard": {
     "globals": [
