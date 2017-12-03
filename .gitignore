@@ -1,7 +1,3 @@
-node_modules/
-build/
-
-
 # Visual Studio
 
 *.njsproj
@@ -12,4 +8,10 @@ build/
 *.sdf
 *.suo
 *.vcxproj.user
+
+# Misc
+.vscode
+node_modules/
+build/
+
 npm-debug.log
