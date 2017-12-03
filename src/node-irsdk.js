@@ -1,4 +1,4 @@
-var IrSdkNodeWrapper = require('bindings')('IrSdkNodeBindings')
+var IrSdkNodeWrapper = require('../build/Release/IrSdkNodeBindings')
 var JsIrSdk = require('./JsIrSdk')
 
 /**
