@@ -749,6 +749,16 @@ When switching camera, these can be used instead of car number / position
 
 
 
+## Development
+
+To develop `node-irsdk` itself, you need working working installation of
+[node-gyp](https://github.com/nodejs/node-gyp#on-windows).
+
+Useful commands:
+
+* `npm install` builds binary addon
+* `npm run ready` runs tests and updates docs
+
 ## License
 
 Released under the [MIT License](https://github.com/apihlaja/node-irsdk/blob/master/LICENSE.md).
