@@ -762,6 +762,15 @@ Useful commands:
 * `npm install` builds binary addon
 * `npm run ready` runs tests and updates docs
 
+### Making a new release
+
+1. Check if license file needs updating
+2. `npm run ready`
+3. Tag new version using `npm version`, push to Github
+4. Wait for Appveyor to upload binaries
+5. `npm publish`
+6. Add release notes to Github, helper `npm run release-notes`.
+
 ## License
 
 Released under the [MIT License](https://github.com/apihlaja/node-irsdk/blob/master/LICENSE.md).
