@@ -2,6 +2,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ukyuuq9004wy9h5b/branch/master?svg=true)](https://ci.appveyor.com/project/apihlaja/node-irsdk/branch/master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/apihlaja/node-irsdk.svg)](https://greenkeeper.io/)
+[![Dependencies](https://img.shields.io/david/apihlaja/node-irsdk.svg)](https://david-dm.org/apihlaja/node-irsdk)
+[![devDependencies](https://img.shields.io/david/dev/apihlaja/node-irsdk.svg)](https://david-dm.org/apihlaja/node-irsdk?type=dev)
 
 Unofficial [iRacing](http://www.iracing.com/) SDK implementation for Node.js.
 
