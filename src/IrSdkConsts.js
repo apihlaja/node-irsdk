@@ -129,7 +129,13 @@ var IrSdkConsts = {
     /** Clear tire pit checkboxes */
     ClearTires: 7,
     /** Request a fast repair */
-    FR: 8
+    FR: 8,
+    /** Disable clear windshield  */
+    ClearWS: 9,
+    /** Disable fast repair  */
+    ClearFR: 10,
+    /** Disable refueling  */
+    ClearFuel: 11
   },
   /** @enum */
   TelemCommand:

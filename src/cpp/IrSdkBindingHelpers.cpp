@@ -14,10 +14,13 @@ Handle<Value> NodeIrSdk::convertTelemetryValueToObject(IRSDKWrapper::TelemetryVa
     return Nan::New(var.boolValue[index]);
   case irsdk_int:
     if (strcmp(var.header->unit, "irsdk_SessionState") == 0) {
-      return getSessionStateValue(var.intValue[index]);
+      return getStringValue(var.intValue[index], SESSION_STATES);
     }
     if (strcmp(var.header->unit, "irsdk_TrkLoc") == 0) {
-      return getTrackLoc(var.intValue[index]);
+      return getStringValue(var.intValue[index], TRACK_LOCS);
+    }
+    if (strcmp(var.header->unit, "irsdk_TrkSurf") == 0) {
+      return getStringValue(var.intValue[index], TRACK_SURF);
     }
     return Nan::New(static_cast<int32_t>(var.intValue[index]));
   case irsdk_bitField:
@@ -93,6 +96,9 @@ Handle<Value> NodeIrSdk::getMaskedValues(const int& val, char* unit)
   if (strcmp(unit, "irsdk_PitSvFlags") == 0) {
     return getValueArr(val, PIT_SV_MASKS);
   }
+  if (strcmp(unit, "irsdk_CarLeftRight") == 0) {
+	return getValueArr(val, CAR_BESIDE);
+  }
   cerr << "Missing converter for bitField: " << unit << endl;
   return Nan::New(static_cast<int32_t>(val));
 }
@@ -110,19 +116,9 @@ Handle<Array> NodeIrSdk::getValueArr(const int& val, const std::vector<NodeIrSdk
   return arr;
 }
 
-Handle<Value> NodeIrSdk::getSessionStateValue(const int& val)
+Handle<Value> NodeIrSdk::getStringValue(const int& val, const std::vector<NodeIrSdk::MaskName>& map) 
 {
-  for (const auto& mask : SESSION_STATES) {
-    if (mask.val == val) {
-      return Nan::New(mask.name).ToLocalChecked();
-    }
-  }
-  return Nan::Undefined();
-}
-
-Handle<Value> NodeIrSdk::getTrackLoc(const int& val)
-{
-  for (const auto& mask : TRACK_LOCS) {
+  for (const auto& mask : map) {
     if (mask.val == val) {
       return Nan::New(mask.name).ToLocalChecked();
     }

@@ -97,6 +97,13 @@
     "count": 1,
     "type": "bool"
   },
+  "PushToPass": {
+    "name": "PushToPass",
+    "desc": "Push to pass button state",
+    "unit": "",
+    "count": 1,
+    "type": "bool"
+  },
   "IsOnTrack": {
     "name": "IsOnTrack",
     "desc": "1=Car on track physics running with player in car",
@@ -174,6 +181,13 @@
     "count": 1,
     "type": "int"
   },
+  "PlayerTrackSurfaceMaterial": {
+    "name": "PlayerTrackSurfaceMaterial",
+    "desc": "Players car track surface material type",
+    "unit": "irsdk_TrkSurf",
+    "count": 1,
+    "type": "int"
+  },
   "PlayerCarIdx": {
     "name": "PlayerCarIdx",
     "desc": "Players carIdx",
@@ -202,6 +216,13 @@
     "count": 1,
     "type": "int"
   },
+  "PlayerCarWeightPenalty": {
+    "name": "PlayerCarWeightPenalty",
+    "desc": "Players weight penalty",
+    "unit": "kg",
+    "count": 1,
+    "type": "float"
+  },
   "CarIdxLap": {
     "name": "CarIdxLap",
     "desc": "Laps started by car index",
@@ -227,6 +248,13 @@
     "name": "CarIdxTrackSurface",
     "desc": "Track surface type by car index",
     "unit": "irsdk_TrkLoc",
+    "count": 64,
+    "type": "int"
+  },
+  "CarIdxTrackSurfaceMaterial": {
+    "name": "CarIdxTrackSurfaceMaterial",
+    "desc": "Track surface material type by car index",
+    "unit": "irsdk_TrkSurf",
     "count": 64,
     "type": "int"
   },
@@ -734,6 +762,13 @@
     "count": 1,
     "type": "bool"
   },
+  "CarLeftRight": {
+    "name": "CarLeftRight",
+    "desc": "Notify if car is to the left or right of driver",
+    "unit": "irsdk_CarLeftRight",
+    "count": 1,
+    "type": "bitField"
+  },
   "PitRepairLeft": {
     "name": "PitRepairLeft",
     "desc": "Time left for mandatory pit repairs if repairs are active",
@@ -789,13 +824,6 @@
     "unit": "",
     "count": 1,
     "type": "bool"
-  },
-  "SteeringWheelTorque": {
-    "name": "SteeringWheelTorque",
-    "desc": "Output torque on steering shaft",
-    "unit": "N*m",
-    "count": 1,
-    "type": "float"
   },
   "SteeringWheelPctTorque": {
     "name": "SteeringWheelPctTorque",
@@ -972,6 +1000,48 @@
     "count": 1,
     "type": "int"
   },
+  "TireLF_RumblePitch": {
+    "name": "TireLF_RumblePitch",
+    "desc": "Players LF Tire Sound rumblestrip pitch",
+    "unit": "Hz",
+    "count": 1,
+    "type": "float"
+  },
+  "TireRF_RumblePitch": {
+    "name": "TireRF_RumblePitch",
+    "desc": "Players RF Tire Sound rumblestrip pitch",
+    "unit": "Hz",
+    "count": 1,
+    "type": "float"
+  },
+  "TireLR_RumblePitch": {
+    "name": "TireLR_RumblePitch",
+    "desc": "Players LR Tire Sound rumblestrip pitch",
+    "unit": "Hz",
+    "count": 1,
+    "type": "float"
+  },
+  "TireRR_RumblePitch": {
+    "name": "TireRR_RumblePitch",
+    "desc": "Players RR Tire Sound rumblestrip pitch",
+    "unit": "Hz",
+    "count": 1,
+    "type": "float"
+  },
+  "dcAntiRollFront": {
+    "name": "dcAntiRollFront",
+    "desc": "In car front anti roll bar adjustment",
+    "unit": "",
+    "count": 1,
+    "type": "float"
+  },
+  "dcAntiRollRear": {
+    "name": "dcAntiRollRear",
+    "desc": "In car rear anti roll bar adjustment",
+    "unit": "",
+    "count": 1,
+    "type": "float"
+  },
   "dcBrakeBias": {
     "name": "dcBrakeBias",
     "desc": "In car brake bias adjustment",
@@ -979,67 +1049,18 @@
     "count": 1,
     "type": "float"
   },
-  "WaterTemp": {
-    "name": "WaterTemp",
-    "desc": "Engine coolant temp",
-    "unit": "C",
+  "SteeringWheelTorque": {
+    "name": "SteeringWheelTorque",
+    "desc": "Output torque on steering shaft",
+    "unit": "N*m",
     "count": 1,
     "type": "float"
   },
-  "WaterLevel": {
-    "name": "WaterLevel",
-    "desc": "Engine coolant level",
-    "unit": "l",
-    "count": 1,
-    "type": "float"
-  },
-  "FuelPress": {
-    "name": "FuelPress",
-    "desc": "Engine fuel pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "FuelUsePerHour": {
-    "name": "FuelUsePerHour",
-    "desc": "Engine fuel used instantaneous",
-    "unit": "kg/h",
-    "count": 1,
-    "type": "float"
-  },
-  "OilTemp": {
-    "name": "OilTemp",
-    "desc": "Engine oil temperature",
-    "unit": "C",
-    "count": 1,
-    "type": "float"
-  },
-  "OilPress": {
-    "name": "OilPress",
-    "desc": "Engine oil pressure",
-    "unit": "bar",
-    "count": 1,
-    "type": "float"
-  },
-  "OilLevel": {
-    "name": "OilLevel",
-    "desc": "Engine oil level",
-    "unit": "l",
-    "count": 1,
-    "type": "float"
-  },
-  "Voltage": {
-    "name": "Voltage",
-    "desc": "Engine voltage",
-    "unit": "V",
-    "count": 1,
-    "type": "float"
-  },
-  "ManifoldPress": {
-    "name": "ManifoldPress",
-    "desc": "Engine manifold pressure",
-    "unit": "bar",
-    "count": 1,
+  "SteeringWheelTorque_ST": {
+    "name": "SteeringWheelTorque_ST",
+    "desc": "Output torque on steering shaft at 360 Hz",
+    "unit": "N*m",
+    "count": 6,
     "type": "float"
   },
   "RFcoldPressure": {
@@ -1137,6 +1158,69 @@
     "name": "LFwearR",
     "desc": "LF tire right percent tread remaining",
     "unit": "%",
+    "count": 1,
+    "type": "float"
+  },
+  "WaterTemp": {
+    "name": "WaterTemp",
+    "desc": "Engine coolant temp",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "WaterLevel": {
+    "name": "WaterLevel",
+    "desc": "Engine coolant level",
+    "unit": "l",
+    "count": 1,
+    "type": "float"
+  },
+  "FuelPress": {
+    "name": "FuelPress",
+    "desc": "Engine fuel pressure",
+    "unit": "bar",
+    "count": 1,
+    "type": "float"
+  },
+  "FuelUsePerHour": {
+    "name": "FuelUsePerHour",
+    "desc": "Engine fuel used instantaneous",
+    "unit": "kg/h",
+    "count": 1,
+    "type": "float"
+  },
+  "OilTemp": {
+    "name": "OilTemp",
+    "desc": "Engine oil temperature",
+    "unit": "C",
+    "count": 1,
+    "type": "float"
+  },
+  "OilPress": {
+    "name": "OilPress",
+    "desc": "Engine oil pressure",
+    "unit": "bar",
+    "count": 1,
+    "type": "float"
+  },
+  "OilLevel": {
+    "name": "OilLevel",
+    "desc": "Engine oil level",
+    "unit": "l",
+    "count": 1,
+    "type": "float"
+  },
+  "Voltage": {
+    "name": "Voltage",
+    "desc": "Engine voltage",
+    "unit": "V",
+    "count": 1,
+    "type": "float"
+  },
+  "ManifoldPress": {
+    "name": "ManifoldPress",
+    "desc": "Engine manifold pressure",
+    "unit": "bar",
     "count": 1,
     "type": "float"
   },
@@ -1245,11 +1329,25 @@
     "count": 1,
     "type": "float"
   },
+  "RRshockDefl_ST": {
+    "name": "RRshockDefl_ST",
+    "desc": "RR shock deflection at 360 Hz",
+    "unit": "m",
+    "count": 6,
+    "type": "float"
+  },
   "RRshockVel": {
     "name": "RRshockVel",
     "desc": "RR shock velocity",
     "unit": "m/s",
     "count": 1,
+    "type": "float"
+  },
+  "RRshockVel_ST": {
+    "name": "RRshockVel_ST",
+    "desc": "RR shock velocity at 360 Hz",
+    "unit": "m/s",
+    "count": 6,
     "type": "float"
   },
   "LRshockDefl": {
@@ -1259,11 +1357,25 @@
     "count": 1,
     "type": "float"
   },
+  "LRshockDefl_ST": {
+    "name": "LRshockDefl_ST",
+    "desc": "LR shock deflection at 360 Hz",
+    "unit": "m",
+    "count": 6,
+    "type": "float"
+  },
   "LRshockVel": {
     "name": "LRshockVel",
     "desc": "LR shock velocity",
     "unit": "m/s",
     "count": 1,
+    "type": "float"
+  },
+  "LRshockVel_ST": {
+    "name": "LRshockVel_ST",
+    "desc": "LR shock velocity at 360 Hz",
+    "unit": "m/s",
+    "count": 6,
     "type": "float"
   },
   "RFshockDefl": {
@@ -1273,11 +1385,25 @@
     "count": 1,
     "type": "float"
   },
+  "RFshockDefl_ST": {
+    "name": "RFshockDefl_ST",
+    "desc": "RF shock deflection at 360 Hz",
+    "unit": "m",
+    "count": 6,
+    "type": "float"
+  },
   "RFshockVel": {
     "name": "RFshockVel",
     "desc": "RF shock velocity",
     "unit": "m/s",
     "count": 1,
+    "type": "float"
+  },
+  "RFshockVel_ST": {
+    "name": "RFshockVel_ST",
+    "desc": "RF shock velocity at 360 Hz",
+    "unit": "m/s",
+    "count": 6,
     "type": "float"
   },
   "LFshockDefl": {
@@ -1287,11 +1413,25 @@
     "count": 1,
     "type": "float"
   },
+  "LFshockDefl_ST": {
+    "name": "LFshockDefl_ST",
+    "desc": "LF shock deflection at 360 Hz",
+    "unit": "m",
+    "count": 6,
+    "type": "float"
+  },
   "LFshockVel": {
     "name": "LFshockVel",
     "desc": "LF shock velocity",
     "unit": "m/s",
     "count": 1,
+    "type": "float"
+  },
+  "LFshockVel_ST": {
+    "name": "LFshockVel_ST",
+    "desc": "LF shock velocity at 360 Hz",
+    "unit": "m/s",
+    "count": 6,
     "type": "float"
   }
 }

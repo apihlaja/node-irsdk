@@ -96,6 +96,9 @@ static const int IRSDK_MAX_DESC = 64;
 static const int IRSDK_UNLIMITED_LAPS = 32767;
 static const float IRSDK_UNLIMITED_TIME = 604800.0f;
 
+// latest version of our telemetry headers
+static const int IRSDK_VER = 2;
+
 enum irsdk_StatusField
 {
 	irsdk_stConnected   = 1
@@ -188,6 +191,41 @@ enum irsdk_TrkLoc
 	irsdk_OnTrack
 };
 
+enum irsdk_TrkSurf
+{
+	irsdk_SurfaceNotInWorld = -1,
+	irsdk_UndefinedMaterial = 0,
+
+	irsdk_Asphalt1Material,
+	irsdk_Asphalt2Material,
+	irsdk_Asphalt3Material,
+	irsdk_Asphalt4Material,
+	irsdk_Concrete1Material,
+	irsdk_Concrete2Material,
+	irsdk_RacingDirt1Material,
+	irsdk_RacingDirt2Material,
+	irsdk_Paint1Material,
+	irsdk_Paint2Material,
+	irsdk_Rumble1Material,
+	irsdk_Rumble2Material,
+	irsdk_Rumble3Material,
+	irsdk_Rumble4Material,
+
+	irsdk_Grass1Material,
+	irsdk_Grass2Material,
+	irsdk_Grass3Material,
+	irsdk_Grass4Material,
+	irsdk_Dirt1Material,
+	irsdk_Dirt2Material,
+	irsdk_Dirt3Material,
+	irsdk_Dirt4Material,
+	irsdk_SandMaterial,
+	irsdk_Gravel1Material,
+	irsdk_Gravel2Material,
+	irsdk_GrasscreteMaterial,
+	irsdk_AstroturfMaterial,
+};
+
 enum irsdk_SessionState
 {
 	irsdk_StateInvalid,
@@ -235,7 +273,8 @@ struct irsdk_varHeader
 	int offset;			// offset fron start of buffer row
 	int count;			// number of entrys (array)
 						// so length in bytes would be irsdk_VarTypeBytes[type] * count
-	int pad[1];			// (16 byte align)
+	bool countAsTime;
+	char pad[3];		// (16 byte align)
 
 	char name[IRSDK_MAX_STRING];
 	char desc[IRSDK_MAX_DESC];
@@ -246,6 +285,7 @@ struct irsdk_varHeader
 		type = 0;
 		offset = 0;
 		count = 0;
+		countAsTime = false;
 		memset(name, 0, sizeof(name));
 		memset(desc, 0, sizeof(name));
 		memset(unit, 0, sizeof(name));
@@ -261,7 +301,7 @@ struct irsdk_varBuf
 
 struct irsdk_header
 {
-	int ver;				// api version 1 for now
+	int ver;				// this api header version, see IRSDK_VER
 	int status;				// bitfield using irsdk_StatusField
 	int tickRate;			// ticks per second (60 or 360 etc)
 
@@ -352,6 +392,9 @@ enum irsdk_PitCommandMode				// this only works when the driver is in the car
 	irsdk_PitCommand_RR,				// right rear
 	irsdk_PitCommand_ClearTires,		// Clear tire pit checkboxes
 	irsdk_PitCommand_FR,				// Request a fast repair
+	irsdk_PitCommand_ClearWS,			// Uncheck Clean the winshield checkbox
+	irsdk_PitCommand_ClearFR,			// Uncheck request a fast repair
+	irsdk_PitCommand_ClearFuel,			// Uncheck add fuel
 };
 
 enum irsdk_TelemCommandMode				// You can call this any time, but telemtry only records when driver is in there car
@@ -412,6 +455,17 @@ enum irsdk_csMode
 	irsdk_csFocusAtExiting  = -1,
 	// ctFocusAtDriver + car number...
 	irsdk_csFocusAtDriver   = 0
+};
+
+enum irsdk_CarLeftRight 
+{ 
+	irsdk_LROff, 
+	irsdk_LRClear,	// no cars around us. 
+	irsdk_LRCarLeft,	// there is a car to our left. 
+	irsdk_LRCarRight,	// there is a car to our right. 
+	irsdk_LRCarLeftRight,	// there are cars on each side. 
+	irsdk_LR2CarsLeft,	// there are two cars to our left. 
+	irsdk_LR2CarsRight	// there are two cars to our right. 
 };
 
 //send a remote controll message to the sim
