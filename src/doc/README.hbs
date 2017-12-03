@@ -4,6 +4,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/apihlaja/node-irsdk.svg)](https://greenkeeper.io/)
 [![Dependencies](https://img.shields.io/david/apihlaja/node-irsdk.svg)](https://david-dm.org/apihlaja/node-irsdk)
 [![devDependencies](https://img.shields.io/david/dev/apihlaja/node-irsdk.svg)](https://david-dm.org/apihlaja/node-irsdk?type=dev)
+[![npm version](https://img.shields.io/npm/v/node-irsdk.svg)](https://www.npmjs.com/package/node-irsdk)
 
 Unofficial [iRacing](http://www.iracing.com/) SDK implementation for Node.js.
 
