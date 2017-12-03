@@ -22,8 +22,7 @@ namespace NodeIrSdk
     MaskName(int val, const char* name);
   };
 
-  Handle<Value> getSessionStateValue(const int& val);
-  Handle<Value> getTrackLoc(const int& val);
+  Handle<Value> getStringValue(const int& val, const std::vector<MaskName>& map);
 
   Handle<Value> getMaskedValues(const int& val, char* unit);
   Handle<Array> getValueArr(const int& val, const std::vector<MaskName> MASKS);
@@ -110,6 +109,50 @@ namespace NodeIrSdk
     MaskName((int)irsdk_InPitStall, "InPitStall"),
     MaskName((int)irsdk_AproachingPits, "AproachingPits"),
     MaskName((int)irsdk_OnTrack, "OnTrack")
+  };
+
+  const std::vector<MaskName> TRACK_SURF = {
+      MaskName((int)irsdk_SurfaceNotInWorld, "SurfaceNotInWorld"),
+      MaskName((int)irsdk_UndefinedMaterial, "UndefinedMaterial"),
+
+      MaskName((int)irsdk_Asphalt1Material, "Asphalt1Material"),
+      MaskName((int)irsdk_Asphalt2Material, "Asphalt2Material"),
+      MaskName((int)irsdk_Asphalt3Material, "Asphalt3Material"),
+      MaskName((int)irsdk_Asphalt4Material, "Asphalt4Material"),
+      MaskName((int)irsdk_Concrete1Material, "Concrete1Material"),
+      MaskName((int)irsdk_Concrete2Material, "Concrete2Material"),
+      MaskName((int)irsdk_RacingDirt1Material, "RacingDirt1Material"),
+      MaskName((int)irsdk_RacingDirt2Material, "RacingDirt2Material"),
+      MaskName((int)irsdk_Paint1Material, "Paint1Material"),
+      MaskName((int)irsdk_Paint2Material, "Paint2Material"),
+      MaskName((int)irsdk_Rumble1Material, "Rumble1Material"),
+      MaskName((int)irsdk_Rumble2Material, "Rumble2Material"),
+      MaskName((int)irsdk_Rumble3Material, "Rumble3Material"),
+      MaskName((int)irsdk_Rumble4Material, "Rumble4Material"),
+
+      MaskName((int)irsdk_Grass1Material, "Grass1Material"),
+      MaskName((int)irsdk_Grass2Material, "Grass2Material"),
+      MaskName((int)irsdk_Grass3Material, "Grass3Material"),
+      MaskName((int)irsdk_Grass4Material, "Grass4Material"),
+      MaskName((int)irsdk_Dirt1Material, "Dirt1Material"),
+      MaskName((int)irsdk_Dirt2Material, "Dirt2Material"),
+      MaskName((int)irsdk_Dirt3Material, "Dirt3Material"),
+      MaskName((int)irsdk_Dirt4Material, "Dirt4Material"),
+      MaskName((int)irsdk_SandMaterial, "SandMaterial"),
+      MaskName((int)irsdk_Gravel1Material, "Gravel1Material"),
+      MaskName((int)irsdk_Gravel2Material, "Gravel2Material"),
+      MaskName((int)irsdk_GrasscreteMaterial, "GrasscreteMaterial"),
+      MaskName((int)irsdk_AstroturfMaterial, "AstroturfMaterial"),
+  };
+
+  const std::vector<MaskName> CAR_BESIDE = {
+    MaskName((int)irsdk_LROff, "LROff"),
+    MaskName((int)irsdk_LRClear, "LRClear"),	// no cars around us.
+    MaskName((int)irsdk_LRCarLeft, "LRCarLeft"),	// there is a car to our left.
+    MaskName((int)irsdk_LRCarRight, "LRCarRight"),	// there is a car to our right.
+    MaskName((int)irsdk_LRCarLeftRight, "LRCarLeftRight"),	// there are cars on each side.
+    MaskName((int)irsdk_LR2CarsLeft, "LR2CarsLeft"),	// there are two cars to our left.
+    MaskName((int)irsdk_LR2CarsRight, "LR2CarsRight")	// there are two cars to our right.
   };
 };
 

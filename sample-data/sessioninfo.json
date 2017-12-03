@@ -1,30 +1,31 @@
 {
-  "timestamp": "2016-11-10T08:18:01.946Z",
+  "timestamp": "2017-12-03T11:35:27.223Z",
   "data": {
     "WeekendInfo": {
-      "TrackName": "lanier",
-      "TrackID": 17,
-      "TrackLength": "0.51 km",
-      "TrackDisplayName": "Lanier National Speedway",
-      "TrackDisplayShortName": "Lanier",
-      "TrackConfigName": null,
-      "TrackCity": "Braselton",
+      "TrackName": "watkinsglen cupcircuit",
+      "TrackID": 106,
+      "TrackLength": "3.90 km",
+      "TrackDisplayName": "Watkins Glen",
+      "TrackDisplayShortName": "Watkins",
+      "TrackConfigName": "Cup",
+      "TrackCity": "Watkins Glen",
       "TrackCountry": "USA",
-      "TrackAltitude": "285.48 m",
-      "TrackLatitude": "34.153764 m",
-      "TrackLongitude": "-83.812358 m",
-      "TrackNorthOffset": "5.6090 rad",
-      "TrackNumTurns": 4,
-      "TrackPitSpeedLimit": "47.99 kph",
-      "TrackType": "short oval",
-      "TrackWeatherType": "Realistic",
+      "TrackAltitude": "479.69 m",
+      "TrackLatitude": "42.341027 m",
+      "TrackLongitude": "-76.928845 m",
+      "TrackNorthOffset": "3.2181 rad",
+      "TrackNumTurns": 8,
+      "TrackPitSpeedLimit": "72.00 kph",
+      "TrackType": "road course",
+      "TrackDirection": "neutral",
+      "TrackWeatherType": "Constant",
       "TrackSkies": "Partly Cloudy",
-      "TrackSurfaceTemp": "41.74 C",
-      "TrackAirTemp": "27.49 C",
-      "TrackAirPressure": "28.92 Hg",
-      "TrackWindVel": "0.72 m/s",
-      "TrackWindDir": "7.39 rad",
-      "TrackRelativeHumidity": "38 %",
+      "TrackSurfaceTemp": "41.47 C",
+      "TrackAirTemp": "27.22 C",
+      "TrackAirPressure": "28.26 Hg",
+      "TrackWindVel": "4.02 m/s",
+      "TrackWindDir": "4.71 rad",
+      "TrackRelativeHumidity": "59 %",
       "TrackFogLevel": "0 %",
       "TrackCleanup": 1,
       "TrackDynamicTrack": 1,
@@ -36,7 +37,7 @@
       "Official": 0,
       "RaceWeek": 0,
       "EventType": "Test",
-      "Category": "Oval",
+      "Category": "Road",
       "SimMode": "full",
       "TeamRacing": 0,
       "MinDrivers": 0,
@@ -52,12 +53,12 @@
         "CourseCautions": "off",
         "StandingStart": 0,
         "Restarts": "single file",
-        "WeatherType": "Realistic",
+        "WeatherType": "Constant",
         "Skies": "Partly Cloudy",
-        "WindDirection": "N",
-        "WindSpeed": "3.22 km/h",
-        "WeatherTemp": "25.56 C",
-        "RelativeHumidity": "55 %",
+        "WindDirection": "W",
+        "WindSpeed": "14.48 km/h",
+        "WeatherTemp": "27.22 C",
+        "RelativeHumidity": "59 %",
         "FogLevel": "0 %",
         "TimeOfDay": "10:00 am",
         "Unofficial": 0,
@@ -81,7 +82,7 @@
           "SessionTime": "unlimited",
           "SessionNumLapsToAvg": 0,
           "SessionType": "Offline Testing",
-          "SessionTrackRubberState": "moderately low usage",
+          "SessionTrackRubberState": "moderate usage",
           "ResultsPositions": null,
           "ResultsFastestLap": [
             {
@@ -193,6 +194,37 @@
         },
         {
           "GroupNum": 10,
+          "GroupName": "Scenic",
+          "IsScenic": true,
+          "Cameras": [
+            {
+              "CameraNum": 1,
+              "CameraName": "Scenic_00"
+            },
+            {
+              "CameraNum": 2,
+              "CameraName": "Scenic_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "Scenic_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "Scenic_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "Scenic_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "Scenic_05"
+            }
+          ]
+        },
+        {
+          "GroupNum": 11,
           "GroupName": "TV1",
           "Cameras": [
             {
@@ -206,41 +238,38 @@
             {
               "CameraNum": 3,
               "CameraName": "CamTV1_02"
-            }
-          ]
-        },
-        {
-          "GroupNum": 11,
-          "GroupName": "Scenic",
-          "IsScenic": true,
-          "Cameras": [
-            {
-              "CameraNum": 1,
-              "CameraName": "Scenic_01"
-            },
-            {
-              "CameraNum": 2,
-              "CameraName": "Scenic_02"
-            },
-            {
-              "CameraNum": 3,
-              "CameraName": "Scenic_04"
             },
             {
               "CameraNum": 4,
-              "CameraName": "Scenic_06"
+              "CameraName": "CamTV1_03"
             },
             {
               "CameraNum": 5,
-              "CameraName": "Scenic_08"
+              "CameraName": "CamTV1_04"
             },
             {
               "CameraNum": 6,
-              "CameraName": "Scenic_09"
+              "CameraName": "CamTV1_05"
             },
             {
               "CameraNum": 7,
-              "CameraName": "Scenic_10"
+              "CameraName": "CamTV1_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV1_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "CamTV1_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "CamTV1_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "CamTV1_10"
             }
           ]
         },
@@ -263,6 +292,38 @@
             {
               "CameraNum": 4,
               "CameraName": "CamTV2_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "CamTV2_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "CamTV2_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "CamTV2_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV2_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "CamTV2_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "CamTV2_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "CamTV2_10"
+            },
+            {
+              "CameraNum": 12,
+              "CameraName": "CamTV2_11"
             }
           ]
         },
@@ -277,6 +338,70 @@
             {
               "CameraNum": 2,
               "CameraName": "CamTV3_01"
+            },
+            {
+              "CameraNum": 3,
+              "CameraName": "CamTV3_02"
+            },
+            {
+              "CameraNum": 4,
+              "CameraName": "CamTV3_03"
+            },
+            {
+              "CameraNum": 5,
+              "CameraName": "CamTV3_04"
+            },
+            {
+              "CameraNum": 6,
+              "CameraName": "CamTV3_05"
+            },
+            {
+              "CameraNum": 7,
+              "CameraName": "CamTV3_06"
+            },
+            {
+              "CameraNum": 8,
+              "CameraName": "CamTV3_07"
+            },
+            {
+              "CameraNum": 9,
+              "CameraName": "CamTV3_08"
+            },
+            {
+              "CameraNum": 10,
+              "CameraName": "CamTV3_09"
+            },
+            {
+              "CameraNum": 11,
+              "CameraName": "CamTV3_10"
+            },
+            {
+              "CameraNum": 12,
+              "CameraName": "CamTV3_11"
+            },
+            {
+              "CameraNum": 13,
+              "CameraName": "CamTV3_12"
+            },
+            {
+              "CameraNum": 14,
+              "CameraName": "CamTV3_13"
+            },
+            {
+              "CameraNum": 15,
+              "CameraName": "CamTV3_14"
+            },
+            {
+              "CameraNum": 16,
+              "CameraName": "CamTV3_15"
+            },
+            {
+              "CameraNum": 17,
+              "CameraName": "CamTV3_16"
+            },
+            {
+              "CameraNum": 18,
+              "CameraName": "CamTV3_17"
             }
           ]
         },
@@ -459,26 +584,27 @@
     },
     "DriverInfo": {
       "DriverCarIdx": 0,
-      "DriverUserID": 0,
+      "DriverUserID": 93910,
       "PaceCarIdx": -1,
-      "DriverHeadPosX": -0.541,
-      "DriverHeadPosY": 0.08,
-      "DriverHeadPosZ": 0.698,
-      "DriverCarIdleRPM": 1200,
-      "DriverCarRedLine": 9000,
-      "DriverCarFuelKgPerLtr": 0.789,
-      "DriverCarFuelMaxLtr": 105.991,
+      "DriverHeadPosX": -0.201,
+      "DriverHeadPosY": 0,
+      "DriverHeadPosZ": 0.426,
+      "DriverCarIdleRPM": 2000,
+      "DriverCarRedLine": 9500,
+      "DriverCarFuelKgPerLtr": 0.75,
+      "DriverCarFuelMaxLtr": 179.529,
       "DriverCarMaxFuelPct": 1,
-      "DriverCarSLFirstRPM": 8455,
+      "DriverCarSLFirstRPM": 8500,
       "DriverCarSLShiftRPM": 8900,
-      "DriverCarSLLastRPM": 8900,
-      "DriverCarSLBlinkRPM": 8900,
-      "DriverPitTrkPct": 0.794794,
-      "DriverCarEstLapTime": 13.7101,
-      "DriverSetupName": "lanier.sto",
+      "DriverCarSLLastRPM": 9300,
+      "DriverCarSLBlinkRPM": 9500,
+      "DriverPitTrkPct": 0.051192,
+      "DriverCarEstLapTime": 78.9351,
+      "DriverSetupName": "lost_again.sto",
       "DriverSetupIsModified": 0,
-      "DriverSetupLoadTypeName": "iracing",
+      "DriverSetupLoadTypeName": "user",
       "DriverSetupPassedTech": 1,
+      "DriverIncidentCount": 0,
       "Drivers": [
         {
           "CarIdx": 0,
@@ -490,13 +616,13 @@
           "TeamName": "Antti Pihlaja",
           "CarNumber": "37",
           "CarNumberRaw": 37,
-          "CarPath": "sprint",
-          "CarClassID": 0,
-          "CarID": 37,
+          "CarPath": "lotus49",
+          "CarClassID": 46,
+          "CarID": 42,
           "CarIsPaceCar": 0,
           "CarIsAI": 0,
-          "CarScreenName": "Sprint Car",
-          "CarScreenNameShort": "Sprint Car",
+          "CarScreenName": "Lotus 49",
+          "CarScreenNameShort": "Lotus 49",
           "CarClassShortName": null,
           "CarClassRelSpeed": 0,
           "CarClassLicenseLevel": 0,
@@ -509,12 +635,14 @@
           "LicString": "R 0.01",
           "LicColor": 87003,
           "IsSpectator": 0,
-          "CarDesignStr": "21,feec04,000000,000000",
+          "CarDesignStr": "9,FFFFFF,FFFFFF,FFFFFF",
           "HelmetDesignStr": "60,eeeeee,003180,000000",
           "SuitDesignStr": "2,231f20,231f20,ffde00",
-          "CarNumberDesignStr": "5,0,ffffff,ffffff,000000",
+          "CarNumberDesignStr": "0,0,FFFFFF,777777,000000",
           "CarSponsor_1": 0,
-          "CarSponsor_2": 0
+          "CarSponsor_2": 0,
+          "CurDriverIncidentCount": 0,
+          "TeamIncidentCount": 0
         }
       ]
     },
@@ -526,7 +654,11 @@
         },
         {
           "SectorNum": 1,
-          "SectorStartPct": 0.5
+          "SectorStartPct": 0.41428
+        },
+        {
+          "SectorNum": 2,
+          "SectorStartPct": 0.771016
         }
       ]
     },
@@ -534,84 +666,102 @@
       "UpdateCount": 1,
       "Tires": {
         "LeftFront": {
-          "ColdPressure": "90 kPa",
-          "LastHotPressure": "90 kPa",
+          "ColdPressure": "124 kPa",
+          "LastHotPressure": "124 kPa",
           "LastTempsOMI": "41C, 41C, 41C",
           "TreadRemaining": "100%, 100%, 100%"
         },
         "LeftRear": {
-          "ColdPressure": "117 kPa",
-          "LastHotPressure": "117 kPa",
+          "ColdPressure": "124 kPa",
+          "LastHotPressure": "124 kPa",
           "LastTempsOMI": "41C, 41C, 41C",
           "TreadRemaining": "100%, 100%, 100%"
         },
         "RightFront": {
-          "ColdPressure": "131 kPa",
-          "LastHotPressure": "131 kPa",
+          "ColdPressure": "124 kPa",
+          "LastHotPressure": "124 kPa",
           "LastTempsIMO": "41C, 41C, 41C",
-          "TreadRemaining": "100%, 100%, 100%",
-          "Stagger": "13 mm"
+          "TreadRemaining": "100%, 100%, 100%"
         },
         "RightRear": {
-          "ColdPressure": "131 kPa",
-          "LastHotPressure": "131 kPa",
+          "ColdPressure": "124 kPa",
+          "LastHotPressure": "124 kPa",
           "LastTempsIMO": "41C, 41C, 41C",
-          "TreadRemaining": "100%, 100%, 100%",
-          "Stagger": "64 mm"
+          "TreadRemaining": "100%, 100%, 100%"
         }
       },
       "Chassis": {
         "Front": {
-          "SteeringBoxRatio": "8.5:1",
-          "SteeringOffset": "+4 deg",
-          "FrontBrakeBias": "54%"
+          "ArbArms": 4,
+          "ArbDiameter": "0.375\"",
+          "BrakeBias": "59.0%",
+          "ToeIn": "-4 mm",
+          "SteeringRatio": 721,
+          "CrossWeight": "50.0%"
         },
         "LeftFront": {
-          "CornerWeight": "1796 N",
-          "RideHeight": "21 mm",
-          "ShockCollarOffset": "105 mm",
-          "SpringRate": "96 N/mm",
-          "BumpStiffness": "+5 clicks",
-          "ReboundStiffness": "+5 clicks",
-          "Camber": "+1.6 deg",
-          "Caster": "+4.8 deg",
-          "ToeIn": "-3 mm"
+          "CornerWeight": "1315 N",
+          "RideHeight": "83.6 mm",
+          "ShockDeflection": "52.4 mm 127.0 mm",
+          "SpringPerchOffset": "52.8 mm",
+          "SpringRate": "61 N/mm",
+          "BumpStiffness": "+6 clicks",
+          "ReboundStiffness": "+4 clicks",
+          "Camber": "-0.5 deg",
+          "Caster": "+5.1 deg"
         },
         "LeftRear": {
-          "CornerWeight": "2389 N",
-          "RideHeight": "65 mm",
-          "ShockCollarOffset": "51 mm",
-          "SpringRate": "70 N/mm",
-          "BumpStiffness": "+6 clicks",
-          "ReboundStiffness": "+6 clicks",
-          "Camber": "+0.6 deg"
+          "CornerWeight": "1619 N",
+          "RideHeight": "111.5 mm",
+          "ShockDeflection": "71.2 mm 177.8 mm",
+          "SpringPerchOffset": "65.1 mm",
+          "SpringRate": "39 N/mm",
+          "BumpStiffness": "+7 clicks",
+          "ReboundStiffness": "+8 clicks",
+          "Camber": "-1.0 deg"
         },
         "RightFront": {
-          "CornerWeight": "2058 N",
-          "RideHeight": "29 mm",
-          "ShockCollarOffset": "121 mm",
-          "SpringRate": "88 N/mm",
-          "BumpStiffness": "+5 clicks",
+          "CornerWeight": "1315 N",
+          "RideHeight": "83.6 mm",
+          "ShockDeflection": "52.4 mm 127.0 mm",
+          "SpringPerchOffset": "52.8 mm",
+          "SpringRate": "61 N/mm",
+          "BumpStiffness": "+6 clicks",
           "ReboundStiffness": "+4 clicks",
-          "Camber": "-1.6 deg",
-          "Caster": "+6.5 deg",
-          "ToeIn": "-0 mm",
-          "FrontTrackBarHeight": "+248 mm"
+          "Camber": "-0.5 deg",
+          "Caster": "+5.1 deg"
         },
         "RightRear": {
-          "CornerWeight": "1558 N",
-          "RideHeight": "76 mm",
-          "ShockCollarOffset": "83 mm",
-          "SpringRate": "61 N/mm",
-          "BumpStiffness": "+5 clicks",
-          "ReboundStiffness": "+4 clicks",
-          "Camber": "-0.6 deg",
-          "TrackBarHeight": "+318 mm"
+          "CornerWeight": "1619 N",
+          "RideHeight": "111.5 mm",
+          "ShockDeflection": "71.2 mm 177.8 mm",
+          "SpringPerchOffset": "65.1 mm",
+          "SpringRate": "39 N/mm",
+          "BumpStiffness": "+7 clicks",
+          "ReboundStiffness": "+8 clicks",
+          "Camber": "-1.0 deg"
         },
         "Rear": {
-          "FuelFillTo": "106.0 L",
-          "CrossWeight": "57.0%",
-          "RearEndRatio": 5.69
+          "FuelLevel": "34.1 L",
+          "ArbDiameter": "0.675\"",
+          "ArbArms": 5,
+          "ToeIn": "+2 mm"
+        }
+      },
+      "Drivetrain": {
+        "Transmission": {
+          "FinalDrive": 4.11,
+          "FirstGear": 2.23,
+          "SecondGear": 1.61,
+          "ThirdGear": 1.32,
+          "FourthGear": 1.04,
+          "FifthGear": 0.916
+        },
+        "Differential": {
+          "ClutchPlates": 1,
+          "Preload": "14 Nm",
+          "DriveRampAngle": "40 deg",
+          "CoastRampAngle": "50 deg"
         }
       }
     }
