@@ -1,13 +1,3 @@
-build/
-sample-data/
-utils/
-test/
-src/doc
-.eslintrc
-appveyor.yml
-npm-debug.log
-
-
 # Visual Studio
 
 *.njsproj
@@ -18,3 +8,15 @@ npm-debug.log
 *.sdf
 *.suo
 *.vcxproj.user
+
+# Misc
+
+build/
+sample-data/
+utils/
+test/
+src/doc
+.eslintrc
+appveyor.yml
+npm-debug.log
+.vscode
