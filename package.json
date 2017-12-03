@@ -11,7 +11,8 @@
     "mocha": "mocha src/**/*-spec.js",
     "lint": "standard",
     "doc": "jsdoc2md -d 3 -t src/doc/README.hbs --partial src/doc/examples.hbs -m none -g none src/node-irsdk.js src/JsIrSdk.js src/IrSdkConsts.js > README.md",
-    "ready": "npm test && node test/smoke-test.js && npm run doc"
+    "ready": "npm test && node test/smoke-test.js && npm run doc",
+    "release-notes": "node_modules/.bin/changelog node-irsdk latest"
   },
   "keywords": [
     "iracing"
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "chai": "4.1.*",
+    "changelog": "1.4.1",
     "jsdoc-to-markdown": "3.0.*",
     "mocha": "4.0.*",
     "moment": "2.19.3",
