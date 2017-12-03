@@ -1,6 +1,7 @@
 # node-irsdk
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ukyuuq9004wy9h5b/branch/master?svg=true)](https://ci.appveyor.com/project/apihlaja/node-irsdk/branch/master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/apihlaja/node-irsdk.svg)](https://greenkeeper.io/)
 
 Unofficial [iRacing](http://www.iracing.com/) SDK implementation for Node.js.
 
