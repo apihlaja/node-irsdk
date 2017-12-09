@@ -27,9 +27,9 @@
     "node": ">=4"
   },
   "dependencies": {
-    "js-yaml": "^3.10.0",
+    "js-yaml": "3.*",
     "nan": "2.8.0",
-    "prebuild-install": "~2.4.0"
+    "prebuild-install": "2.*"
   },
   "devDependencies": {
     "chai": "4.1.*",
