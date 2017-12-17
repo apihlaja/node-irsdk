@@ -36,7 +36,7 @@
     "changelog": "1.4.1",
     "jsdoc-to-markdown": "3.0.*",
     "mocha": "4.0.*",
-    "moment": "2.19.4",
+    "moment": "2.20.0",
     "prebuild": "7.0.0",
     "sandboxed-module": "2.0.*",
     "sinon": "4.1.*",
