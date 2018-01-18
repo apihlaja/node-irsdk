@@ -34,7 +34,7 @@
   "devDependencies": {
     "chai": "4.1.*",
     "changelog": "1.4.1",
-    "jsdoc-to-markdown": "3.0.*",
+    "jsdoc-to-markdown": "~4.0.0",
     "mocha": "~4.1.0",
     "moment": "2.20.1",
     "prebuild": "7.0.0",
