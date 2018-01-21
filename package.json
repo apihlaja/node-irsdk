@@ -39,7 +39,7 @@
     "moment": "2.20.1",
     "prebuild": "7.0.0",
     "sandboxed-module": "2.0.*",
-    "sinon": "4.1.*",
+    "sinon": "~4.2.0",
     "sinon-chai": "2.14.0",
     "standard": "8.6.0"
   },
