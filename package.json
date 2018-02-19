@@ -41,7 +41,7 @@
     "sandboxed-module": "2.0.*",
     "sinon": "4.1.*",
     "sinon-chai": "2.14.0",
-    "standard": "8.6.0"
+    "standard": "11.0.0"
   },
   "standard": {
     "globals": [
