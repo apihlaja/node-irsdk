@@ -28,19 +28,19 @@
   },
   "dependencies": {
     "js-yaml": "3.*",
-    "nan": "2.8.0",
+    "nan": "2.10.0",
     "prebuild-install": "2.*"
   },
   "devDependencies": {
     "chai": "4.1.*",
-    "changelog": "1.4.1",
-    "jsdoc-to-markdown": "3.0.*",
-    "mocha": "~5.0.0",
-    "moment": "2.20.1",
+    "changelog": "1.*",
+    "jsdoc-to-markdown": "4.*",
+    "mocha": "5.*",
+    "moment": "2.*",
     "prebuild": "7.4.0",
     "sandboxed-module": "2.0.*",
-    "sinon": "4.1.*",
-    "sinon-chai": "2.14.0",
+    "sinon": "4.*",
+    "sinon-chai": "2.*",
     "standard": "8.6.0"
   },
   "standard": {
