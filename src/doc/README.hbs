@@ -24,7 +24,7 @@ Other iRSDK implementations:
 
 ## Installing
 
-Make sure you have [Node.js](https://nodejs.org/) v4 x64 or later.
+Make sure you have [Node.js](https://nodejs.org/) v6 x64 or later.
 
 `npm install --save node-irsdk`
 

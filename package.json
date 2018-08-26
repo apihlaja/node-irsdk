@@ -24,7 +24,7 @@
     "url": "https://github.com/apihlaja/node-irsdk.git"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "dependencies": {
     "js-yaml": "3.*",

@@ -4,7 +4,6 @@ environment:
   GH_TOKEN:
     secure: vEml4pXq1xxpAvSWWjPX7nIpBLOtJ4cIhL8CUsXGbh6g/Wh3hXEJZslxYZRdS/hx
   matrix:
-    - nodejs_version: 4
     - nodejs_version: 6
     - nodejs_version: 8
     - nodejs_version: "Stable" # latest
