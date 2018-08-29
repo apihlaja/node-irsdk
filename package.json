@@ -37,7 +37,7 @@
     "jsdoc-to-markdown": "4.*",
     "mocha": "5.*",
     "moment": "^2.19.3",
-    "prebuild": "7.6.2",
+    "prebuild": "8.0.1",
     "sandboxed-module": "2.0.*",
     "sinon": "^6.0.1",
     "sinon-chai": "3.*",
