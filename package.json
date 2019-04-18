@@ -35,7 +35,7 @@
     "chai": "4.1.*",
     "changelog": "1.*",
     "jsdoc-to-markdown": "^5.0.0",
-    "mocha": "5.*",
+    "mocha": "^6.1.4",
     "moment": "^2.19.3",
     "prebuild": "9.0.0",
     "sandboxed-module": "2.0.*",
