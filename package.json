@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "js-yaml": "3.*",
-    "nan": "2.11.0",
+    "nan": "2.14.0",
     "prebuild-install": "^5.0.0"
   },
   "devDependencies": {
