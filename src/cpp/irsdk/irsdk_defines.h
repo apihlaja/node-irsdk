@@ -237,6 +237,17 @@ enum irsdk_SessionState
 	irsdk_StateCoolDown
 };
 
+enum irsdk_CarLeftRight
+{
+	irsdk_LROff,
+	irsdk_LRClear,			// no cars around us.
+	irsdk_LRCarLeft,		// there is a car to our left.
+	irsdk_LRCarRight,		// there is a car to our right.
+	irsdk_LRCarLeftRight,	// there are cars on each side.
+	irsdk_LR2CarsLeft,		// there are two cars to our left.
+	irsdk_LR2CarsRight		// there are two cars to our right.
+};
+
 enum irsdk_CameraState
 {
 	irsdk_IsSessionScreen          = 0x0001, // the camera tool can only be activated if viewing the session screen (out of car)
@@ -262,6 +273,22 @@ enum irsdk_PitSvFlags
 	irsdk_FuelFill			= 0x0010,
 	irsdk_WindshieldTearoff	= 0x0020,
 	irsdk_FastRepair		= 0x0040
+};
+
+enum irsdk_PitSvStatus
+{
+	// status
+	irsdk_PitSvNone = 0,
+	irsdk_PitSvInProgress,
+	irsdk_PitSvComplete,
+
+	// errors
+	irsdk_PitSvTooFarLeft = 100,
+	irsdk_PitSvTooFarRight,
+	irsdk_PitSvTooFarForward,
+	irsdk_PitSvTooFarBack,
+	irsdk_PitSvBadAngle,
+	irsdk_PitSvCantFixThat,
 };
 
 //----
@@ -455,17 +482,6 @@ enum irsdk_csMode
 	irsdk_csFocusAtExiting  = -1,
 	// ctFocusAtDriver + car number...
 	irsdk_csFocusAtDriver   = 0
-};
-
-enum irsdk_CarLeftRight 
-{ 
-	irsdk_LROff, 
-	irsdk_LRClear,	// no cars around us. 
-	irsdk_LRCarLeft,	// there is a car to our left. 
-	irsdk_LRCarRight,	// there is a car to our right. 
-	irsdk_LRCarLeftRight,	// there are cars on each side. 
-	irsdk_LR2CarsLeft,	// there are two cars to our left. 
-	irsdk_LR2CarsRight	// there are two cars to our right. 
 };
 
 //send a remote controll message to the sim
