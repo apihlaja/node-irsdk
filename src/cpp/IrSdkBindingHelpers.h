@@ -10,9 +10,9 @@ using namespace v8;
 namespace NodeIrSdk
 {
 
-  Handle<Value> convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index);
-  Handle<Value> convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var);
-  void convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj);
+  Local<Value> convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index);
+  Local<Value> convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var);
+  void convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Local<Object>& obj);
 
 
   struct MaskName {
@@ -22,10 +22,10 @@ namespace NodeIrSdk
     MaskName(int val, const char* name);
   };
 
-  Handle<Value> getStringValue(const int& val, const std::vector<MaskName>& map);
+  Local<Value> getStringValue(const int& val, const std::vector<MaskName>& map);
 
-  Handle<Value> getMaskedValues(const int& val, char* unit);
-  Handle<Array> getValueArr(const int& val, const std::vector<MaskName> MASKS);
+  Local<Value> getMaskedValues(const int& val, char* unit);
+  Local<Array> getValueArr(const int& val, const std::vector<MaskName> MASKS);
 
   const std::vector<MaskName> FLAG_MASKS = {
     MaskName((int)irsdk_checkered, "Checkered"),
@@ -58,7 +58,7 @@ namespace NodeIrSdk
     MaskName((int)irsdk_startSet, "StartSet"),
     MaskName((int)irsdk_startGo, "StartGo")
   };
-  
+
   const std::vector<MaskName> PIT_SV_MASKS = {
     MaskName((int)irsdk_LFTireChange, "LFTireChange"),
     MaskName((int)irsdk_RFTireChange, "RFTireChange"),
