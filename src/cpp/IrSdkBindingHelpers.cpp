@@ -5,7 +5,7 @@
 using namespace v8;
 using namespace std;
 
-Handle<Value> NodeIrSdk::convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index)
+Local<Value> NodeIrSdk::convertTelemetryValueToObject(IRSDKWrapper::TelemetryVar& var, const int& index)
 {
   switch (var.type) {
   case irsdk_char:
@@ -34,10 +34,10 @@ Handle<Value> NodeIrSdk::convertTelemetryValueToObject(IRSDKWrapper::TelemetryVa
   }
 }
 
-Handle<Value> NodeIrSdk::convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var)
+Local<Value> NodeIrSdk::convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar& var)
 {
   if (var.header->count > 1) {
-    Handle<Array> arr = Nan::New<Array>(var.header->count);
+    Local<Array> arr = Nan::New<Array>(var.header->count);
     for (int i = 0; i < var.header->count; ++i)
     {
       arr->Set(i, convertTelemetryValueToObject(var, i));
@@ -50,13 +50,13 @@ Handle<Value> NodeIrSdk::convertTelemetryVarToObject(IRSDKWrapper::TelemetryVar&
   }
 }
 
-void NodeIrSdk::convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Handle<Object>& obj)
+void NodeIrSdk::convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Local<Object>& obj)
 {
   Nan::Set(obj, Nan::New("name").ToLocalChecked(), Nan::New(var.header->name).ToLocalChecked());
   Nan::Set(obj, Nan::New("desc").ToLocalChecked(), Nan::New(var.header->desc).ToLocalChecked());
   Nan::Set(obj, Nan::New("unit").ToLocalChecked(), Nan::New(var.header->unit).ToLocalChecked());
   Nan::Set(obj, Nan::New("count").ToLocalChecked(), Nan::New(var.header->count));
-  
+
   switch (var.header->type) {
   case irsdk_char:
     Nan::Set(obj, Nan::New("type").ToLocalChecked(), Nan::New("char").ToLocalChecked());
@@ -82,7 +82,7 @@ void NodeIrSdk::convertVarHeaderToObject(IRSDKWrapper::TelemetryVar& var, Handle
   }
 }
 
-Handle<Value> NodeIrSdk::getMaskedValues(const int& val, char* unit)
+Local<Value> NodeIrSdk::getMaskedValues(const int& val, char* unit)
 {
   if (strcmp(unit,"irsdk_Flags") == 0) {
     return getValueArr(val, FLAG_MASKS);
@@ -103,9 +103,9 @@ Handle<Value> NodeIrSdk::getMaskedValues(const int& val, char* unit)
   return Nan::New(static_cast<int32_t>(val));
 }
 
-Handle<Array> NodeIrSdk::getValueArr(const int& val, const std::vector<NodeIrSdk::MaskName> MASKS)
+Local<Array> NodeIrSdk::getValueArr(const int& val, const std::vector<NodeIrSdk::MaskName> MASKS)
 {
-  Handle<Array> arr = Nan::New<Array>();
+  Local<Array> arr = Nan::New<Array>();
   int counter = 0;
   for (const auto& mask : MASKS)
   {
@@ -116,7 +116,7 @@ Handle<Array> NodeIrSdk::getValueArr(const int& val, const std::vector<NodeIrSdk
   return arr;
 }
 
-Handle<Value> NodeIrSdk::getStringValue(const int& val, const std::vector<NodeIrSdk::MaskName>& map) 
+Local<Value> NodeIrSdk::getStringValue(const int& val, const std::vector<NodeIrSdk::MaskName>& map)
 {
   for (const auto& mask : map) {
     if (mask.val == val) {
@@ -126,7 +126,7 @@ Handle<Value> NodeIrSdk::getStringValue(const int& val, const std::vector<NodeIr
   return Nan::Undefined();
 }
 
-NodeIrSdk::MaskName::MaskName(int val, const char* name) : 
+NodeIrSdk::MaskName::MaskName(int val, const char* name) :
 val(val), name(name)
 {
 }
