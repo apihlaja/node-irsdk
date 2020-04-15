@@ -22,6 +22,10 @@ function createSessionInfoParser () {
         return "TeamName: '" + p1.replace(/'/g, "''") + "'"
       }
     })
+    // Ignore UTF8 C2xx control characters.  e.g., Capital Y diaersis glyph shown
+    // in iRacing client appears in fixedYamlStr UTF8 as C2 9F (Unicode \u009F),
+    // which is indeed a non-printable (control) character.
+    fixedYamlStr = fixedYamlStr.replace(/[\u0080-\u009F]/g, '')
     return yaml.safeLoad(fixedYamlStr)
   }
 }
