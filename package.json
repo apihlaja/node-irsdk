@@ -27,7 +27,7 @@
     "node": ">=6"
   },
   "dependencies": {
-    "js-yaml": "3.*",
+    "js-yaml": "3.13.1",
     "nan": "2.14.0",
     "prebuild-install": "^5.0.0"
   },
