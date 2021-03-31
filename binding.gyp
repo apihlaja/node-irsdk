@@ -1,4 +1,4 @@
-﻿{
+{
   "targets": [
     {
       "target_name": "IrSdkNodeBindings",

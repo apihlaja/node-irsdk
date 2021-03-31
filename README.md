@@ -56,9 +56,7 @@ Initialize JsIrSdk, can be done once before using getInstance first time.
 
   
 ```js
-var irsdk = require('node-irsdk')
-// look for telemetry updates only once per 100 ms
-var iracing = irsdk.init({telemetryUpdateInterval: 100})
+var irsdk = require('node-irsdk')// look for telemetry updates only once per 100 msvar iracing = irsdk.init({telemetryUpdateInterval: 100})
 ```
 <a name="module_irsdk.getInstance"></a>
 
@@ -69,8 +67,7 @@ Get initialized instance of JsIrSdk
 **Returns**: [<code>iracing</code>](#iracing) - Running instance of JsIrSdk  
   
 ```js
-var irsdk = require('node-irsdk')
-var iracing = irsdk.getInstance()
+var irsdk = require('node-irsdk')var iracing = irsdk.getInstance()
 ```
 <a name="iracing"></a>
 
@@ -159,10 +156,7 @@ Change camera tool state
 
   
 ```js
-// hide UI and enable mouse aim
-var States = iracing.Consts.CameraState
-var state = States.CamToolActive | States.UIHidden | States.UseMouseAimMode
-iracing.camControls.setState(state)
+// hide UI and enable mouse aimvar States = iracing.Consts.CameraStatevar state = States.CamToolActive | States.UIHidden | States.UseMouseAimModeiracing.camControls.setState(state)
 ```
 <a name="iracing+camControls.switchToCar"></a>
 
@@ -179,26 +173,22 @@ Switch camera, focus on car
 
   
 ```js
-// show car #2
-iracing.camControls.switchToCar(2)
+// show car #2iracing.camControls.switchToCar(2)
       
 ```
   
 ```js
-// show car #02
-iracing.camControls.switchToCar('02')
+// show car #02iracing.camControls.switchToCar('02')
       
 ```
   
 ```js
-// show leader
-iracing.camControls.switchToCar('leader')
+// show leaderiracing.camControls.switchToCar('leader')
       
 ```
   
 ```js
-// show car #2 using cam group 3
-iracing.camControls.switchToCar(2, 3)
+// show car #2 using cam group 3iracing.camControls.switchToCar(2, 3)
 ```
 <a name="iracing+camControls.switchToPos"></a>
 
@@ -344,8 +334,7 @@ Search timestamp
 
   
 ```js
-// jump to 2nd minute of 3rd session
-iracing.playbackControls.searchTs(2, 2*60*1000)
+// jump to 2nd minute of 3rd sessioniracing.playbackControls.searchTs(2, 2*60*1000)
 ```
 <a name="iracing+playbackControls.searchFrame"></a>
 
@@ -465,11 +454,7 @@ Execute pit command
 
   
 ```js
-// full tank, no tires, no tear off
-iracing.execPitCmd('clear')
-iracing.execPitCmd('fuel', 999) // 999 liters
-iracing.execPitCmd('lf') // new left front
-iracing.execPitCmd('lr', 200) // new left rear, 200 kPa
+// full tank, no tires, no tear offiracing.execPitCmd('clear')iracing.execPitCmd('fuel', 999) // 999 litersiracing.execPitCmd('lf') // new left frontiracing.execPitCmd('lr', 200) // new left rear, 200 kPa
 ```
 <a name="iracing+execTelemetryCmd"></a>
 
@@ -494,9 +479,7 @@ iRacing, sim, is started
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('Connected', function (evt) {
-  console.log(evt)
-})
+iracing.on('Connected', function (evt) {  console.log(evt)})
 ```
 <a name="iracing+event_Disconnected"></a>
 
@@ -506,9 +489,7 @@ iRacing, sim, was closed
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('Disconnected', function (evt) {
-  console.log(evt)
-})
+iracing.on('Disconnected', function (evt) {  console.log(evt)})
 ```
 <a name="iracing+event_TelemetryDescription"></a>
 
@@ -518,9 +499,7 @@ Telemetry description, contains description of available telemetry values
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('TelemetryDescription', function (data) {
-  console.log(evt)
-})
+iracing.on('TelemetryDescription', function (data) {  console.log(evt)})
 ```
 <a name="iracing+event_Telemetry"></a>
 
@@ -530,9 +509,7 @@ Telemetry update
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('Telemetry', function (evt) {
-  console.log(evt)
-})
+iracing.on('Telemetry', function (evt) {  console.log(evt)})
 ```
 <a name="iracing+event_SessionInfo"></a>
 
@@ -542,9 +519,7 @@ SessionInfo update
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('SessionInfo', function (evt) {
-  console.log(evt)
-})
+iracing.on('SessionInfo', function (evt) {  console.log(evt)})
 ```
 <a name="iracing+event_update"></a>
 
@@ -554,9 +529,7 @@ any update event
 **Kind**: event emitted by [<code>iracing</code>](#iracing)  
   
 ```js
-iracing.on('update', function (evt) {
-  console.log(evt)
-})
+iracing.on('update', function (evt) {  console.log(evt)})
 ```
 <a name="iracing..sessionInfoParser"></a>
 
@@ -592,6 +565,11 @@ var IrSdkConsts = require('node-irsdk').getInstance().Consts
     * [.PitCommand](#IrSdkConsts.PitCommand)
     * [.TelemCommand](#IrSdkConsts.TelemCommand)
     * [.CamFocusAt](#IrSdkConsts.CamFocusAt)
+    * [.CamCameraState](#IrSdkConsts.CamCameraState)
+    * [.SessionState](#IrSdkConsts.SessionState)
+    * [.EngineWarnings](#IrSdkConsts.EngineWarnings)
+    * [.Flags](#IrSdkConsts.Flags)
+    * [.PitSvFlags](#IrSdkConsts.PitSvFlags)
 
 <a name="IrSdkConsts.BroadcastMsg"></a>
 
@@ -750,6 +728,115 @@ When switching camera, these can be used instead of car number / position
 | Leader | <code>-2</code> |  |
 | Exciting | <code>-1</code> |  |
 | Driver | <code>0</code> | Use car number / position instead of this |
+
+<a name="IrSdkConsts.CamCameraState"></a>
+
+#### IrSdkConsts.CamCameraState
+Camera states
+
+**Kind**: static enum of [<code>IrSdkConsts</code>](#IrSdkConsts)  
+**Properties**
+
+| Name | Default |
+| --- | --- |
+| IsSessionScreen | <code>1</code> | 
+| IsScenicActive | <code>2</code> | 
+| CamToolActive | <code>4</code> | 
+| UIHidden | <code>8</code> | 
+| UseAutoShotSelection | <code>16</code> | 
+| UseTemporaryEdits | <code>32</code> | 
+| UseKeyAcceleration | <code>64</code> | 
+| UseKey10xAcceleration | <code>128</code> | 
+| UseMouseAimMode | <code>256</code> | 
+
+<a name="IrSdkConsts.SessionState"></a>
+
+#### IrSdkConsts.SessionState
+Session states
+
+**Kind**: static enum of [<code>IrSdkConsts</code>](#IrSdkConsts)  
+**Properties**
+
+| Name | Default |
+| --- | --- |
+| Invalid | <code>0</code> | 
+| GetInCar | <code>1</code> | 
+| Warmup | <code>2</code> | 
+| ParadeLaps | <code>3</code> | 
+| Racing | <code>4</code> | 
+| Checkered | <code>5</code> | 
+| CoolDown | <code>6</code> | 
+
+<a name="IrSdkConsts.EngineWarnings"></a>
+
+#### IrSdkConsts.EngineWarnings
+Engine warnings states
+
+**Kind**: static enum of [<code>IrSdkConsts</code>](#IrSdkConsts)  
+**Properties**
+
+| Name | Default |
+| --- | --- |
+| waterTempWarning | <code>1</code> | 
+| fuelPressureWarning | <code>2</code> | 
+| oilPressureWarning | <code>4</code> | 
+| engineStalled | <code>8</code> | 
+| pitSpeedLimiter | <code>16</code> | 
+| revLimiterActive | <code>32</code> | 
+
+<a name="IrSdkConsts.Flags"></a>
+
+#### IrSdkConsts.Flags
+Session Flag states
+
+**Kind**: static enum of [<code>IrSdkConsts</code>](#IrSdkConsts)  
+**Properties**
+
+| Name | Default |
+| --- | --- |
+| checkered | <code>1</code> | 
+| white | <code>2</code> | 
+| green | <code>4</code> | 
+| yellow | <code>8</code> | 
+| red | <code>16</code> | 
+| blue | <code>32</code> | 
+| debris | <code>64</code> | 
+| crossed | <code>128</code> | 
+| yellowWaving | <code>256</code> | 
+| oneLapToGreen | <code>512</code> | 
+| greenHeld | <code>1024</code> | 
+| tenToGo | <code>2048</code> | 
+| fiveToGo | <code>4096</code> | 
+| randomWaving | <code>8192</code> | 
+| caution | <code>16384</code> | 
+| cautionWaving | <code>32768</code> | 
+| black | <code>65536</code> | 
+| disqualify | <code>131072</code> | 
+| servicible | <code>262144</code> | 
+| furled | <code>524288</code> | 
+| repair | <code>1048576</code> | 
+| startHidden | <code>268435456</code> | 
+| startReady | <code>536870912</code> | 
+| startSet | <code>1073741824</code> | 
+| startGo | <code>2147483648</code> | 
+
+<a name="IrSdkConsts.PitSvFlags"></a>
+
+#### IrSdkConsts.PitSvFlags
+Session Pit states
+
+**Kind**: static enum of [<code>IrSdkConsts</code>](#IrSdkConsts)  
+**Properties**
+
+| Name | Default |
+| --- | --- |
+| LFTireChange | <code>1</code> | 
+| RFTireChange | <code>2</code> | 
+| LRTireChange | <code>4</code> | 
+| RRTireChange | <code>8</code> | 
+| FuelFill | <code>16</code> | 
+| WindshieldTearoff | <code>32</code> | 
+| FastRepair | <code>64</code> | 
 
 
 
