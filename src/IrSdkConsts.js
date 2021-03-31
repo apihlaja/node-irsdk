@@ -157,6 +157,86 @@ var IrSdkConsts = {
     Exciting: -1,
     /** Use car number / position instead of this */
     Driver: 0
+  },
+  /** Camera states
+    @enum
+  */
+  CamCameraState:
+  {
+    IsSessionScreen: 0x0001,
+    IsScenicActive: 0x0002,
+    CamToolActive: 0x0004,
+    UIHidden: 0x0008,
+    UseAutoShotSelection: 0x0010,
+    UseTemporaryEdits: 0x0020,
+    UseKeyAcceleration: 0x0040,
+    UseKey10xAcceleration: 0x0080,
+    UseMouseAimMode: 0x0100
+  },
+  /** Session states
+    @enum
+  */
+  SessionState: {
+    Invalid: 0,
+    GetInCar: 1,
+    Warmup: 2,
+    ParadeLaps: 3,
+    Racing: 4,
+    Checkered: 5,
+    CoolDown: 6
+  },
+  /** Engine warnings states
+    @enum
+  */
+  EngineWarnings: {
+    waterTempWarning: 0x0001,
+    fuelPressureWarning: 0x0002,
+    oilPressureWarning: 0x0004,
+    engineStalled: 0x0008,
+    pitSpeedLimiter: 0x0010,
+    revLimiterActive: 0x0020
+  },
+  /** Session Flag states
+    @enum
+  */
+  Flags: {
+    checkered: 0x00000001,
+    white: 0x00000002,
+    green: 0x00000004,
+    yellow: 0x00000008,
+    red: 0x00000010,
+    blue: 0x00000020,
+    debris: 0x00000040,
+    crossed: 0x00000080,
+    yellowWaving: 0x00000100,
+    oneLapToGreen: 0x00000200,
+    greenHeld: 0x00000400,
+    tenToGo: 0x00000800,
+    fiveToGo: 0x00001000,
+    randomWaving: 0x00002000,
+    caution: 0x00004000,
+    cautionWaving: 0x00008000,
+    black: 0x00010000,
+    disqualify: 0x00020000,
+    servicible: 0x00040000,
+    furled: 0x00080000,
+    repair: 0x00100000,
+    startHidden: 0x10000000,
+    startReady: 0x20000000,
+    startSet: 0x40000000,
+    startGo: 0x80000000
+  },
+  /** Session Pit states
+    @enum
+  */
+  PitSvFlags: {
+    LFTireChange: 0x0001,
+    RFTireChange: 0x0002,
+    LRTireChange: 0x0004,
+    RRTireChange: 0x0008,
+    FuelFill: 0x0010,
+    WindshieldTearoff: 0x0020,
+    FastRepair: 0x0040
   }
 }
 

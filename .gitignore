@@ -15,3 +15,6 @@ node_modules/
 build/
 prebuilds/
 npm-debug.log
+
+# Logged telem data
+test/*.json

@@ -1,8 +1,10 @@
 // tests if node-irsdk works at all..
 
 var expect = require('chai').expect
+var Consts = require('../src/IrSdkConsts')
 
 var irsdk = require('../')
+var fs = require('fs')
 
 irsdk.init({
   telemetryUpdateInterval: 0,
@@ -25,6 +27,7 @@ iracing.once('Connected', function () {
     console.log('TelemetryDescription event received')
     expect(data).to.exist.and.to.be.an('object')
     desc = data
+    fs.writeFileSync('test/TelemetryDescription.json', JSON.stringify(desc, null, 2), 'utf8')
     checkTelemetryValues(telemetry, desc)
     done('desc')
   })
@@ -35,6 +38,7 @@ iracing.once('Connected', function () {
     expect(data).to.have.property('timestamp').that.is.a('date')
     expect(data).to.have.property('values').that.is.an('object')
     telemetry = data
+    fs.writeFileSync('test/Telemetry.json', JSON.stringify(telemetry, null, 2), 'utf8')
     checkTelemetryValues(telemetry, desc)
     done('telemetry')
   })
@@ -58,6 +62,14 @@ var checkTelemetryValues = function (telemetry, desc) {
   console.log('got telemetry and its description, validating output..')
 
   for (var telemetryVarName in desc) {
+    if (typeof telemetry.values[telemetryVarName] === 'string') {
+      var enumKey = Object.keys(Consts).find(function (key) {
+        return key.toLowerCase() === telemetryVarName.toLowerCase()
+      })
+      if (enumKey) {
+        return Consts[enumKey]
+      }
+    }
     if (desc.hasOwnProperty(telemetryVarName)) {
       console.log('checking ' + telemetryVarName)
       var varDesc = desc[telemetryVarName]
@@ -79,24 +91,20 @@ var checkTelemetryValues = function (telemetry, desc) {
 }
 var validateValue = function (val, desc) {
   if (desc.type !== 'bitField') {
-    if (desc.unit.substr(0, 5) === 'irsdk') {
-      expect(val).to.be.a('string', 'enums should be converted to strings')
-    } else {
-      if (desc.type === 'bool') {
-        expect(val).to.be.a('boolean')
-      }
-      if (desc.type === 'int') {
-        expect(val).to.be.a('number')
-      }
-      if (desc.type === 'float') {
-        expect(val).to.be.a('number')
-      }
-      if (desc.type === 'double') {
-        expect(val).to.be.a('number')
-      }
-      if (desc.type === 'char') {
-        expect(val).to.be.a('string').and.have.length(1)
-      }
+    if (desc.type === 'bool') {
+      expect(val).to.be.a('boolean')
+    }
+    if (desc.type === 'int') {
+      expect(val).to.be.a('number')
+    }
+    if (desc.type === 'float') {
+      expect(val).to.be.a('number')
+    }
+    if (desc.type === 'double') {
+      expect(val).to.be.a('number')
+    }
+    if (desc.type === 'char') {
+      expect(val).to.be.a('string').and.have.length(1)
     }
   } else {
     // expect bitField to be converted to array<string>
